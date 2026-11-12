@@ -129,7 +129,7 @@ lolla = [
  P('1400/760', f'''{band('<b>07</b> · Del render al predio', 'El mismo lenguaje, construido en el festival.')}
 <div class="grid" style="grid-template-columns:1.55fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*90);height:calc(100% - var(--u)*210)">
  <div style="overflow:hidden"><img class="cover" src="{L}r13.jpg" style="object-position:center 30%" alt=""></div><div style="overflow:hidden"><img class="cover" src="{L}real.jpg" alt=""></div></div>
-<div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023 <span class="tbd">[confirmar foto y sumar más registros]</span></div>'''),
+<div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023</div>'''),
  closing([('Cliente','Coca-Cola'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
          [('330 mil','personas en los tres días del festival'),('110 mil','personas por jornada'),('+1 millón','siguieron los shows en vivo por Flow')]),
 ]
