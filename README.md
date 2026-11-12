@@ -1,7 +1,7 @@
 # Porra — web portfolio
 
-Sitio de José Fernando Carrillo · Director creativo IA.
-Es una web estática: no necesita servidor ni base de datos. Se publica gratis en Cloudflare Pages con tu dominio.
+Sitio de José Fernando Carrillo · Director creativo IA · **https://porra.studio**
+Es una web estática: no necesita servidor ni base de datos. Se publica gratis en Cloudflare con el dominio porra.studio.
 
 ---
 
@@ -37,16 +37,14 @@ La forma más simple es comprarlo directo en **Cloudflare** (Domain Registration
 
 > Alternativa: creá el repositorio vacío y conectá GitHub en Claude. Claude puede subir todo directamente y, de ahí en más, hacer los cambios en el repositorio.
 
-### 3. Conectar Cloudflare Pages
-1. En dash.cloudflare.com: **Workers & Pages → Create → Pages → Connect to Git** → elegís el repositorio `porra-web`.
-2. Configuración del build:
-   - **Framework preset:** None
-   - **Build command:** `python3 src/build.py`
-   - **Build output directory:** `public`
-3. *Save and Deploy*. En un minuto la web queda en una dirección tipo `porra-web.pages.dev`.
+### 3. Publicación en Cloudflare (ya hecho)
+El proyecto **porra-web** está en Cloudflare → *Compute → Workers & Pages*, conectado a este repositorio:
+- **Build command:** `python3 src/build.py`
+- **Deploy command:** `npx wrangler deploy` (usa `wrangler.jsonc`, que publica la carpeta `public`)
+- Dirección técnica: `porra-web.porracarrillo.workers.dev`
 
-### 4. Conectar tu dominio
-En el proyecto de Pages: **Custom domains → Set up a custom domain** → escribís tu dominio. Si lo compraste en Cloudflare, se conecta solo (HTTPS incluido).
+### 4. Dominio (ya hecho)
+`porra.studio` y `www.porra.studio` están conectados en la pestaña **Domains** del proyecto.
 
 ### 5. Avisarle a la web cuál es su dominio
 En `content/home.json`, cambiá la primera línea:
@@ -97,5 +95,4 @@ Cloudflare Pages acepta archivos de hasta 25 MB, por eso los reels de `public/as
 ## Antes de lanzar
 - [ ] Completar los `[a confirmar]` (roles, años, resultados).
 - [ ] Confirmar que podés usar los logos de clientes del loop (Coca-Cola, VUSE, Volkswagen, Netflix, La Nación, Volvo, KFC, Shell).
-- [ ] Cambiar `dominio` en `content/home.json`.
 - [ ] Revisar la web en el celular.
