@@ -1,0 +1,271 @@
+{
+  "dominio": "https://porra.studio",
+  "orden_de_casos": [
+    "lollapalooza",
+    "vuse",
+    "donatella",
+    "la-nacion",
+    "miami-restaurants",
+    "salty-flame",
+    "cerveza-cordoba",
+    "oxxo",
+    "natural-american-spirit",
+    "camel-snus",
+    "up-si-vale",
+    "totis",
+    "pollito-go",
+    "santos",
+    "babysec",
+    "real-estate",
+    "ena"
+  ],
+  "titulos_de_casos": {
+    "lollapalooza": "Coca-Cola × Lollapalooza",
+    "oxxo": "Coca-Cola × OXXO",
+    "vuse": "VUSE USA",
+    "la-nacion": "La Nación · LN Campo",
+    "natural-american-spirit": "Natural American Spirit · 40 años",
+    "camel-snus": "Camel SNUS",
+    "donatella": "Donatella · Miami",
+    "miami-restaurants": "Miami Restaurants",
+    "real-estate": "Real Estate",
+    "ena": "ENA",
+    "up-si-vale": "Up Sí Vale",
+    "pollito-go": "Pollito Go y Blendio",
+    "cerveza-cordoba": "Cerveza Córdoba",
+    "santos": "Santo's",
+    "babysec": "Babysec",
+    "totis": "Totis",
+    "salty-flame": "Salty Flame"
+  },
+  "tarjetas_home": [
+    {
+      "titulo": "Coca-Cola × Lollapalooza",
+      "bajada": "Stand oficial 2023 · dos mundos en 100 m²",
+      "categoria": "Caso · Experiencia",
+      "filtro": "caso",
+      "proporcion": 1.95,
+      "imagen": "assets/lolla/r01.jpg",
+      "caso": "lollapalooza",
+      "posicion": "center 40%",
+      "tipo": "media"
+    },
+    {
+      "titulo": "VUSE USA",
+      "bajada": "Identidad y packaging",
+      "categoria": "Caso · Packaging",
+      "filtro": "caso",
+      "proporcion": 0.9,
+      "imagen": "assets/vuse/10.jpg",
+      "caso": "vuse",
+      "posicion": "62% center",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Reel · Video IA",
+      "bajada": "2026 · 1 min",
+      "categoria": "Reel",
+      "filtro": "reel",
+      "proporcion": 1.78,
+      "video": "assets/reels/reel-videos-thumb.mp4",
+      "reel": 1,
+      "tipo": "media"
+    },
+    {
+      "titulo": "Reel · Imagen IA",
+      "bajada": "2026 · 1 min",
+      "categoria": "Reel",
+      "filtro": "reel",
+      "proporcion": 1.78,
+      "video": "assets/reels/reel-images-thumb.mp4",
+      "reel": 0,
+      "tipo": "media"
+    },
+    {
+      "titulo": "Donatella",
+      "bajada": "Hospitality · Miami",
+      "categoria": "Caso · Video IA",
+      "filtro": "ia",
+      "proporcion": 0.8,
+      "caso": "donatella",
+      "video": "assets/ia/donatella-thumb.mp4",
+      "video_completo": "assets/ia/donatella.mp4",
+      "descripcion": "Hotel boutique y restaurante en Miami Beach: tres lenguajes visuales y un video de 15 s. Imagen y video con IA bajo dirección de arte.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Miami Restaurants",
+      "bajada": "Una regla visual por marca",
+      "categoria": "Caso · Hospitality",
+      "filtro": "ia",
+      "proporcion": 1.0,
+      "caso": "miami-restaurants",
+      "imagen": "assets/cases/miami-restaurants/FOOD_01.jpg",
+      "tipo": "media"
+    },
+    {
+      "titulo": "La Nación · LN Campo",
+      "bajada": "Arte y storyboard",
+      "categoria": "Caso · Video",
+      "filtro": "caso",
+      "proporcion": 1.5,
+      "imagen": "assets/lanacion/p-7.jpg",
+      "caso": "la-nacion",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Salty Flame",
+      "bajada": "Hospitality · Miami",
+      "categoria": "Caso · Video IA",
+      "filtro": "ia",
+      "proporcion": 0.8,
+      "caso": "salty-flame",
+      "video": "assets/ia/salty-flame-thumb.mp4",
+      "video_completo": "assets/ia/salty-flame.mp4",
+      "descripcion": "Video de marca para restaurante. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Cerveza Córdoba",
+      "bajada": "Campaña · Argentina",
+      "categoria": "Caso · Video IA",
+      "filtro": "ia",
+      "proporcion": 1.78,
+      "caso": "cerveza-cordoba",
+      "video": "assets/ia/cordoba-clip.mp4",
+      "video_completo": "assets/ia/cerveza-cordoba.jpg",
+      "descripcion": "Campaña de territorio y piezas de trade. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Coca-Cola × OXXO",
+      "bajada": "Key visuals para promociones en México",
+      "categoria": "Caso · Retail",
+      "filtro": "caso",
+      "proporcion": 1.43,
+      "imagen": "assets/cases/oxxo/OXXO_01.jpg",
+      "caso": "oxxo",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Natural American Spirit",
+      "bajada": "Packs 40 años",
+      "categoria": "Caso · Packaging",
+      "filtro": "caso",
+      "proporcion": 1.0,
+      "imagen": "assets/nas/01.jpg",
+      "caso": "natural-american-spirit",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Camel SNUS",
+      "bajada": "Identidad visual · USA",
+      "categoria": "Caso · Campaña",
+      "filtro": "caso",
+      "proporcion": 0.78,
+      "imagen": "assets/camel/02.jpg",
+      "caso": "camel-snus",
+      "posicion": "center 25%",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Up Sí Vale",
+      "bajada": "Campaña 360 · México",
+      "categoria": "Caso · Imagen IA",
+      "filtro": "ia",
+      "proporcion": 0.85,
+      "caso": "up-si-vale",
+      "imagen": "assets/ia/up-si-vale.jpg",
+      "descripcion": "Plataforma de campaña “Sí”. Producción de imagen con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Totis Donitas",
+      "bajada": "Consumo masivo · México",
+      "categoria": "Caso · Imagen IA",
+      "filtro": "ia",
+      "proporcion": 0.8,
+      "caso": "totis",
+      "imagen": "assets/ia/totis.jpg",
+      "descripcion": "Key visual de producto. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Pollito Go · Blendio",
+      "bajada": "Packaging · 7-Eleven México",
+      "categoria": "Caso · Packaging IA",
+      "filtro": "ia",
+      "proporcion": 1.34,
+      "caso": "pollito-go",
+      "imagen": "assets/ia/pollito-go.jpg",
+      "descripcion": "Sistema de 19 empaques. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Santo's",
+      "bajada": "Branding",
+      "categoria": "Caso · Branding IA",
+      "filtro": "ia",
+      "proporcion": 1.3,
+      "caso": "santos",
+      "imagen": "assets/ia/santos.jpg",
+      "descripcion": "Dos direcciones de marca. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Babysec · Expo Mamá",
+      "bajada": "BTL · Stand",
+      "categoria": "Caso · BTL IA",
+      "filtro": "ia",
+      "proporcion": 1.6,
+      "caso": "babysec",
+      "imagen": "assets/ia/babysec.jpg",
+      "descripcion": "Stand diseñado por zonas de experiencia. Producción con IA.",
+      "tipo": "media"
+    },
+    {
+      "titulo": "Real Estate",
+      "bajada": "Vender lo que todavía no existe",
+      "categoria": "Caso · Imagen IA",
+      "filtro": "ia",
+      "proporcion": 2.2,
+      "caso": "real-estate",
+      "imagen": "assets/ia/real-estate.jpg",
+      "tipo": "media"
+    },
+    {
+      "titulo": "ENA",
+      "bajada": "Branding de proyecto residencial",
+      "categoria": "Caso · Branding",
+      "filtro": "ia",
+      "proporcion": 1.0,
+      "caso": "ena",
+      "imagen": "assets/cases/ena/ENA_05.jpg",
+      "tipo": "media"
+    },
+    {
+      "tipo": "text",
+      "titulo": "Conexo Finance",
+      "bajada": "Identidad de marca",
+      "categoria": "Caso · Fintech",
+      "filtro": "caso",
+      "proporcion": 0.9,
+      "color": "#1d2a6b",
+      "link": "https://www.behance.net/gallery/152835085/Brand-identity-Conexo-Finance-Company"
+    }
+  ],
+  "reels": [
+    {
+      "tipo": "video",
+      "video": "assets/reels/reel-images.mp4",
+      "titulo": "Reel · Imagen con IA",
+      "descripcion": "Selección de imágenes generadas con dirección de arte propia."
+    },
+    {
+      "tipo": "video",
+      "video": "assets/reels/reel-videos.mp4",
+      "titulo": "Reel · Video con IA",
+      "descripcion": "Piezas de video generativo para marcas y conceptos propios."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "up-si-vale": {
+    "oscuro_o_claro": "oscuro",
+    "color_acento": "#ff6a3d",
+    "numero": "06",
+    "etiqueta_superior": "Up Sí Vale",
+    "titulo": "Up Sí Vale",
+    "subtitulo": "La vida es más ligera · Campaña 360",
+    "rubro": "Plataforma · Copy · Rollout",
+    "titular": "La idea tiene<br>dos letras.",
+    "texto_es": "Hacer deseable un producto que nadie elige con emoción. Up Sí Vale lo resuelve con una palabra que ya estaba en el nombre: «Sí». Copy primero, color pleno de naranja a rosa y una sola regla visual: la gente flota, porque la vida pesa menos. La plataforma se desplegó en key visual, billboard, mupi, table tent, app, mailing y LinkedIn.",
+    "texto_en": "Making a product nobody picks with emotion feel desirable. Up Sí Vale solves it with a word already in its name: “Sí” (Yes). Copy first, full colour from orange to pink and one visual rule: people float, because life weighs less.",
+    "ficha": {
+      "Cliente": "Up Sí Vale",
+      "Rubro": "Beneficios B2B · México",
+      "Alcance": "Plataforma de copy · Key visual · Rollout en medios",
+      "Producción": "Imagen con IA",
+      "Rol": "[a confirmar]",
+      "Agencia / año": "[a confirmar]"
+    }
+  },
+  "pollito-go": {
+    "oscuro_o_claro": "claro",
+    "color_acento": "#e2231a",
+    "numero": "07",
+    "etiqueta_superior": "7-Eleven México",
+    "titulo": "Pollito Go<br>y Blendio",
+    "subtitulo": "Sistema de packaging · 7-Eleven México",
+    "rubro": "Packaging · Retail",
+    "titular": "19 empaques,<br>un sistema.",
+    "texto_es": "Sistema de packaging para la línea de comidas y bebidas de 7-Eleven México: 11 productos Pollito Go y 8 Blendio, más vasos de frappé. Primero en fondo blanco tipo catálogo, después en uso. Los octógonos de advertencia NOM-051 forman parte de la grilla en lugar de interrumpirla.",
+    "texto_en": "Packaging system for 7-Eleven Mexico’s food and drinks line: 11 Pollito Go products and 8 Blendio, plus frappé cups. The NOM-051 warning octagons are part of the grid, not an interruption.",
+    "ficha": {
+      "Cliente": "7-Eleven México",
+      "Marcas": "Pollito Go · Blendio",
+      "Alcance": "Sistema de packaging · 19 empaques",
+      "Producción": "Imagen con IA",
+      "Rol": "[a confirmar]",
+      "Aprobación": "[a confirmar]"
+    }
+  },
+  "cerveza-cordoba": {
+    "oscuro_o_claro": "oscuro",
+    "color_acento": "#f2b134",
+    "numero": "08",
+    "etiqueta_superior": "Cerveza Córdoba",
+    "titulo": "Cerveza Córdoba",
+    "subtitulo": "Una cerveza con tonada",
+    "rubro": "Territorio · Trade · Vía pública",
+    "titular": "De la sierra<br>al almacén.",
+    "texto_es": "Una marca regional no compite con presupuesto, compite con pertenencia. Construimos un territorio con luz dura de verano, gran angular y gente real riéndose en paisajes reconocibles (sierras, río, dique) y lo llevamos al trade: kioscos, distribución, almacén y vía pública. Copy con tonada: «Cero amargura, pura alegría cordobesa».",
+    "texto_en": "A regional brand doesn’t compete on budget, it competes on belonging. A territory of hard summer light, wide angles and real people in recognisable landscapes, carried all the way to the kiosk and the corner store.",
+    "ficha": {
+      "Cliente": "Cerveza Córdoba",
+      "Rubro": "Cerveza · Argentina",
+      "Alcance": "Territorio de marca · Trade · Vía pública",
+      "Producción": "Imagen con IA",
+      "Rol / año": "[a confirmar]",
+      "Legal": "Beber con moderación. Prohibida su venta a menores de 18 años."
+    }
+  },
+  "santos": {
+    "oscuro_o_claro": "claro",
+    "color_acento": "#1d4f9c",
+    "numero": "09",
+    "etiqueta_superior": "Santo's",
+    "titulo": "Santo's",
+    "subtitulo": "Dos caminos de identidad",
+    "rubro": "Branding · Frozen yogurt",
+    "titular": "Dos caminos<br>para una marca.",
+    "texto_es": "Identidad para una marca de frozen yogurt presentada en dos direcciones: una V1 ilustrada en azul, con un sistema de ilustración propio, y una V2 mediterránea con olivo. Logo, paleta, tipografía, sistema gráfico y aplicaciones, para elegir un camino y defenderlo.",
+    "texto_en": "Identity for a frozen yogurt brand in two directions: an illustrated blue V1 with its own illustration system, and a Mediterranean V2 with an olive tree.",
+    "ficha": {
+      "Cliente": "Santo's",
+      "Rubro": "Frozen yogurt",
+      "Alcance": "Identidad · Sistema de ilustración · Aplicaciones",
+      "Producción": "Imagen con IA",
+      "Año": "[a confirmar]"
+    },
+    "portada_imagen": "assets/cases/santos/hero.jpg",
+    "portada_posicion": "center 40%"
+  },
+  "babysec": {
+    "oscuro_o_claro": "claro",
+    "color_acento": "#7b6cd9",
+    "numero": "10",
+    "etiqueta_superior": "Babysec",
+    "titulo": "Babysec",
+    "subtitulo": "Expo Mamá 2026 · Día del Niño",
+    "rubro": "BTL · Stand · Evento",
+    "titular": "Un stand<br>en tres zonas.",
+    "texto_es": "Stand para Expo Mamá pensado como recorrido: llegada y validación, producto y cambiador, recompensa y venta. Primero la vista aérea, después zona por zona, en la paleta celeste y lila de la marca. Además, el Día del Niño: un evento familiar para los empleados de la compañía.",
+    "texto_en": "A trade-fair stand designed as a journey: arrival and validation, product and changing station, reward and sale. Plus Children’s Day, a family event for the company’s employees.",
+    "ficha": {
+      "Cliente": "Babysec",
+      "Rubro": "Consumo masivo · BTL",
+      "Alcance": "Stand por zonas · Evento corporativo",
+      "Producción": "Imagen con IA",
+      "Estado": "Propuesta o construido [a confirmar]"
+    }
+  },
+  "totis": {
+    "oscuro_o_claro": "oscuro",
+    "color_acento": "#7ac143",
+    "numero": "11",
+    "etiqueta_superior": "Totis",
+    "titulo": "Totis",
+    "subtitulo": "Snack time · México",
+    "rubro": "Key visuals · Lifestyle",
+    "titular": "Flash directo,<br>Gen Z.",
+    "texto_es": "Key visuals lifestyle para Totis (Donitas, Puffs, Top-Top’s) en México: flash directo, gran angular, color saturado y la mascota del conejo idéntica en cada escena, del grupo de amigos a la familia.",
+    "texto_en": "Lifestyle key visuals for Totis in Mexico: direct flash, wide angle, saturated colour and the rabbit mascot kept identical across every scene.",
+    "ficha": {
+      "Cliente": "Totis",
+      "Rubro": "Snacks · México",
+      "Alcance": "Key visuals lifestyle",
+      "Producción": "Imagen con IA",
+      "Aprobación": "[a confirmar]"
+    }
+  },
+  "salty-flame": {
+    "oscuro_o_claro": "oscuro",
+    "color_acento": "#c9a227",
+    "numero": "12",
+    "etiqueta_superior": "Salty Flame",
+    "titulo": "Salty Flame",
+    "subtitulo": "Match-day dress code · Miami",
+    "rubro": "Hospitality · Editorial · Video",
+    "titular": "Negro, dorado<br>y flash.",
+    "texto_es": "Contenido para un steakhouse y espacio nocturno en Miami: editorial de moda en temporada de fútbol, Día de la Madre en video y carnes. Una regla visual para toda la marca: negro, dorado y flash.",
+    "texto_en": "Content for a Miami steakhouse and nightlife spot: football-season fashion editorial, a Mother’s Day film and the meat. One rule: black, gold and flash.",
+    "ficha": {
+      "Cliente": "Salty Flame",
+      "Rubro": "Steakhouse · Nightlife · Miami",
+      "Alcance": "Editorial · Video · Producto",
+      "Producción": "Imagen y video con IA",
+      "Año": "[a confirmar]"
+    }
+  }
+}

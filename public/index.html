@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PORRA — Dirección creativa y producción con IA</title>
+<meta name="description" content="Porra es el estudio de José Carrillo: dirección creativa senior y producción con IA. Reel 2026 y casos para Coca-Cola, VUSE, La Nación y más.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0c0c0b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PORRA — Dirección creativa y producción con IA">
+<meta property="og:description" content="José Fernando Carrillo · Director creativo IA. Reel 2026 y casos para Coca-Cola, VUSE, La Nación y más.">
+<meta property="og:url" content="https://porra.studio/">
+<meta property="og:image" content="https://porra.studio/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@font-face{font-family:"Inter Tight";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/inter-tight-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/inter-tight-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF}
+@font-face{font-family:"Inter Tight";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/inter-tight-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/inter-tight-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-024F,U+1E00-1EFF}
+@font-face{font-family:"Inter Tight";font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/inter-tight-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-weight:400;font-style:italic;font-display:swap;src:url(assets/fonts/inter-tight-latin-400-italic.woff2) format("woff2")}
+
+.plates{container-type:inline-size;width:100%;--bg:#0b0b0b;--fg:#f1f1ee;--mut:#8d8d88;--line:#2a2a28;--acc:#00d9ff;--tbd:#00d9ff;background:var(--bg);color:var(--fg)}
+.plates.light{--bg:#f2f1ed;--fg:#121212;--mut:#6f6e69;--line:#d6d4ce;--tbd:#0089a8}
+.plate{--u:calc(100cqw / 1400);position:relative;overflow:hidden;width:100%;background:var(--bg);color:var(--fg);font-family:"Inter Tight",Helvetica,Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.25}
+.plate *{box-sizing:border-box;margin:0;padding:0}
+.plate img,.plate video{display:block;width:100%;height:100%}
+.plate .cover{object-fit:cover}
+.plate .contain{object-fit:contain}
+.plate .abs{position:absolute;inset:0}
+.plate .pad{padding:calc(var(--u)*72)}
+.plate .lbl{font-size:calc(var(--u)*14);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.plate .lbl b{color:var(--acc);font-weight:500}
+.plate .h1{font-size:calc(var(--u)*101);font-weight:500;letter-spacing:-.015em;line-height:.98}
+.plate .h2{font-size:calc(var(--u)*56);font-weight:500;letter-spacing:-.012em;line-height:1.06}
+.plate .h3{font-size:calc(var(--u)*27);font-weight:500;letter-spacing:-.005em;line-height:1.2}
+.plate .h4{font-size:calc(var(--u)*22);font-weight:500;letter-spacing:-.01em;line-height:1.25}
+.plate .body{font-size:calc(var(--u)*20);line-height:1.55;color:var(--fg)}
+.plate .small{font-size:calc(var(--u)*16);line-height:1.5;color:var(--mut)}
+.plate .en{font-size:calc(var(--u)*15);line-height:1.55;color:var(--mut);font-style:italic}
+.plate .tbd{color:var(--tbd)}
+.plate .rule{border-top:1px solid var(--line)}
+.plate .mark{position:absolute;top:calc(var(--u)*56);left:calc(var(--u)*64);width:calc(var(--u)*118);height:auto}
+.plate .tr{position:absolute;top:calc(var(--u)*64);right:calc(var(--u)*64)}
+.plate .shade{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 48%,rgba(0,0,0,.82) 100%)}
+.plate .bottom{position:absolute;left:calc(var(--u)*64);right:calc(var(--u)*64);bottom:calc(var(--u)*64)}
+.plate .grid{display:grid;gap:calc(var(--u)*12)}
+.plate .ficha{display:grid;grid-template-columns:calc(var(--u)*150) 1fr;row-gap:calc(var(--u)*14);column-gap:calc(var(--u)*20);font-size:calc(var(--u)*17);line-height:1.4}
+.plate .ficha dt{color:var(--mut)}
+.plate .ficha dd{color:var(--fg)}
+.plate .ficha > *{padding-bottom:calc(var(--u)*14);border-bottom:1px solid var(--line)}
+.plate .num{font-size:calc(var(--u)*14);color:var(--acc);letter-spacing:.1em;font-weight:500}
+.plate .req{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*28) calc(var(--u)*32)}
+.plate .req div{border-top:1px solid var(--line);padding-top:calc(var(--u)*14);font-size:calc(var(--u)*18);line-height:1.4}
+.plate .req div span{display:block;margin-bottom:calc(var(--u)*8)}
+.plate .metric{border-top:1px solid var(--line);padding-top:calc(var(--u)*16)}
+.plate .metric .v{font-size:calc(var(--u)*56);font-weight:500;letter-spacing:-.03em;line-height:1}
+.plate .band{padding:calc(var(--u)*64) calc(var(--u)*64) calc(var(--u)*40);display:flex;gap:calc(var(--u)*48);align-items:flex-end;justify-content:space-between}
+.plate .band .h3{max-width:calc(var(--u)*860)}
+.plate .cap{font-size:calc(var(--u)*14);color:var(--mut);margin-top:calc(var(--u)*12)}
+@container (max-width: 760px){
+ .plate .lbl{font-size:max(calc(var(--u)*14),10px)}
+ .plate .band{padding:22px 20px 14px;display:block}
+ .plate .band .lbl{margin-bottom:6px}
+ .plate .band .h3{font-size:15px;line-height:1.3}
+ .plate .h1{font-size:max(calc(var(--u)*101),28px)}
+ .plate .h3{font-size:max(calc(var(--u)*30),13px)}
+ .plate.txt{aspect-ratio:auto !important}
+ .plate.txt .lay0{display:block !important;height:auto !important}
+ .plate.txt .lay{display:block !important;height:auto !important;padding:32px 22px !important}
+ .plate.txt .lay > *{margin-bottom:26px}
+ .plate.txt .lay > *:last-child{margin-bottom:0}
+ .plate.txt .cols{grid-template-columns:1fr !important;gap:28px !important}
+ .plate.txt .cols2{grid-template-columns:1fr 1fr !important}
+ .plate.txt .side{display:none}
+ .plate.txt .h2{font-size:27px !important;line-height:1.05}
+ .plate.txt .h4{font-size:18px}
+ .plate.txt .body{font-size:15px}
+ .plate.txt .small{font-size:14px}
+ .plate.txt .en{font-size:13px}
+ .plate.txt .lbl{font-size:11px;margin-bottom:12px !important}
+ .plate.txt .num{font-size:11px}
+ .plate.txt .ficha{font-size:14px;grid-template-columns:110px 1fr;row-gap:10px}
+ .plate.txt .ficha > *{padding-bottom:10px}
+ .plate.txt .req{grid-template-columns:1fr 1fr;gap:18px}
+ .plate.txt .req div{font-size:14px;padding-top:10px}
+ .plate.txt .metric .v{font-size:30px}
+ .plate.txt .ft{position:static !important;margin:0 22px 26px;display:block}
+ .plate.txt img.ft{width:80px !important}
+ .plate.txt [style*="max-width"]{max-width:none !important}
+}
+
+:root{--bg:#0c0c0b;--fg:#f3f3ef;--mut:#8f8f89;--line:#272725;--acc:#00d9ff;--acc2:#ff006e;--pad:clamp(16px,2.6vw,40px);--gap:clamp(6px,.8vw,12px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+.lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 15px;font-size:14px;font-weight:500;transition:background .2s,color .2s,border-color .2s;backdrop-filter:blur(6px)}
+.pill:hover{background:#fff;color:#000;border-color:#fff}
+.pill.solid{background:#fff;color:#000;border-color:#fff}
+.pill.solid:hover{background:var(--acc);border-color:var(--acc)}
+
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:13;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px var(--pad);transition:background .3s,border-color .3s;border-bottom:1px solid transparent;color:#fff}
+header.solid{background:rgba(12,12,11,.88);border-color:var(--line)}
+header .logo img{height:30px;display:block}
+header .mid{font-size:13px;color:rgba(255,255,255,.85);display:flex;gap:10px;align-items:center}
+header .mid i{width:7px;height:7px;border-radius:50%;background:var(--acc2);display:inline-block;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+header .right{display:flex;justify-content:flex-end;gap:8px}
+
+/* hero reel */
+.hero{position:relative;height:92svh;min-height:560px;overflow:hidden;background:#000}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 100%)}
+.hero .big{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(64px,9vh,96px);color:#fff}
+.hero h1{font-size:clamp(40px,7.74vw,135px);font-weight:600;letter-spacing:-.018em;line-height:.9;text-transform:uppercase}
+.hero h1 span{display:block}
+.hero .who{font-size:clamp(13px,1vw,16px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;color:rgba(255,255,255,.9)}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero .foot{position:absolute;left:var(--pad);right:var(--pad);bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#fff;font-size:14px}
+.hero .foot p{max-width:60ch;color:rgba(255,255,255,.85)}
+.hero .bar{position:absolute;left:0;bottom:0;height:3px;background:var(--acc);width:0}
+.hero .sw{display:flex;gap:8px}
+
+/* gallery */
+.work{padding:clamp(28px,4vh,44px) var(--pad) 0}
+.whead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:18px;flex-wrap:wrap}
+.whead h2{font-size:clamp(31px,3.96vw,65px);font-weight:600;letter-spacing:-.012em;line-height:.9;text-transform:uppercase}
+.whead h2 sup{font-size:.32em;letter-spacing:0;vertical-align:top;margin-left:8px;color:var(--acc);font-weight:500}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid #343432;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;color:#cfcfca;transition:all .2s}
+.chip:hover{border-color:#777;color:#fff}
+.chip.on{background:#fff;color:#000;border-color:#fff}
+.rows{display:flex;flex-direction:column;gap:var(--gap)}
+.row{display:flex;gap:var(--gap)}
+.tile{position:relative;overflow:hidden;border-radius:3px;background:#151514;display:block;min-width:0;cursor:none}
+.tile .m{position:absolute;inset:0}
+.tile img,.tile video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .5s}
+.tile:hover img,.tile:hover video{transform:scale(1.045)}
+.tile .kb{animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07) translate(-1%,-1%)}}
+.tile:hover .kb{animation-play-state:paused}
+.tile .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%);transition:opacity .4s}
+.tile .t{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.tile .t b{display:block;font-size:clamp(15px,1.35vw,22px);font-weight:600;letter-spacing:-.005em;line-height:1.05}
+.tile .t span{display:block;font-size:13px;color:rgba(255,255,255,.8);margin-top:4px}
+.tile .tag{position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.55);color:#fff;padding:5px 9px;border-radius:999px;backdrop-filter:blur(4px)}
+.tile .tag.v::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc2);margin-right:6px;vertical-align:1px}
+.tile.txt{background:var(--c,#1a1a19);cursor:pointer}
+.tile.txt .in{position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+.tile.txt b{font-size:clamp(18px,1.8vw,29px);font-weight:600;letter-spacing:-.01em;line-height:1}
+.tile.txt .go{font-size:14px;font-weight:500}
+.tile.txt:hover{filter:brightness(1.12)}
+#cur{position:fixed;left:0;top:0;z-index:15;pointer-events:none;width:86px;height:86px;margin:-43px 0 0 -43px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;transform:scale(0);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+#cur.on{transform:scale(1)}
+
+/* marquee */
+.marquee{overflow:hidden;margin-top:clamp(70px,10vh,120px);padding:20px 0;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marquee{background:#000}
+.marquee .track{display:inline-flex;align-items:center;gap:clamp(48px,6vw,96px);padding-right:clamp(48px,6vw,96px);animation:mq 38s linear infinite}
+.marquee .track img{height:clamp(26px,2.6vw,40px);width:auto;display:block;opacity:.92}
+.marquee .track img.tall{height:clamp(34px,3.4vw,52px)}
+.marquee .track img.sm{height:clamp(22px,2.2vw,34px)}
+.marquee .track img.wide{height:clamp(30px,3vw,46px)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* estudio */
+.studio{padding:clamp(70px,10vh,120px) var(--pad) 0;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(30px,5vw,80px)}
+.studio h2{font-size:clamp(27px,3.24vw,52px);font-weight:600;letter-spacing:-.012em;line-height:1}
+.studio h2 em{font-style:normal;color:var(--mut)}
+.steps{display:grid;gap:22px;align-content:end}
+.step{border-top:1px solid var(--line);padding-top:14px;display:grid;grid-template-columns:44px 1fr;gap:10px}
+.step .n{color:var(--acc);font-size:13px;font-weight:600}
+.step b{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.step p{color:var(--mut);margin-top:4px;font-size:15px}
+
+/* contacto */
+.contact{padding:clamp(80px,12vh,140px) var(--pad) 0}
+.contact h2{font-size:clamp(58px,11.7vw,207px);font-weight:600;letter-spacing:-.02em;line-height:.88;text-transform:uppercase}
+.contact .row2{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:28px;flex-wrap:wrap}
+.contact .mail{font-size:clamp(22px,2.6vw,40px);font-weight:500;letter-spacing:-.03em;border-bottom:2px solid var(--acc);padding-bottom:4px}
+.contact .mail:hover{color:var(--acc)}
+.contact .links{display:flex;gap:8px;flex-wrap:wrap}
+footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin:60px var(--pad) 0;padding:16px 0 24px;font-size:13px;color:var(--mut)}
+
+/* menu */
+#menu{position:fixed;inset:0;z-index:12;background:#0c0c0b;display:none;grid-template-columns:1fr 1fr;padding:90px var(--pad) 30px;gap:40px}
+#menu.open{display:grid;animation:fade .35s}
+#menu nav{display:flex;flex-direction:column;justify-content:center;gap:4px}
+#menu nav a{font-size:clamp(31px,4.68vw,79px);font-weight:600;letter-spacing:-.015em;line-height:1;text-transform:uppercase;color:#5a5a57;transition:color .2s}
+#menu nav a:hover{color:#fff}
+#menu nav a small{font-size:.22em;letter-spacing:0;vertical-align:top;margin-left:10px;color:var(--acc)}
+#menu .pv{position:relative;overflow:hidden;border-radius:4px;background:#151514}
+#menu .pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s,transform 1.2s;transform:scale(1.05)}
+#menu .pv img.on{opacity:1;transform:scale(1)}
+@keyframes fade{from{opacity:0}}
+
+/* case window */
+#case{position:fixed;inset:0;z-index:14;background:#0b0b0b;overflow-y:auto;display:none;overscroll-behavior:contain}
+#case.open{display:block;animation:up .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+#case .bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:12px var(--pad);background:rgba(11,11,11,.92);border-bottom:1px solid var(--line);font-size:14px}
+#case .bar .ttl{color:var(--mut)} #case .bar .ttl b{color:var(--fg);font-weight:500}
+#case .body{max-width:1400px;margin:0 auto}
+#case .next{display:flex;justify-content:space-between;align-items:center;padding:60px var(--pad) 80px;max-width:1400px;margin:0 auto;border-top:1px solid var(--line)}
+#case .next .nx{font-size:clamp(25px,3.6vw,54px);font-weight:600;letter-spacing:-.012em;line-height:1}
+#case .next a:hover .nx{color:var(--acc)}
+#case video.vmod{width:100%;display:block;background:#000}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:16;background:rgba(0,0,0,.96);display:none;flex-direction:column;padding:64px var(--pad) 86px}
+.lb.open{display:flex;animation:fade .3s}
+.lb .stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.lb .stage img,.lb .stage video{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb .cap{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;display:flex;justify-content:space-between;gap:30px;font-size:14px}
+.lb .cap b{font-weight:600}.lb .cap span{color:var(--mut);max-width:60ch;text-align:right}
+.lb .x{position:absolute;top:16px;right:var(--pad)}
+.lb .nv{position:absolute;top:16px;left:var(--pad);display:flex;gap:8px}
+
+@media (max-width:900px){
+  header{grid-template-columns:1fr auto}
+  header .mid{display:none}
+  header .right .hide-m{display:none}
+  .hero{height:86svh}
+  .hero .foot{flex-direction:column;align-items:flex-start}
+  .hero .foot p{display:none}
+  .studio{grid-template-columns:1fr}
+  #menu{grid-template-columns:1fr}
+  #menu .pv{display:none}
+  .tile{cursor:pointer}
+  #cur{display:none}
+  .lb .cap{flex-direction:column;gap:6px}.lb .cap span{text-align:left}
+}
+@media (max-width:600px){ .tile .tag{display:none} .tile .t{left:10px;right:10px;bottom:9px} .tile .t b{font-size:15px} .tile .t span{font-size:12px} .tile.txt .in{padding:14px} .tile.txt b{font-size:19px} }
+@media (prefers-reduced-motion:reduce){ .tile .kb,.marquee .track{animation:none} }
+</style>
+</head>
+<body>
+<div id="cur">Ver</div>
+
+<header id="hdr">
+  <a class="logo" href="#top" aria-label="Porra, inicio"><img src="assets/logo-white.png" alt="Porra"></a>
+  <div class="mid"><i></i>Reel 2026 · Imagen y video con IA</div>
+  <div class="right"><a class="pill hide-m" href="#trabajos">Trabajos</a><a class="pill hide-m" href="#contacto">Contacto</a><button class="pill solid" id="menuBtn">Menú</button></div>
+</header>
+
+<div id="menu" aria-hidden="true">
+  <nav id="menuNav"></nav>
+  <div class="pv" id="menuPv"></div>
+</div>
+
+<main id="top">
+  <section class="hero" id="reel">
+    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/reels/hero-poster.jpg"></video>
+    <div class="scrim"></div>
+    <div class="big"><div class="who">José Fernando Carrillo · Director creativo IA</div><h1><span>Dirección creativa</span><span><em>+</em> producción IA</span></h1></div>
+    <div class="foot">
+      <p>José Carrillo · 25 años en Ogilvy, Geometry y Hogarth (WPP). Hoy, Porra: campañas, marcas y contenido con IA desde Buenos Aires.</p>
+      <div class="sw"><button class="pill solid" data-reel="1">▶ Reel video IA</button><button class="pill" data-reel="0">▶ Reel imagen IA</button></div>
+    </div>
+    <div class="bar" id="heroBar"></div>
+  </section>
+
+  <section class="work" id="trabajos">
+    <div class="whead">
+      <h2>Trabajos<sup id="count">16</sup></h2>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <div class="marquee" aria-label="Clientes"><div class="track" id="mq"></div></div>
+
+  <section class="studio" id="estudio">
+    <h2>Un estudio chico con dirección creativa senior y producción propia con IA. <em>Ideas que salen más rápido, sin perder oficio.</em></h2>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><div><b>Idea y dirección</b><p>Partimos del negocio y del brief. La dirección creativa y el copy los lleva José en cada proyecto.</p></div></div>
+      <div class="step"><span class="n">02</span><div><b>Producción con IA</b><p>Imagen y video con un flujo propio, con selección, consistencia y retoque bajo dirección de arte.</p></div></div>
+      <div class="step"><span class="n">03</span><div><b>Entrega lista</b><p>Archivos finales para pauta, redes, punto de venta o impresión. La publicación queda del lado de la marca.</p></div></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="lbl" style="margin-bottom:16px">Contacto</div>
+    <h2>Hablemos.</h2>
+    <div class="row2">
+      <a class="mail" href="mailto:porracarrillo@gmail.com">porracarrillo@gmail.com</a>
+      <div class="links">
+        <a class="pill" href="https://www.behance.net/JoseCarrillo" target="_blank" rel="noopener">Behance ↗</a>
+        <a class="pill" href="https://www.linkedin.com/in/josecarrilloporraia" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="pill" href="https://www.instagram.com/porra_ia/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer><span>© 2026 Porra · Buenos Aires</span><span>José Fernando Carrillo · AI Creative Director</span></footer>
+</main>
+
+<div id="case" role="dialog" aria-modal="true" aria-label="Caso">
+  <div class="bar"><button id="caseBack">← Volver</button><span class="ttl" id="caseTtl"></span><a id="caseNextTop" href="#">Siguiente →</a></div>
+  <div class="body" id="caseBody"></div>
+  <div class="next"><span class="lbl">Siguiente caso</span><a id="caseNext" href="#"><span class="nx" id="caseNextName"></span></a></div>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Trabajo">
+  <div class="nv"><button class="pill" id="lbPrev">← Ant.</button><button class="pill" id="lbNext">Sig. →</button></div>
+  <button class="pill x" id="lbClose">Cerrar ✕</button>
+  <div class="stage" id="lbStage"></div>
+  <div class="cap"><b id="lbTitle"></b><span id="lbDesc"></span></div>
+</div>
+
+<template id="tpl-lollapalooza"><div class="plates" style="--acc:#ff2a2a;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/lolla/r01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Experiencia de marca</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 01 · Coca-Cola</div>
+  <div class="h1">Coca-Cola ×<br>Lollapalooza</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Stand oficial · Lollapalooza Argentina 2023</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Dos mundos<br>en 100 m².</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Coca-Cola llegó a Lollapalooza Argentina 2023 con un stand de dos niveles pensado para la Generación Z. Afuera, un volumen que funciona como pantalla de día y de noche. Adentro, dos mundos: el rojo de Coke Studio, con música y streaming, y el rosa de Coca-Cola Move, la co-creación con Rosalía.</p>
+    <p class="en">Coca-Cola arrived at Lollapalooza Argentina 2023 with a two-level stand built for Gen Z. Outside, a volume that works as a screen by day and by night. Inside, two worlds: the red of Coke Studio, with music and streaming, and the pink of Coca-Cola Move, the co-creation with Rosalía.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Coca-Cola</dd><dt>Evento</dt><dd>Lollapalooza Argentina 2023</dd><dt>Pieza</dt><dd>Stand oficial de marca</dd><dt>Superficie</dt><dd>100 m² · dos niveles con terraza</dd><dt>Disciplinas</dt><dd>Diseño de stand · Arquitectura efímera · Render 3D</dd><dt>Herramientas</dt><dd>3ds Max · Photoshop</dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/900;">
+<div class="lay0" style="display:grid;grid-template-columns:1fr calc(var(--u)*500);height:100%">
+ <div class="pad lay" style="display:flex;flex-direction:column;justify-content:space-between">
+  <div>
+   <div class="lbl" style="margin-bottom:calc(var(--u)*26)"><b>01</b> · El brief</div>
+   <div class="small" style="margin-bottom:calc(var(--u)*14)">El objetivo del cliente</div>
+   <div class="h2" style="font-size:calc(var(--u)*49);margin-bottom:calc(var(--u)*24)">“Ser un motor de reclutamiento de adolescentes.”</div>
+   <p class="body" style="max-width:calc(var(--u)*640)">Crear el mayor stand de reclutamiento de jóvenes del festival, con una experiencia física y emocional.</p>
+   <p class="en" style="margin-top:calc(var(--u)*10);max-width:calc(var(--u)*640)">“Become a teen recruitment engine”: the festival’s biggest youth stand, with a physical and emotional experience.</p>
+  </div>
+  <div>
+   <div class="small" style="margin-bottom:calc(var(--u)*18)">Lo que pedía el brief</div>
+   <div class="req">
+    <div><span class="num">01</span>100 m², planta cuadrada</div>
+    <div><span class="num">02</span>Dos pisos con terraza y baranda</div>
+    <div><span class="num">03</span>Pantallas y luces que se vean de día y de noche</div>
+    <div><span class="num">04</span>Mucha altura, mucho impacto</div>
+    <div><span class="num">05</span>Rampa de accesibilidad</div>
+    <div><span class="num">06</span>60 % Coke Studio · 40 % Rosalía Co-creations</div>
+   </div>
+  </div>
+ </div>
+ <div class="side" style="overflow:hidden"><img class="cover" src="assets/lolla/r02.jpg" style="object-position:38% center" alt=""></div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/860;">
+<div class="pad lay" style="height:100%;display:flex;flex-direction:column">
+ <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:calc(var(--u)*44)">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*22)"><b>02</b> · La respuesta</div><div class="h2" style="font-size:calc(var(--u)*47)">Tres ejes, un solo recorrido.</div></div>
+  <p class="en" style="max-width:calc(var(--u)*380);text-align:right">Three axes, one journey: music, co-creation and brand experience.</p>
+ </div>
+ <div class="grid cols" style="grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*28);flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column"><div style="aspect-ratio:4/3;overflow:hidden;margin-bottom:calc(var(--u)*20)"><img class="cover" src="assets/lolla/r10.jpg" alt=""></div><span class="num">01</span><div class="h4" style="margin:calc(var(--u)*8) 0 calc(var(--u)*10)">Coke Studio</div><p class="small">La música como punto de encuentro: cabina, espacio de streaming y lounge para amplificar lo que pasa en vivo.</p></div>
+  <div style="display:flex;flex-direction:column"><div style="aspect-ratio:4/3;overflow:hidden;margin-bottom:calc(var(--u)*20)"><img class="cover" src="assets/lolla/r07.jpg" alt=""></div><span class="num">02</span><div class="h4" style="margin:calc(var(--u)*8) 0 calc(var(--u)*10)">Co-creations · Rosalía</div><p class="small">El mundo rosa de Coca-Cola Move: maquillaje, beauty, tattoo y la moto como photo opportunity.</p></div>
+  <div style="display:flex;flex-direction:column"><div style="aspect-ratio:4/3;overflow:hidden;margin-bottom:calc(var(--u)*20)"><img class="cover" src="assets/lolla/r11.jpg" alt=""></div><span class="num">03</span><div class="h4" style="margin:calc(var(--u)*8) 0 calc(var(--u)*10)">Experiencia Coca-Cola</div><p class="small">Dinámicas que invitan a participar, con merchandising como premio y captura de datos.</p></div>
+ </div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/1190;"><div class="band"><div class="lbl"><b>03</b> · Arquitectura</div><div class="h3">Un volumen que se lee de lejos: ondas rojas y negras sobre las caras, líneas de luz en los bordes.</div></div>
+<div class="grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*64);height:calc(100% - var(--u)*210)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r02.jpg" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/r03.jpg" alt=""></div>
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r04.jpg" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/r05.jpg" alt=""></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/700;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*12);padding:calc(var(--u)*64) calc(var(--u)*64) calc(var(--u)*90)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r17.jpg" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/r18.jpg" alt=""></div></div>
+ <div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Vistas cenitales · recorrido entre los dos mundos</div></section>
+<section class="plate " style="aspect-ratio:1400/1230;"><div class="band"><div class="lbl"><b>04</b> · Coke Studio</div><div class="h3">Rojo, cabina y lounge: el mundo de la música.</div></div>
+<div style="padding:0 calc(var(--u)*64);height:calc(var(--u)*720)"><img class="cover" src="assets/lolla/r13.jpg" alt=""></div>
+<div class="grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*12);padding:calc(var(--u)*12) calc(var(--u)*64) 0;height:calc(var(--u)*318)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r14.jpg" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/r15.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/1230;"><div class="band"><div class="lbl"><b>05</b> · Co-creations</div><div class="h3">Rosa, beauty y la moto: el mundo de Coca-Cola Move con Rosalía.</div></div>
+<div style="padding:0 calc(var(--u)*64);height:calc(var(--u)*720)"><img class="cover" src="assets/lolla/r06.jpg" alt=""></div>
+<div class="grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*12);padding:calc(var(--u)*12) calc(var(--u)*64) 0;height:calc(var(--u)*318)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r08.jpg" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/r09.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/980;"><div class="band"><div class="lbl"><b>06</b> · Experiencia y store</div><div class="h3">Merch como premio: el stand también es tienda.</div></div>
+<div class="grid" style="grid-template-columns:1.6fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*64);height:calc(100% - var(--u)*210)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r12.jpg" alt=""></div>
+ <div class="grid" style="grid-template-rows:1fr 1fr;gap:calc(var(--u)*12)"><div style="overflow:hidden"><img class="cover" src="assets/lolla/r11.jpg" alt=""></div><div style="overflow:hidden;background:#f4f1ee"><img class="contain" src="assets/lolla/osos.jpg" alt=""></div></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/760;"><div class="band"><div class="lbl"><b>07</b> · Del render al predio</div><div class="h3">El mismo lenguaje, construido en el festival.</div></div>
+<div class="grid" style="grid-template-columns:1.55fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*90);height:calc(100% - var(--u)*210)">
+ <div style="overflow:hidden"><img class="cover" src="assets/lolla/r13.jpg" style="object-position:center 30%" alt=""></div><div style="overflow:hidden"><img class="cover" src="assets/lolla/real.jpg" alt=""></div></div>
+<div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023 <span class="tbd">[confirmar foto y sumar más registros]</span></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Resultados</div>
+<div class="grid cols2" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*28) calc(var(--u)*40)"><div class="metric"><div class="v tbd">—</div><div class="small" style="margin-top:calc(var(--u)*10)">Visitantes al stand</div></div><div class="metric"><div class="v tbd">—</div><div class="small" style="margin-top:calc(var(--u)*10)">Datos de jóvenes captados</div></div><div class="metric"><div class="v tbd">—</div><div class="small" style="margin-top:calc(var(--u)*10)">Horas de streaming desde Coke Studio</div></div><div class="metric"><div class="v tbd">—</div><div class="small" style="margin-top:calc(var(--u)*10)">Alcance en redes</div></div></div>
+<p class="small tbd" style="margin-top:calc(var(--u)*24)">Completar con datos reales del cliente antes de publicar.</p></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>Coca-Cola</dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Dirección de arte</dt><dd>José Carrillo <span class="tbd">[a confirmar]</span></dd><dt>Diseño de stand</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Render 3D</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Producción</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-vuse"><div class="plates light" style="--acc:#d6247a;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/vuse/10.jpg" style="object-position:60% center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Branding · Packaging · Punto de venta</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 02 · VUSE</div>
+  <div class="h1">VUSE USA</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Identidad visual y packaging</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Un sistema de packaging,<br>dos direcciones.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Sistema visual y de packaging para VUSE en Estados Unidos. Exploramos dos caminos: fotografía de ciudad con el dispositivo en mano y un sistema de formas de color sobre blanco y negro. Después lo llevamos al backbar del punto de venta y a la campaña.</p>
+    <p class="en">Visual and packaging system for VUSE in the United States: two directions, city photography and a colour-shape system on black and white, extended to the retail backbar and the campaign.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>VUSE</dd><dt>Mercado</dt><dd>Estados Unidos</dd><dt>Alcance</dt><dd>Identidad visual · Packaging · Punto de venta</dd><dt>Año</dt><dd>2021 <span class="tbd">[a confirmar]</span></dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/520;"><div class="abs grid" style="grid-template-columns:1fr 1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/vuse/03.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/vuse/04.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/vuse/05.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/676;"><div class="abs" style="padding:calc(var(--u)*40)"><img class="contain" src="assets/vuse/06.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:1400/676;"><div class="abs" style="padding:calc(var(--u)*40)"><img class="contain" src="assets/vuse/07.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:1400/700;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/vuse/01.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/vuse/08.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/560;"><div class="abs" style="padding:calc(var(--u)*40)"><img class="contain" src="assets/vuse/09.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>VUSE</dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Dirección de arte</dt><dd>José Carrillo <span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-donatella"><div style="background:#F3ECE2"><img src="assets/cases/donatella/DONATELLA_01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_06.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_07.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_08.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_09.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_10.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_11.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_12.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_13.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><video class="vmod" src="assets/ia/donatella.mp4" muted loop playsinline controls autoplay style="display:block;width:100%;max-height:90vh;background:#F3ECE2"></video><img src="assets/cases/donatella/DONATELLA_14.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/donatella/DONATELLA_15.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"></div></template>
+<template id="tpl-la-nacion"><div class="plates" style="--acc:#3fb28c;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/lanacion/p-7.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Dirección de arte · Storyboard</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 05 · La Nación</div>
+  <div class="h1">La Nación · LN Campo</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Arte y storyboard para videos institucionales</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Del diario al campo,<br>en una sola secuencia.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Dirección de arte y storyboard para los videos institucionales de LN Campo. La secuencia lleva al espectador del diario impreso al campo y de ahí a la app, con transiciones que nacen del propio paisaje.</p>
+    <p class="en">Art direction and storyboard for LN Campo institutional videos: from the printed paper to the field and on to the app, with transitions born from the landscape itself.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>La Nación · LN Campo</dd><dt>Alcance</dt><dd>Dirección de arte · Storyboard · Videos institucionales</dd><dt>Año</dt><dd>2022 <span class="tbd">[a confirmar]</span></dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/400;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-1.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-2.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/400;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-3.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-4.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/400;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-5.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-6.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/400;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-8.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="cover" src="assets/lanacion/p-9.jpg" alt=""></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>La Nación</dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Dirección de arte</dt><dd>José Carrillo <span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-miami-restaurants"><div style="background:#F7F3EE"><img src="assets/cases/miami-restaurants/FOOD_01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_06.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_07.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_08.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_09.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_10.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_11.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_12.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_13.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_14.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_15.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_16.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_17.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_18.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_19.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/miami-restaurants/FOOD_20.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"></div></template>
+<template id="tpl-salty-flame"><div class="plates" style="--acc:#c9a227;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/salty-flame/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Hospitality · Editorial · Video</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 12 · Salty Flame</div>
+  <div class="h1">Salty Flame</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Match-day dress code · Miami</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Negro, dorado<br>y flash.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Contenido para un steakhouse y espacio nocturno en Miami: editorial de moda en temporada de fútbol, Día de la Madre en video y carnes. Una regla visual para toda la marca: negro, dorado y flash.</p>
+    <p class="en">Content for a Miami steakhouse and nightlife spot: football-season fashion editorial, a Mother’s Day film and the meat. One rule: black, gold and flash.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Salty Flame</dd><dt>Rubro</dt><dd>Steakhouse · Nightlife · Miami</dd><dt>Alcance</dt><dd>Editorial · Video · Producto</dd><dt>Producción</dt><dd>Imagen y video con IA</dd><dt>Año</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/419.5;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.7500;aspect-ratio:0.7500;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g02.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g03.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g04.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g05.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/409.8;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.6667;aspect-ratio:0.6667;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g06.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g07.jpg" alt="" loading="lazy"></div><div style="flex:1.7910;aspect-ratio:1.7910;overflow:hidden"><img class="cover" src="assets/cases/salty-flame/g08.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-cerveza-cordoba"><div class="plates" style="--acc:#f2b134;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/cerveza-cordoba/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Territorio · Trade · Vía pública</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 08 · Cerveza Córdoba</div>
+  <div class="h1">Cerveza Córdoba</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Una cerveza con tonada</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">De la sierra<br>al almacén.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Una marca regional no compite con presupuesto, compite con pertenencia. Construimos un territorio con luz dura de verano, gran angular y gente real riéndose en paisajes reconocibles (sierras, río, dique) y lo llevamos al trade: kioscos, distribución, almacén y vía pública. Copy con tonada: «Cero amargura, pura alegría cordobesa».</p>
+    <p class="en">A regional brand doesn’t compete on budget, it competes on belonging. A territory of hard summer light, wide angles and real people in recognisable landscapes, carried all the way to the kiosk and the corner store.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Cerveza Córdoba</dd><dt>Rubro</dt><dd>Cerveza · Argentina</dd><dt>Alcance</dt><dd>Territorio de marca · Trade · Vía pública</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Rol / año</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Legal</dt><dd>Beber con moderación. Prohibida su venta a menores de 18 años.</dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/350.2;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.8056;aspect-ratio:0.8056;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g03.jpg" alt="" loading="lazy"></div><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g04.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/336.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g05.jpg" alt="" loading="lazy"></div><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g06.jpg" alt="" loading="lazy"></div><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g07.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/411.2;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g08.jpg" alt="" loading="lazy"></div><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g09.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g10.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g11.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/856.8;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.5625;aspect-ratio:1.5625;overflow:hidden"><img class="cover" src="assets/cases/cerveza-cordoba/g12.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-oxxo"><div class="plates light" style="--acc:#e4002b;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<div class="abs" style="background:#e4002b"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#fff">Key visuals · Punto de venta</div>
+<div class="abs" style="left:calc(var(--u)*560);right:calc(var(--u)*64);top:calc(var(--u)*150);bottom:calc(var(--u)*64);background:#fff;border-radius:calc(var(--u)*6);overflow:hidden">
+  <img src="assets/cases/oxxo/OXXO_01.jpg" alt="" style="width:100%;height:100%;object-fit:contain;padding:calc(var(--u)*24)">
+</div>
+<div class="bottom" style="color:#fff;right:auto;max-width:calc(var(--u)*460)">
+  <div class="lbl" style="color:#fff;margin-bottom:calc(var(--u)*18)">Caso 12 · Coca-Cola × OXXO</div>
+  <div class="h1" style="font-size:calc(var(--u)*88)">Coca-Cola<br>× OXXO</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#fff">Promociones de verano · México</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Dos promos,<br>un mismo mostrador.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Key visuals y material de punto de venta para dos promociones de Coca-Cola en las tiendas OXXO de México. El reto: que el premio se entienda en un golpe de vista, entre cientos de productos. Composición de packshot con todos los premios en una sola escena, y un sistema que baja del key visual a afiches, exhibidores y cenefas con la mecánica en tres pasos.</p>
+    <p class="en">Key visuals and point-of-sale material for two Coca-Cola promotions at OXXO stores in Mexico: every prize in a single packshot composition, rolled out to posters, displays and shelf strips with a three-step mechanic.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Coca-Cola México × OXXO</dd><dt>Promos</dt><dd>Desbloquea tu verano · Llévatela Chilloxxo</dd><dt>Alcance</dt><dd>Key visual · Material POP</dd><dt>Técnica</dt><dd>Composición y retoque de packshot</dd><dt>Herramientas</dt><dd>Photoshop · Illustrator</dd><dt>Rol / año</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/170;"><div class="band"><div class="lbl"><b>01</b> · Desbloquea tu verano</div><div class="h3">Gaming, tecnología y viajes: todo el verano en una sola imagen.</div></div></section>
+<section class="plate " style="aspect-ratio:2400/1676;"><div class="abs" style=""><img class="contain" src="assets/cases/oxxo/OXXO_01.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:2400/1264;"><div class="abs" style=""><img class="contain" src="assets/cases/oxxo/OXXO_02.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:1400/170;"><div class="band"><div class="lbl"><b>02</b> · Llévatela Chilloxxo</div><div class="h3">Con Coca-Cola Sin Azúcar: el premio son dos Dolphin Mini.</div></div></section>
+<section class="plate " style="aspect-ratio:2400/1264;"><div class="abs" style=""><img class="contain" src="assets/cases/oxxo/OXXO_03.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:2400/1264;"><div class="abs" style=""><img class="contain" src="assets/cases/oxxo/OXXO_04.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>Coca-Cola México</dd><dt>Retail</dt><dd>OXXO</dd><dt>Dirección de arte</dt><dd>José Carrillo</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-natural-american-spirit"><div class="plates light" style="--acc:#d9821e;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/nas/01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Packaging · Campaña</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 03 · Natural American Spirit</div>
+  <div class="h1">Natural American<br>Spirit · 40 años</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Packs de edición especial y comunicación</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Cuarenta años,<br>contados por su gente.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Ediciones especiales y piezas de comunicación para los 40 años de la marca. El número 40 funciona como sistema gráfico y los retratos de productores ponen cara a la historia, con una invitación a la celebración “Free spirits for forty years”.</p>
+    <p class="en">Special-edition packs and communication for the brand’s 40th anniversary: the number 40 as a graphic system, grower portraits and an invitation to the “Free spirits for forty years” celebration.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Natural American Spirit</dd><dt>Mercado</dt><dd>Estados Unidos <span class="tbd">[a confirmar]</span></dd><dt>Alcance</dt><dd>Packaging · Key visual · Piezas de invitación</dd><dt>Año</dt><dd>2021 <span class="tbd">[a confirmar]</span></dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/719;"><div class="abs" style="padding:calc(var(--u)*40)"><img class="contain" src="assets/nas/03.jpg" style="object-position:center" alt=""></div></section>
+<section class="plate " style="aspect-ratio:1400/420;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/02.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/04.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/760;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/05.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/06.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/760;"><div class="abs grid" style="grid-template-columns:0.7fr 1.3fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/07.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/nas/08.jpg" alt=""></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>Natural American Spirit</dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Dirección de arte</dt><dd>José Carrillo <span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-camel-snus"><div class="plates light" style="--acc:#1f63c4;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/camel/02.jpg" style="object-position:center 30%" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Campaña · Sistema gráfico</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 04 · Camel SNUS</div>
+  <div class="h1">Camel SNUS</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Identidad visual para comunicación · USA</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">La lata como protagonista.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Sistema visual para la comunicación de Camel SNUS en Estados Unidos: tipografía a gran escala, la lata en primer plano y la advertencia sanitaria integrada a la grilla de cada pieza.</p>
+    <p class="en">Visual system for Camel SNUS communication in the US: large-scale type, the tin up front and the health warning built into each layout grid.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Camel SNUS</dd><dt>Mercado</dt><dd>Estados Unidos</dd><dt>Alcance</dt><dd>Sistema gráfico · Piezas de campaña</dd><dt>Año</dt><dd>2022 <span class="tbd">[a confirmar]</span></dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/880;"><div class="abs grid" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/camel/01.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/camel/02.jpg" alt=""></div></div></section>
+<section class="plate " style="aspect-ratio:1400/600;"><div class="abs grid" style="grid-template-columns:1fr 1fr 1fr;gap:calc(var(--u)*20);padding:calc(var(--u)*40)"><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/camel/03.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/camel/04.jpg" alt=""></div><div style="overflow:hidden;min-height:0"><img class="contain" src="assets/camel/05.jpg" alt=""></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Cliente</dt><dd>Camel SNUS</dd><dt>Agencia</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Dirección de arte</dt><dd>José Carrillo <span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-up-si-vale"><div class="plates" style="--acc:#ff6a3d;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/up-si-vale/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Plataforma · Copy · Rollout</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 06 · Up Sí Vale</div>
+  <div class="h1">Up Sí Vale</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">La vida es más ligera · Campaña 360</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">La idea tiene<br>dos letras.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Hacer deseable un producto que nadie elige con emoción. Up Sí Vale lo resuelve con una palabra que ya estaba en el nombre: «Sí». Copy primero, color pleno de naranja a rosa y una sola regla visual: la gente flota, porque la vida pesa menos. La plataforma se desplegó en key visual, billboard, mupi, table tent, app, mailing y LinkedIn.</p>
+    <p class="en">Making a product nobody picks with emotion feel desirable. Up Sí Vale solves it with a word already in its name: “Sí” (Yes). Copy first, full colour from orange to pink and one visual rule: people float, because life weighs less.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Up Sí Vale</dd><dt>Rubro</dt><dd>Beneficios B2B · México</dd><dt>Alcance</dt><dd>Plataforma de copy · Key visual · Rollout en medios</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Agencia / año</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/316.7;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.6994;aspect-ratio:0.6994;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g03.jpg" alt="" loading="lazy"></div><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g04.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g05.jpg" alt="" loading="lazy"></div><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g06.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/387.8;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7527;aspect-ratio:1.7527;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g07.jpg" alt="" loading="lazy"></div><div style="flex:1.7274;aspect-ratio:1.7274;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g08.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/469.8;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.5491;aspect-ratio:1.5491;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g09.jpg" alt="" loading="lazy"></div><div style="flex:1.3081;aspect-ratio:1.3081;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g10.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/667.6;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.3284;aspect-ratio:1.3284;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g11.jpg" alt="" loading="lazy"></div><div style="flex:0.6667;aspect-ratio:0.6667;overflow:hidden"><img class="cover" src="assets/cases/up-si-vale/g12.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-totis"><div class="plates" style="--acc:#7ac143;"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/totis/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Key visuals · Lifestyle</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 11 · Totis</div>
+  <div class="h1">Totis</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Snack time · México</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Flash directo,<br>Gen Z.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Key visuals lifestyle para Totis (Donitas, Puffs, Top-Top’s) en México: flash directo, gran angular, color saturado y la mascota del conejo idéntica en cada escena, del grupo de amigos a la familia.</p>
+    <p class="en">Lifestyle key visuals for Totis in Mexico: direct flash, wide angle, saturated colour and the rabbit mascot kept identical across every scene.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Totis</dd><dt>Rubro</dt><dd>Snacks · México</dd><dt>Alcance</dt><dd>Key visuals lifestyle</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Aprobación</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/309.7;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/totis/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/totis/g03.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/totis/g04.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/466.7;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/totis/g05.jpg" alt="" loading="lazy"></div><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/totis/g06.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/totis/g07.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/404.8;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/totis/g08.jpg" alt="" loading="lazy"></div><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/totis/g09.jpg" alt="" loading="lazy"></div><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/totis/g10.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/537.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/totis/g11.jpg" alt="" loading="lazy"></div><div style="flex:1.2414;aspect-ratio:1.2414;overflow:hidden"><img class="cover" src="assets/cases/totis/g12.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-pollito-go"><div class="plates light" style="--acc:#e2231a;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/pollito-go/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Packaging · Retail</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 07 · 7-Eleven México</div>
+  <div class="h1">Pollito Go<br>y Blendio</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Sistema de packaging · 7-Eleven México</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">19 empaques,<br>un sistema.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Sistema de packaging para la línea de comidas y bebidas de 7-Eleven México: 11 productos Pollito Go y 8 Blendio, más vasos de frappé. Primero en fondo blanco tipo catálogo, después en uso. Los octógonos de advertencia NOM-051 forman parte de la grilla en lugar de interrumpirla.</p>
+    <p class="en">Packaging system for 7-Eleven Mexico’s food and drinks line: 11 Pollito Go products and 8 Blendio, plus frappé cups. The NOM-051 warning octagons are part of the grid, not an interruption.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>7-Eleven México</dd><dt>Marcas</dt><dd>Pollito Go · Blendio</dd><dt>Alcance</dt><dd>Sistema de packaging · 19 empaques</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Rol</dt><dd><span class="tbd">[a confirmar]</span></dd><dt>Aprobación</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/427.3;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.8339;aspect-ratio:0.8339;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.3438;aspect-ratio:1.3438;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g03.jpg" alt="" loading="lazy"></div><div style="flex:0.9427;aspect-ratio:0.9427;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g04.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/405.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:0.8003;aspect-ratio:0.8003;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g05.jpg" alt="" loading="lazy"></div><div style="flex:1.2496;aspect-ratio:1.2496;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g06.jpg" alt="" loading="lazy"></div><div style="flex:1.2467;aspect-ratio:1.2467;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g07.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/410.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g08.jpg" alt="" loading="lazy"></div><div style="flex:0.5750;aspect-ratio:0.5750;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g09.jpg" alt="" loading="lazy"></div><div style="flex:0.5750;aspect-ratio:0.5750;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g10.jpg" alt="" loading="lazy"></div><div style="flex:0.5750;aspect-ratio:0.5750;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g11.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/448.0;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g12.jpg" alt="" loading="lazy"></div><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g13.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/448.0;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g14.jpg" alt="" loading="lazy"></div><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g15.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/647.6;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.0000;aspect-ratio:1.0000;overflow:hidden"><img class="cover" src="assets/cases/pollito-go/g16.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-santos"><div class="plates light" style="--acc:#1d4f9c;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/santos/hero.jpg" style="object-position:center 40%" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">Branding · Frozen yogurt</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 09 · Santo's</div>
+  <div class="h1">Santo's</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Dos caminos de identidad</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Dos caminos<br>para una marca.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Identidad para una marca de frozen yogurt presentada en dos direcciones: una V1 ilustrada en azul, con un sistema de ilustración propio, y una V2 mediterránea con olivo. Logo, paleta, tipografía, sistema gráfico y aplicaciones, para elegir un camino y defenderlo.</p>
+    <p class="en">Identity for a frozen yogurt brand in two directions: an illustrated blue V1 with its own illustration system, and a Mediterranean V2 with an olive tree.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Santo's</dd><dt>Rubro</dt><dd>Frozen yogurt</dd><dt>Alcance</dt><dd>Identidad · Sistema de ilustración · Aplicaciones</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Año</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/483.0;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/santos/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.0000;aspect-ratio:1.0000;overflow:hidden"><img class="cover" src="assets/cases/santos/g03.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/411.2;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7769;aspect-ratio:1.7769;overflow:hidden"><img class="cover" src="assets/cases/santos/g04.jpg" alt="" loading="lazy"></div><div style="flex:1.5000;aspect-ratio:1.5000;overflow:hidden"><img class="cover" src="assets/cases/santos/g05.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/385.9;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g06.jpg" alt="" loading="lazy"></div><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g07.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/385.9;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g08.jpg" alt="" loading="lazy"></div><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g09.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/385.9;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g10.jpg" alt="" loading="lazy"></div><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g11.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/766.6;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7493;aspect-ratio:1.7493;overflow:hidden"><img class="cover" src="assets/cases/santos/g12.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-babysec"><div class="plates light" style="--acc:#7b6cd9;--logo-filter:invert(1)"><section class="plate " style="aspect-ratio:1400/880;">
+<img class="abs cover" src="assets/cases/babysec/g01.jpg" style="object-position:center" alt="">
+<div class="abs shade"></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#e8e8e4">BTL · Stand · Evento</div>
+<div class="bottom" style="color:#fff">
+  <div class="lbl" style="color:#e8e8e4;margin-bottom:calc(var(--u)*18)">Caso 10 · Babysec</div>
+  <div class="h1">Babysec</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#e8e8e4">Expo Mamá 2026 · Día del Niño</div>
+</div></section>
+<section class="plate txt" style="aspect-ratio:1400/760;">
+<div class="pad lay" style="display:grid;grid-template-columns:1.25fr 1fr;gap:calc(var(--u)*96);height:100%;align-content:center">
+  <div>
+    <div class="lbl" style="margin-bottom:calc(var(--u)*28)">El proyecto</div>
+    <div class="h2" style="margin-bottom:calc(var(--u)*32)">Un stand<br>en tres zonas.</div>
+    <p class="body" style="margin-bottom:calc(var(--u)*18)">Stand para Expo Mamá pensado como recorrido: llegada y validación, producto y cambiador, recompensa y venta. Primero la vista aérea, después zona por zona, en la paleta celeste y lila de la marca. Además, el Día del Niño: un evento familiar para los empleados de la compañía.</p>
+    <p class="en">A trade-fair stand designed as a journey: arrival and validation, product and changing station, reward and sale. Plus Children’s Day, a family event for the company’s employees.</p>
+  </div>
+  <div style="align-self:center"><dl class="ficha"><dt>Cliente</dt><dd>Babysec</dd><dt>Rubro</dt><dd>Consumo masivo · BTL</dd><dt>Alcance</dt><dd>Stand por zonas · Evento corporativo</dd><dt>Producción</dt><dd>Imagen con IA</dd><dt>Estado</dt><dd>Propuesta o construido <span class="tbd">[a confirmar]</span></dd></dl></div>
+</div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g02.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g03.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g04.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g05.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/378.6;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7910;aspect-ratio:1.7910;overflow:hidden"><img class="cover" src="assets/cases/babysec/g06.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g07.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g08.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g09.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g10.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g11.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g12.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g13.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/380.1;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g14.jpg" alt="" loading="lazy"></div><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g15.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate " style="aspect-ratio:1400/754.9;"><div class="abs" style="display:flex;justify-content:center;gap:calc(var(--u)*12);padding:calc(var(--u)*6.0) calc(var(--u)*40)"><div style="flex:1.7768;aspect-ratio:1.7768;overflow:hidden"><img class="cover" src="assets/cases/babysec/g16.jpg" alt="" loading="lazy"></div></div></section>
+<section class="plate txt" style="aspect-ratio:1400/720;">
+<div class="pad lay" style="display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*110);height:100%;align-content:center">
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>
+  <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div><dl class="ficha"><dt>Estudio</dt><dd>Porra IA · Buenos Aires</dd><dt>Dirección creativa</dt><dd>José Carrillo</dd><dt>Producción</dt><dd>Imagen con IA bajo dirección de arte</dd><dt>Rol / agencia</dt><dd><span class="tbd">[a confirmar]</span></dd></dl></div>
+</div>
+<img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div></section></div></template>
+<template id="tpl-real-estate"><div style="background:#F5F1E6"><img src="assets/cases/real-estate/RE_01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_06.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_07.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_08.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_09.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_10.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_11.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_12.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_13.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_14.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_15.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_16.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_17.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_18.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_19.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_20.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/real-estate/RE_21.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"></div></template>
+<template id="tpl-ena"><div style="background:#F5F1E6"><img src="assets/cases/ena/ENA_01.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_02.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_03.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_04.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_05.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_06.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_07.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_08.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_09.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_10.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_11.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_12.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_13.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_14.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_15.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"><img src="assets/cases/ena/ENA_16.jpg" alt="" loading="lazy" style="display:block;width:100%;height:auto"></div></template>
+
+<script>
+const WORKS=[{"title": "Coca-Cola × Lollapalooza", "sub": "Stand oficial 2023 · dos mundos en 100 m²", "cat": "Caso · Experiencia", "f": "caso", "r": 1.95, "img": "assets/lolla/r01.jpg", "caso": "lollapalooza", "pos": "center 40%", "kind": "media"}, {"title": "VUSE USA", "sub": "Identidad y packaging", "cat": "Caso · Packaging", "f": "caso", "r": 0.9, "img": "assets/vuse/10.jpg", "caso": "vuse", "pos": "62% center", "kind": "media"}, {"title": "Reel · Video IA", "sub": "2026 · 1 min", "cat": "Reel", "f": "reel", "r": 1.78, "video": "assets/reels/reel-videos-thumb.mp4", "reel": 1, "kind": "media"}, {"title": "Reel · Imagen IA", "sub": "2026 · 1 min", "cat": "Reel", "f": "reel", "r": 1.78, "video": "assets/reels/reel-images-thumb.mp4", "reel": 0, "kind": "media"}, {"title": "Donatella", "sub": "Hospitality · Miami", "cat": "Caso · Video IA", "f": "ia", "r": 0.8, "caso": "donatella", "video": "assets/ia/donatella-thumb.mp4", "full": "assets/ia/donatella.mp4", "desc": "Hotel boutique y restaurante en Miami Beach: tres lenguajes visuales y un video de 15 s. Imagen y video con IA bajo dirección de arte.", "kind": "media"}, {"title": "Miami Restaurants", "sub": "Una regla visual por marca", "cat": "Caso · Hospitality", "f": "ia", "r": 1.0, "caso": "miami-restaurants", "img": "assets/cases/miami-restaurants/FOOD_01.jpg", "kind": "media"}, {"title": "La Nación · LN Campo", "sub": "Arte y storyboard", "cat": "Caso · Video", "f": "caso", "r": 1.5, "img": "assets/lanacion/p-7.jpg", "caso": "la-nacion", "kind": "media"}, {"title": "Salty Flame", "sub": "Hospitality · Miami", "cat": "Caso · Video IA", "f": "ia", "r": 0.8, "caso": "salty-flame", "video": "assets/ia/salty-flame-thumb.mp4", "full": "assets/ia/salty-flame.mp4", "desc": "Video de marca para restaurante. Producción con IA.", "kind": "media"}, {"title": "Cerveza Córdoba", "sub": "Campaña · Argentina", "cat": "Caso · Video IA", "f": "ia", "r": 1.78, "caso": "cerveza-cordoba", "video": "assets/ia/cordoba-clip.mp4", "full": "assets/ia/cerveza-cordoba.jpg", "desc": "Campaña de territorio y piezas de trade. Producción con IA.", "kind": "media"}, {"title": "Coca-Cola × OXXO", "sub": "Key visuals para promociones en México", "cat": "Caso · Retail", "f": "caso", "r": 1.43, "img": "assets/cases/oxxo/OXXO_01.jpg", "caso": "oxxo", "kind": "media"}, {"title": "Natural American Spirit", "sub": "Packs 40 años", "cat": "Caso · Packaging", "f": "caso", "r": 1.0, "img": "assets/nas/01.jpg", "caso": "natural-american-spirit", "kind": "media"}, {"title": "Camel SNUS", "sub": "Identidad visual · USA", "cat": "Caso · Campaña", "f": "caso", "r": 0.78, "img": "assets/camel/02.jpg", "caso": "camel-snus", "pos": "center 25%", "kind": "media"}, {"title": "Up Sí Vale", "sub": "Campaña 360 · México", "cat": "Caso · Imagen IA", "f": "ia", "r": 0.85, "caso": "up-si-vale", "img": "assets/ia/up-si-vale.jpg", "desc": "Plataforma de campaña “Sí”. Producción de imagen con IA.", "kind": "media"}, {"title": "Totis Donitas", "sub": "Consumo masivo · México", "cat": "Caso · Imagen IA", "f": "ia", "r": 0.8, "caso": "totis", "img": "assets/ia/totis.jpg", "desc": "Key visual de producto. Producción con IA.", "kind": "media"}, {"title": "Pollito Go · Blendio", "sub": "Packaging · 7-Eleven México", "cat": "Caso · Packaging IA", "f": "ia", "r": 1.34, "caso": "pollito-go", "img": "assets/ia/pollito-go.jpg", "desc": "Sistema de 19 empaques. Producción con IA.", "kind": "media"}, {"title": "Santo's", "sub": "Branding", "cat": "Caso · Branding IA", "f": "ia", "r": 1.3, "caso": "santos", "img": "assets/ia/santos.jpg", "desc": "Dos direcciones de marca. Producción con IA.", "kind": "media"}, {"title": "Babysec · Expo Mamá", "sub": "BTL · Stand", "cat": "Caso · BTL IA", "f": "ia", "r": 1.6, "caso": "babysec", "img": "assets/ia/babysec.jpg", "desc": "Stand diseñado por zonas de experiencia. Producción con IA.", "kind": "media"}, {"title": "Real Estate", "sub": "Vender lo que todavía no existe", "cat": "Caso · Imagen IA", "f": "ia", "r": 2.2, "caso": "real-estate", "img": "assets/ia/real-estate.jpg", "kind": "media"}, {"title": "ENA", "sub": "Branding de proyecto residencial", "cat": "Caso · Branding", "f": "ia", "r": 1.0, "caso": "ena", "img": "assets/cases/ena/ENA_05.jpg", "kind": "media"}, {"kind": "text", "title": "Conexo Finance", "sub": "Identidad de marca", "cat": "Caso · Fintech", "f": "caso", "r": 0.9, "color": "#1d2a6b", "href": "https://www.behance.net/gallery/152835085/Brand-identity-Conexo-Finance-Company"}], REELS=[{"kind": "video", "src": "assets/reels/reel-images.mp4", "title": "Reel · Imagen con IA", "desc": "Selección de imágenes generadas con dirección de arte propia."}, {"kind": "video", "src": "assets/reels/reel-videos.mp4", "title": "Reel · Video con IA", "desc": "Piezas de video generativo para marcas y conceptos propios."}], ORDER=["lollapalooza", "vuse", "donatella", "la-nacion", "miami-restaurants", "salty-flame", "cerveza-cordoba", "oxxo", "natural-american-spirit", "camel-snus", "up-si-vale", "totis", "pollito-go", "santos", "babysec", "real-estate", "ena"], TITLES={"lollapalooza": "Coca-Cola × Lollapalooza", "oxxo": "Coca-Cola × OXXO", "vuse": "VUSE USA", "la-nacion": "La Nación · LN Campo", "natural-american-spirit": "Natural American Spirit · 40 años", "camel-snus": "Camel SNUS", "donatella": "Donatella · Miami", "miami-restaurants": "Miami Restaurants", "real-estate": "Real Estate", "ena": "ENA", "up-si-vale": "Up Sí Vale", "pollito-go": "Pollito Go y Blendio", "cerveza-cordoba": "Cerveza Córdoba", "santos": "Santo's", "babysec": "Babysec", "totis": "Totis", "salty-flame": "Salty Flame"};
+const $=s=>document.querySelector(s);
+const small=matchMedia('(max-width:900px)').matches;
+
+/* hero video */
+const hv=$('#heroVid');
+hv.src=small?'assets/reels/hero-loop-sm.mp4':'assets/reels/hero-loop.mp4';
+hv.addEventListener('timeupdate',()=>{ if(hv.duration) $('#heroBar').style.width=(hv.currentTime/hv.duration*100)+'%'; });
+document.querySelectorAll('[data-reel]').forEach(b=>b.onclick=()=>openLB(REELS,+b.dataset.reel));
+
+/* header */
+const hdr=$('#hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>innerHeight*.75),{passive:true});
+
+/* clientes */
+const LOGOS=[['cocacola.svg','Coca-Cola','wide'],['vuse.png','VUSE','sm'],['volkswagen.svg','Volkswagen','tall'],['netflix.svg','Netflix','tall'],['lanacion.png','La Nación',''],['volvo.svg','Volvo','tall'],['kfc.svg','KFC','wide'],['shell.svg','Shell','tall']];
+$('#mq').innerHTML=[...LOGOS,...LOGOS].map(([f,n,c])=>`<img src="assets/logos/${f}" alt="${n}" class="${c}">`).join('');
+
+/* gallery: justified rows */
+const CH=[['todo','Todo'],['caso','Casos de marca'],['ia','Producción IA'],['reel','Reels']];
+let filt='todo';
+$('#chips').innerHTML=CH.map(([k,l])=>`<button class="chip${k==='todo'?' on':''}" data-k="${k}">${l}</button>`).join('');
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{filt=c.dataset.k; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c)); render();});
+function tileHTML(w,i){
+  const media = w.kind==='text' ? '' : (w.video
+     ? `<div class="m"><video muted loop playsinline preload="metadata" src="${w.video}"></video></div>`
+     : `<div class="m"><img loading="lazy" class="kb" src="${w.img}" alt="" style="object-position:${w.pos||'center'}"></div>`);
+  if(w.kind==='text') return `<a class="tile txt" href="${w.href}" target="_blank" rel="noopener" style="flex:${w.r};aspect-ratio:${w.r};--c:${w.color}"><div class="in"><span class="lbl" style="color:rgba(255,255,255,.75)">${w.cat}</span><div><b>${w.title}</b><div style="font-size:14px;margin-top:8px;opacity:.85">${w.sub}</div></div><span class="go">Ver en Behance ↗</span></div></a>`;
+  const tag = w.video ? `<span class="tag v">${w.cat}</span>` : `<span class="tag">${w.cat}</span>`;
+  const href = w.caso ? `href="#caso-${w.caso}"` : `href="#" data-lb="${i}"`;
+  return `<a class="tile" ${href} data-cur="${w.caso?'Ver caso':'Ver'}" style="flex:${w.r};aspect-ratio:${w.r}">${media}<div class="ov"></div>${tag}<div class="t"><div><b>${w.title}</b><span>${w.sub}</span></div></div></a>`;
+}
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target; if(e.isIntersecting){const p=v.play(); p&&p.catch(()=>{});} else v.pause();}),{threshold:.15});
+function render(){
+  const list=WORKS.map((w,i)=>[w,i]).filter(([w])=>filt==='todo'||w.f===filt);
+  $('#count').textContent=list.length;
+  const target = innerWidth<600 ? 1.15 : innerWidth<900 ? 2.0 : 3.3;
+  const rows=[]; let cur=[],sum=0;
+  for(const it of list){ cur.push(it); sum+=it[0].r; if(sum>=target){rows.push(cur);cur=[];sum=0;} }
+  if(cur.length) rows.push(cur);
+  $('#rows').innerHTML=rows.map((r,ri)=>{
+    const s=r.reduce((a,[w])=>a+w.r,0);
+    const last = ri===rows.length-1 && s<target*.75;
+    return `<div class="row" style="${last?`width:${s/target*100}%`:''}">${r.map(([w,i])=>tileHTML(w,i)).join('')}</div>`;
+  }).join('');
+  document.querySelectorAll('#rows video').forEach(v=>vio.observe(v));
+  document.querySelectorAll('[data-lb]').forEach(a=>a.onclick=e=>{e.preventDefault(); const i=+a.dataset.lb; const w=WORKS[i]; if(w.reel!=null) openLB(REELS,w.reel); else openLB(IALIST,IALIST.findIndex(x=>x.i===i));});
+  bindCursor();
+}
+const IALIST=WORKS.map((w,i)=>({...w,i})).filter(w=>!w.caso&&w.kind!=='text'&&w.reel==null).map(w=>({kind:w.full&&w.full.endsWith('.mp4')?'video':'image',src:w.full||w.img,title:w.title,desc:w.desc,i:w.i}));
+let rz; addEventListener('resize',()=>{clearTimeout(rz); rz=setTimeout(render,150);});
+
+/* cursor bubble */
+const cur=$('#cur');
+addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';},{passive:true});
+function bindCursor(){ document.querySelectorAll('.tile[data-cur]').forEach(t=>{ t.onmouseenter=()=>{cur.textContent=t.dataset.cur; cur.classList.add('on');}; t.onmouseleave=()=>cur.classList.remove('on'); }); }
+render();
+
+/* menu */
+const menu=$('#menu');
+const MI=[['Reel','#reel','assets/reels/hero-poster.jpg',''],['Trabajos','#trabajos','assets/lolla/r01.jpg',WORKS.length],['Lollapalooza','#caso-lollapalooza','assets/lolla/r13.jpg','Caso'],['VUSE','#caso-vuse','assets/vuse/06.jpg','Caso'],['Estudio','#estudio','assets/ia/donatella-poster.jpg',''],['Contacto','#contacto','assets/ia/up-si-vale.jpg','']];
+$('#menuNav').innerHTML=MI.map((m,i)=>`<a href="${m[1]}" data-i="${i}">${m[0]}${m[3]!==''?`<small>${m[3]}</small>`:''}</a>`).join('');
+$('#menuPv').innerHTML=MI.map((m,i)=>`<img src="${m[2]}" alt="" data-i="${i}" ${i===0?'class="on"':''}>`).join('');
+document.querySelectorAll('#menuNav a').forEach(a=>{
+  a.onmouseenter=()=>document.querySelectorAll('#menuPv img').forEach(im=>im.classList.toggle('on',im.dataset.i===a.dataset.i));
+  a.onclick=()=>toggleMenu(false);
+});
+function toggleMenu(o){ menu.classList.toggle('open',o); $('#menuBtn').textContent=o?'Cerrar':'Menú'; document.body.classList.toggle('locked',o||caseEl.classList.contains('open')); }
+$('#menuBtn').onclick=()=>toggleMenu(!menu.classList.contains('open'));
+
+/* lightbox */
+const lb=$('#lb'), st=$('#lbStage'); let lbList=[],lbI=0;
+function renderLB(){
+  const w=lbList[lbI]; st.innerHTML=''; let el;
+  if(w.kind==='video'){ el=document.createElement('video'); el.src=w.src; el.controls=true; el.playsInline=true; st.appendChild(el); const p=el.play(); p&&p.catch(()=>{el.muted=true; el.play().catch(()=>{});}); }
+  else { el=document.createElement('img'); el.src=w.src; el.alt=w.title; st.appendChild(el); }
+  $('#lbTitle').textContent=`${String(lbI+1).padStart(2,'0')} / ${String(lbList.length).padStart(2,'0')} · ${w.title}`;
+  $('#lbDesc').textContent=w.desc||'';
+}
+function openLB(list,i){ lbList=list; lbI=Math.max(0,i); lb.classList.add('open'); document.body.classList.add('locked'); hv.pause(); renderLB(); }
+function closeLB(){ lb.classList.remove('open'); st.innerHTML=''; hv.play().catch(()=>{}); if(!caseEl.classList.contains('open')&&!menu.classList.contains('open')) document.body.classList.remove('locked'); }
+$('#lbClose').onclick=closeLB; $('#lbPrev').onclick=()=>{lbI=(lbI-1+lbList.length)%lbList.length;renderLB();}; $('#lbNext').onclick=()=>{lbI=(lbI+1)%lbList.length;renderLB();};
+lb.addEventListener('click',e=>{if(e.target===lb||e.target===st) closeLB();});
+
+/* case window */
+const caseEl=$('#case'), caseBody=$('#caseBody'); let lastScroll=0;
+function route(){
+  const h=location.hash.replace('#','');
+  if(h.startsWith('caso-')&&ORDER.includes(h.slice(5))){
+    const id=h.slice(5);
+    if(!caseEl.classList.contains('open')) lastScroll=scrollY;
+    caseBody.innerHTML=''; caseBody.appendChild(document.getElementById('tpl-'+id).content.cloneNode(true));
+    if(id==='lollapalooza'){ const pl=caseBody.querySelectorAll('.plate'); const v=document.createElement('video'); v.className='vmod'; v.src='assets/lolla/360.mp4'; v.muted=true; v.loop=true; v.playsInline=true; v.autoplay=true; v.controls=true; pl[5]&&pl[5].after(v); v.play().catch(()=>{}); }
+    const nx=ORDER[(ORDER.indexOf(id)+1)%ORDER.length];
+    $('#caseTtl').innerHTML=`Caso · <b>${TITLES[id]}</b>`; $('#caseNext').href=$('#caseNextTop').href='#caso-'+nx; $('#caseNextName').textContent=TITLES[nx]+' →';
+    caseEl.classList.add('open'); caseEl.scrollTop=0; document.body.classList.add('locked'); hv.pause(); cur.classList.remove('on');
+  } else if(caseEl.classList.contains('open')){
+    caseEl.classList.remove('open'); caseBody.innerHTML=''; hv.play().catch(()=>{});
+    if(!introOn) document.body.classList.remove('locked');
+    scrollTo({top:lastScroll,behavior:'instant'});
+  }
+}
+let introOn=false;
+addEventListener('hashchange',route);
+$('#caseBack').onclick=()=>{ history.pushState('',document.title,location.pathname+location.search); route(); };
+addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if(lb.classList.contains('open')) closeLB(); else if(caseEl.classList.contains('open')) $('#caseBack').click(); else if(menu.classList.contains('open')) toggleMenu(false); });
+
+if(location.hash.startsWith('#caso-')) route();
+</script>
+
+</body>
+</html>
