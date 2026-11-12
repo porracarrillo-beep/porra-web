@@ -1,0 +1,9 @@
+{
+  // Configuración para publicar en Cloudflare (Workers con archivos estáticos)
+  "name": "porra-web",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}
