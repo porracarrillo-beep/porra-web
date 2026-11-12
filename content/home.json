@@ -58,7 +58,8 @@
       "imagen": "assets/lolla/r01.jpg",
       "caso": "lollapalooza",
       "posicion": "center 40%",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "VUSE USA",
@@ -69,7 +70,8 @@
       "imagen": "assets/vuse/10.jpg",
       "caso": "vuse",
       "posicion": "62% center",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Reel · Video IA",
@@ -101,7 +103,8 @@
       "video": "assets/ia/donatella-thumb.mp4",
       "video_completo": "assets/ia/donatella.mp4",
       "descripcion": "Hotel boutique y restaurante en Miami Beach: tres lenguajes visuales y un video de 15 s. Imagen y video con IA bajo dirección de arte.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Miami Restaurants",
@@ -111,7 +114,8 @@
       "proporcion": 1.0,
       "caso": "miami-restaurants",
       "imagen": "assets/cases/miami-restaurants/FOOD_01.jpg",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "La Nación · LN Campo",
@@ -121,7 +125,8 @@
       "proporcion": 1.5,
       "imagen": "assets/lanacion/p-7.jpg",
       "caso": "la-nacion",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Volkswagen Amarok",
@@ -131,7 +136,8 @@
       "imagen": "assets/cases/volkswagen/13.jpg",
       "caso": "volkswagen",
       "tipo": "media",
-      "filtro": "caso"
+      "filtro": "caso",
+      "pais": "Argentina"
     },
     {
       "titulo": "Salty Flame",
@@ -143,7 +149,8 @@
       "video": "assets/ia/salty-flame-thumb.mp4",
       "video_completo": "assets/ia/salty-flame.mp4",
       "descripcion": "Video de marca para restaurante. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Cerveza Córdoba",
@@ -155,7 +162,8 @@
       "video": "assets/ia/cordoba-clip.mp4",
       "video_completo": "assets/ia/cerveza-cordoba.jpg",
       "descripcion": "Campaña de territorio y piezas de trade. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Coca-Cola × OXXO",
@@ -165,7 +173,8 @@
       "proporcion": 1.43,
       "imagen": "assets/cases/oxxo/OXXO_01.jpg",
       "caso": "oxxo",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "México"
     },
     {
       "titulo": "Corona",
@@ -175,7 +184,8 @@
       "imagen": "assets/cases/corona/04.jpg",
       "caso": "corona",
       "tipo": "media",
-      "filtro": "caso"
+      "filtro": "caso",
+      "pais": "Argentina"
     },
     {
       "titulo": "Brahma",
@@ -185,7 +195,8 @@
       "imagen": "assets/cases/brahma/02.jpg",
       "caso": "brahma",
       "tipo": "media",
-      "filtro": "caso"
+      "filtro": "caso",
+      "pais": "Argentina"
     },
     {
       "titulo": "Natural American Spirit",
@@ -195,7 +206,8 @@
       "proporcion": 1.0,
       "imagen": "assets/nas/01.jpg",
       "caso": "natural-american-spirit",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Camel SNUS",
@@ -206,7 +218,8 @@
       "imagen": "assets/camel/02.jpg",
       "caso": "camel-snus",
       "posicion": "center 25%",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Up Sí Vale",
@@ -217,7 +230,8 @@
       "caso": "up-si-vale",
       "imagen": "assets/ia/up-si-vale.jpg",
       "descripcion": "Plataforma de campaña “Sí”. Producción de imagen con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "México"
     },
     {
       "titulo": "Totis Donitas",
@@ -228,7 +242,8 @@
       "caso": "totis",
       "imagen": "assets/ia/totis.jpg",
       "descripcion": "Key visual de producto. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "México"
     },
     {
       "titulo": "Pollito Go · Blendio",
@@ -239,7 +254,8 @@
       "caso": "pollito-go",
       "imagen": "assets/ia/pollito-go.jpg",
       "descripcion": "Sistema de 19 empaques. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "México"
     },
     {
       "titulo": "Santo's",
@@ -291,7 +307,8 @@
       "proporcion": 1.22,
       "imagen": "assets/cases/conexo/CONEXO_01.jpg",
       "caso": "conexo",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Prisma Medios de Pago",
@@ -301,7 +318,8 @@
       "imagen": "assets/cases/prisma/09.jpg",
       "caso": "prisma",
       "tipo": "media",
-      "filtro": "caso"
+      "filtro": "caso",
+      "pais": "Argentina"
     }
   ],
   "reels": [

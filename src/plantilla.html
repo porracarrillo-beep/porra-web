@@ -77,6 +77,7 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 .tile .t b{display:block;font-size:clamp(15px,1.35vw,22px);font-weight:600;letter-spacing:-.005em;line-height:1.05}
 .tile .t span{display:block;font-size:13px;color:rgba(255,255,255,.8);margin-top:4px}
 .tile .tag{position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.55);color:#fff;padding:5px 9px;border-radius:999px;backdrop-filter:blur(4px)}
+.tile .tag.pais{left:auto;right:12px}
 .tile .tag.v::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc2);margin-right:6px;vertical-align:1px}
 .tile.txt{background:var(--c,#1a1a19);cursor:pointer}
 .tile.txt .in{position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
@@ -271,7 +272,7 @@ function tileHTML(w,i){
      ? `<div class="m"><video muted loop playsinline preload="metadata" src="${w.video}"></video></div>`
      : `<div class="m"><img loading="lazy" class="kb" src="${w.img}" alt="" style="object-position:${w.pos||'center'}"></div>`);
   if(w.kind==='text') return `<a class="tile txt" href="${w.href}" target="_blank" rel="noopener" style="flex:${w.r};aspect-ratio:${w.r};--c:${w.color}"><div class="in"><span class="lbl" style="color:rgba(255,255,255,.75)">${w.cat}</span><div><b>${w.title}</b><div style="font-size:14px;margin-top:8px;opacity:.85">${w.sub}</div></div><span class="go">Ver en Behance ↗</span></div></a>`;
-  const tag = w.video ? `<span class="tag v">${w.cat}</span>` : `<span class="tag">${w.cat}</span>`;
+  const tag = (w.video ? `<span class="tag v">${w.cat}</span>` : `<span class="tag">${w.cat}</span>`) + (w.pais ? `<span class="tag pais">${w.pais}</span>` : '');
   const href = w.caso ? `href="#caso-${w.caso}"` : `href="#" data-lb="${i}"`;
   return `<a class="tile" ${href} data-cur="${w.caso?'Ver caso':'Ver'}" style="flex:${w.r};aspect-ratio:${w.r}">${media}<div class="ov"></div>${tag}<div class="t"><div><b>${w.title}</b><span>${w.sub}</span></div></div></a>`;
 }

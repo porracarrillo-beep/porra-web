@@ -48,17 +48,17 @@ def row(imgs, ratio, fit='cover', gap=12, pad=0, cols=None):
 def closing(credits, results=None):
     res = ''
     if results:
-        cells = ''.join(f'<div class="metric"><div class="v tbd">—</div><div class="small" style="margin-top:calc(var(--u)*10)">{r}</div></div>' for r in results)
-        res = f'''<div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Resultados</div>
+        cells = ''.join(f'<div class="metric"><div class="v">{v}</div><div class="small" style="margin-top:calc(var(--u)*10)">{r}</div></div>' for v, r in results)
+        res = f'''<div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">El festival</div>
 <div class="grid cols2" style="grid-template-columns:1fr 1fr;gap:calc(var(--u)*28) calc(var(--u)*40)">{cells}</div>
-<p class="small tbd" style="margin-top:calc(var(--u)*24)">Completar con datos reales del cliente antes de publicar.</p></div>'''
+<p class="small" style="margin-top:calc(var(--u)*24);opacity:.7">Lollapalooza Argentina 2023 · cifras del festival según la organización.</p></div>'''
     return P('1400/720', cls='txt', inner=f'''
 <div class="pad lay" style="display:grid;grid-template-columns:{'1.1fr 1fr' if results else '1fr 1fr'};gap:calc(var(--u)*110);height:100%;align-content:center">
   {res or '<div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Porra</div><div class="h2">Dirección creativa<br>y producción.</div></div>'}
   <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div>{ficha(credits)}</div>
 </div>
 <img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
-<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">porracarrillo@gmail.com · behance.net/JoseCarrillo</div>''')
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">hola@porra.studio · behance.net/JoseCarrillo</div>''')
 
 # ---------------------------------------------------------------- LOLLAPALOOZA
 L = 'assets/lolla/'
@@ -67,8 +67,8 @@ lolla = [
  statement('El proyecto', 'Dos mundos<br>en 100 m².',
    'Coca-Cola llegó a Lollapalooza Argentina 2023 con un stand de dos niveles pensado para la Generación Z. Afuera, un volumen que funciona como pantalla de día y de noche. Adentro, dos mundos: el rojo de Coke Studio, con música y streaming, y el rosa de Coca-Cola Move, la co-creación con Rosalía.',
    'Coca-Cola arrived at Lollapalooza Argentina 2023 with a two-level stand built for Gen Z. Outside, a volume that works as a screen by day and by night. Inside, two worlds: the red of Coke Studio, with music and streaming, and the pink of Coca-Cola Move, the co-creation with Rosalía.',
-   [('Cliente','Coca-Cola'),('Evento','Lollapalooza Argentina 2023'),('Pieza','Stand oficial de marca'),('Superficie','100 m² · dos niveles con terraza'),
-    ('Disciplinas','Diseño de stand · Arquitectura efímera · Render 3D'),('Herramientas','3ds Max · Photoshop'),('Rol',TBD),('Agencia',TBD)]),
+   [('Cliente','Coca-Cola'),('País','Argentina'),('Evento','Lollapalooza Argentina 2023'),('Pieza','Stand oficial de marca'),('Superficie','100 m² · dos niveles con terraza'),
+    ('Disciplinas','Diseño de stand · Arquitectura efímera · Render 3D'),('Herramientas','3ds Max · Photoshop'),('Rol','Dirección creativa y de arte'),('Stand','Liebre Studio')]),
  P('1400/900', cls='txt', inner=f'''
 <div class="lay0" style="display:grid;grid-template-columns:1fr calc(var(--u)*500);height:100%">
  <div class="pad lay" style="display:flex;flex-direction:column;justify-content:space-between">
@@ -130,8 +130,8 @@ lolla = [
 <div class="grid" style="grid-template-columns:1.55fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*90);height:calc(100% - var(--u)*210)">
  <div style="overflow:hidden"><img class="cover" src="{L}r13.jpg" style="object-position:center 30%" alt=""></div><div style="overflow:hidden"><img class="cover" src="{L}real.jpg" alt=""></div></div>
 <div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023 <span class="tbd">[confirmar foto y sumar más registros]</span></div>'''),
- closing([('Cliente','Coca-Cola'),('Agencia',TBD),('Dirección de arte','José Carrillo '+TBD),('Diseño de stand',TBD),('Render 3D',TBD),('Producción',TBD)],
-         ['Visitantes al stand','Datos de jóvenes captados','Horas de streaming desde Coke Studio','Alcance en redes']),
+ closing([('Cliente','Coca-Cola'),('Dirección creativa y de arte','José Carrillo'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
+         [('330 mil','personas en los tres días del festival'),('110 mil','personas por jornada'),('+1 millón','siguieron los shows en vivo por Flow')]),
 ]
 
 # ---------------------------------------------------------------- OTROS CASOS
@@ -141,13 +141,13 @@ vuse = [
  statement('El proyecto', 'Un sistema de packaging,<br>dos direcciones.',
    'Sistema visual y de packaging para VUSE en Estados Unidos. Exploramos dos caminos: fotografía de ciudad con el dispositivo en mano y un sistema de formas de color sobre blanco y negro. Después lo llevamos al backbar del punto de venta y a la campaña.',
    'Visual and packaging system for VUSE in the United States: two directions, city photography and a colour-shape system on black and white, extended to the retail backbar and the campaign.',
-   [('Cliente','VUSE'),('Mercado','Estados Unidos'),('Alcance','Identidad visual · Packaging · Punto de venta'),('Año','2021 '+TBD),('Rol',TBD),('Agencia',TBD)]),
+   [('Cliente','VUSE'),('País','Estados Unidos'),('Alcance','Identidad visual · Packaging · Punto de venta'),('Año','2021'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  row([V+'03.jpg',V+'04.jpg',V+'05.jpg'],'1400/520',fit='contain',pad=40,gap=20),
  full(V+'06.jpg','1400/676','contain',pad=40),
  full(V+'07.jpg','1400/676','contain',pad=40),
  row([V+'01.jpg',V+'08.jpg'],'1400/700',fit='contain',pad=40,gap=20),
  full(V+'09.jpg','1400/560','contain',pad=40),
- closing([('Cliente','VUSE'),('Agencia',TBD),('Dirección de arte','José Carrillo '+TBD)]),
+ closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
 ]
 N = 'assets/nas/'
 nas = [
@@ -155,12 +155,12 @@ nas = [
  statement('El proyecto', 'Cuarenta años,<br>contados por su gente.',
    'Ediciones especiales y piezas de comunicación para los 40 años de la marca. El número 40 funciona como sistema gráfico y los retratos de productores ponen cara a la historia, con una invitación a la celebración “Free spirits for forty years”.',
    'Special-edition packs and communication for the brand’s 40th anniversary: the number 40 as a graphic system, grower portraits and an invitation to the “Free spirits for forty years” celebration.',
-   [('Cliente','Natural American Spirit'),('Mercado','Estados Unidos '+TBD),('Alcance','Packaging · Key visual · Piezas de invitación'),('Año','2021 '+TBD),('Rol',TBD),('Agencia',TBD)]),
+   [('Cliente','Natural American Spirit'),('País','Estados Unidos'),('Alcance','Packaging · Key visual · Piezas de invitación'),('Año','2021'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  full(N+'03.jpg','1400/719','contain',pad=40),
  row([N+'02.jpg',N+'04.jpg'],'1400/420',fit='contain',pad=40,gap=20),
  row([N+'05.jpg',N+'06.jpg'],'1400/760',fit='contain',pad=40,gap=20),
  row([N+'07.jpg',N+'08.jpg'],'1400/760',fit='contain',pad=40,gap=20,cols='0.7fr 1.3fr'),
- closing([('Cliente','Natural American Spirit'),('Agencia',TBD),('Dirección de arte','José Carrillo '+TBD)]),
+ closing([('Cliente','Natural American Spirit'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
 ]
 K = 'assets/camel/'
 camel = [
@@ -168,10 +168,10 @@ camel = [
  statement('El proyecto', 'La lata como protagonista.',
    'Sistema visual para la comunicación de Camel SNUS en Estados Unidos: tipografía a gran escala, la lata en primer plano y la advertencia sanitaria integrada a la grilla de cada pieza.',
    'Visual system for Camel SNUS communication in the US: large-scale type, the tin up front and the health warning built into each layout grid.',
-   [('Cliente','Camel SNUS'),('Mercado','Estados Unidos'),('Alcance','Sistema gráfico · Piezas de campaña'),('Año','2022 '+TBD),('Rol',TBD),('Agencia',TBD)]),
+   [('Cliente','Camel SNUS'),('País','Estados Unidos'),('Alcance','Sistema gráfico · Piezas de campaña'),('Año','2022'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  row([K+'01.jpg',K+'02.jpg'],'1400/880',fit='contain',pad=40,gap=20),
  row([K+'03.jpg',K+'04.jpg',K+'05.jpg'],'1400/600',fit='contain',pad=40,gap=20),
- closing([('Cliente','Camel SNUS'),('Agencia',TBD),('Dirección de arte','José Carrillo '+TBD)]),
+ closing([('Cliente','Camel SNUS'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
 ]
 LN = 'assets/lanacion/'
 lanacion = [
@@ -179,12 +179,12 @@ lanacion = [
  statement('El proyecto', 'Del diario al campo,<br>en una sola secuencia.',
    'Dirección de arte y storyboard para los videos institucionales de LN Campo. La secuencia lleva al espectador del diario impreso al campo y de ahí a la app, con transiciones que nacen del propio paisaje.',
    'Art direction and storyboard for LN Campo institutional videos: from the printed paper to the field and on to the app, with transitions born from the landscape itself.',
-   [('Cliente','La Nación · LN Campo'),('Alcance','Dirección de arte · Storyboard · Videos institucionales'),('Año','2022 '+TBD),('Rol',TBD),('Agencia',TBD)]),
+   [('Cliente','La Nación · LN Campo'),('País','Argentina'),('Alcance','Dirección de arte · Storyboard · Videos institucionales'),('Año','2022'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  row([LN+'p-1.jpg',LN+'p-2.jpg'],'1400/400',pad=40,gap=20),
  row([LN+'p-3.jpg',LN+'p-4.jpg'],'1400/400',pad=40,gap=20),
  row([LN+'p-5.jpg',LN+'p-6.jpg'],'1400/400',pad=40,gap=20),
  row([LN+'p-8.jpg',LN+'p-9.jpg'],'1400/400',pad=40,gap=20),
- closing([('Cliente','La Nación'),('Agencia',TBD),('Dirección de arte','José Carrillo '+TBD)]),
+ closing([('Cliente','La Nación'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
 ]
 
 CASES = {
@@ -280,14 +280,14 @@ OXXO = [oxxo_hero(),
   statement('El proyecto', 'Dos promos,<br>un mismo mostrador.',
    'Key visuals y material de punto de venta para dos promociones de Coca-Cola en las tiendas OXXO de México. El reto: que el premio se entienda en un golpe de vista, entre cientos de productos. Composición de packshot con todos los premios en una sola escena, y un sistema que baja del key visual a afiches, exhibidores y cenefas con la mecánica en tres pasos.',
    'Key visuals and point-of-sale material for two Coca-Cola promotions at OXXO stores in Mexico: every prize in a single packshot composition, rolled out to posters, displays and shelf strips with a three-step mechanic.',
-   [('Cliente','Coca-Cola México × OXXO'),('Promos','Desbloquea tu verano · Llévatela Chilloxxo'),('Alcance','Key visual · Material POP'),('Técnica','Composición y retoque de packshot'),('Herramientas','Photoshop · Illustrator'),('Rol / año',TBD)]),
+   [('Cliente','Coca-Cola México × OXXO'),('País','México'),('Promos','Desbloquea tu verano · Llévatela Chilloxxo'),('Alcance','Key visual · Material POP'),('Técnica','Composición y retoque de packshot'),('Herramientas','Photoshop · Illustrator'),('Rol','Dirección de arte'),('Agencia / año','Morfina · 2023')]),
   P('1400/170', band('<b>01</b> · Desbloquea tu verano', 'Gaming, tecnología y viajes: todo el verano en una sola imagen.')),
   full('assets/cases/oxxo/OXXO_01.jpg', ratio='2400/1676', fit='contain'),
   full('assets/cases/oxxo/OXXO_02.jpg', ratio='2400/1264', fit='contain'),
   P('1400/170', band('<b>02</b> · Llévatela Chilloxxo', 'Con Coca-Cola Sin Azúcar: el premio son dos Dolphin Mini.')),
   full('assets/cases/oxxo/OXXO_03.jpg', ratio='2400/1264', fit='contain'),
   full('assets/cases/oxxo/OXXO_04.jpg', ratio='2400/1264', fit='contain'),
-  closing([('Cliente','Coca-Cola México'),('Retail','OXXO'),('Dirección de arte','José Carrillo'),('Rol / agencia',TBD)])]
+  closing([('Cliente','Coca-Cola México'),('Retail','OXXO'),('Agencia','Morfina'),('Dirección de arte','José Carrillo'),('Año','2023')])]
 CASES['oxxo'] = dict(light=True, acc='#e4002b', plates=OXXO)
 
 def conexo_hero():
@@ -306,10 +306,10 @@ CONEXO = [conexo_hero(),
   statement('El proyecto', 'Un préstamo<br>en una palabra.',
    'Identidad y campaña para Presta Conexo, la línea de préstamos de Conexo Finance. Todo el sistema se apoya en una sola idea: <b>simple</b>. Una palabra gigante, un cian propio y retratos llenos de energía, que bajan sin perder fuerza a mailings, piezas de punto de contacto, posteos, banners y un set de botones por monto, de $50 mil a $300 mil.',
    'Identity and campaign for Presta Conexo, Conexo Finance’s loan line, built on a single word, “simple”, rolled out to mailings, point-of-contact pieces, social posts, banners and a set of amount buttons.',
-   [('Cliente','Conexo Finance'),('Rubro','Fintech · Préstamos'),('Alcance','Identidad · Campaña · Piezas digitales y POP'),('Concepto','“Simple”'),('Rol / año',TBD)]),
+   [('Cliente','Conexo Finance'),('País','Argentina'),('Rubro','Fintech · Préstamos'),('Alcance','Identidad · Campaña · Piezas digitales y POP'),('Concepto','“Simple”'),('Rol','Dirección creativa y de arte'),('Año','2022 · Cliente directo')]),
   full('assets/cases/conexo/CONEXO_02.jpg', ratio='2088/1694', fit='contain'),
   full('assets/cases/conexo/CONEXO_03.jpg', ratio='2088/1694', fit='contain'),
-  closing([('Cliente','Conexo Finance'),('Dirección de arte','José Carrillo'),('Rol / agencia',TBD)])]
+  closing([('Cliente','Conexo Finance · cliente directo'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')])]
 CASES['conexo'] = dict(light=True, acc='#0098b8', plates=CONEXO)
 
 
@@ -350,29 +350,29 @@ CASES['volkswagen'] = dict(light=False, acc='#4fb3ff', plates=brand_case('volksw
    'Una pick-up<br>con pedigree.',
    'Fotografía y piezas de campaña para la Amarok V6. Una camioneta de trabajo puesta en el mundo del polo: caballerizas, fardos, tacos y la luz baja del atardecer en la cancha, para la acción del Abierto de Polo. La misma mirada se lleva al barro, al monte y al campo abierto, donde la Amarok vuelve a su terreno. Más piezas de la marca: Camiones Delivery y la plataforma de movilidad VMove.',
    'Photography and campaign pieces for the Amarok V6, set in the world of polo for the Argentine Polo Open, and taken back to mud, woods and open fields.',
-   [('Cliente','Volkswagen Argentina'),('Producto','Amarok V6 · Camiones Delivery · VMove'),('Alcance','Fotografía · Campaña · Vía pública'),('Acción','Abierto de Polo'),('Rol / año',TBD)],
+   [('Cliente','Volkswagen Argentina'),('País','Argentina'),('Producto','Amarok V6 · Camiones Delivery · VMove'),('Alcance','Fotografía · Campaña · Vía pública'),('Acción','Abierto de Polo'),('Rol','Dirección creativa y de arte'),('Agencia / año','Hogarth · 2022')],
    [('<b>01</b> · Amarok en el Abierto de Polo', 'Caballerizas, fardos y atardecer: la pick-up en un mundo premium.', [7,3,4,9,14]),
     ('<b>02</b> · Fotografía Amarok', 'Barro, monte y campo abierto.', [13,16,6,8,11,5,15,12]),
     ('<b>03</b> · Más Volkswagen', 'Camiones Delivery y la plataforma VMove.', [1,2])],
-   hero_n=7, hero_pos='center 60%'))
+   hero_n=7, hero_pos='center 60%', credits=[('Cliente','Volkswagen Argentina'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]))
 
 CASES['corona'] = dict(light=False, acc='#f2c14e', plates=brand_case('corona', '15', 'Corona', 'Corona', 'Espacios de marca · Pilar', 'Experiencia · Espacios',
    'Llevar la playa<br>a Pilar.',
    'Espacios de marca para Corona en Pilar, provincia de Buenos Aires: el parador de Sharewood y el bar del Molino Resto. Arcos de madera tallada, arena, tablas de surf, guirnaldas de luces y fibras naturales que traducen el universo Corona (sol, mar, desconexión) a un lugar donde quedarse toda la tarde.',
    'Brand spaces for Corona in Pilar, Buenos Aires: the Sharewood beach-style hangout and the Molino Resto bar, translating Corona’s sun-and-sea world into places to stay all afternoon.',
-   [('Cliente','Corona · Cervecería y Maltería Quilmes'),('Lugares','Sharewood Pilar · Molino Resto'),('Alcance','Diseño de espacios · Ambientación · Señalética'),('Rol / año',TBD)],
+   [('Cliente','Corona'),('País','Argentina'),('Lugares','Sharewood Pilar · Molino Resto'),('Alcance','Diseño de espacios · Ambientación · Señalética'),('Rol','Dirección creativa y de arte'),('Agencia / año','Catch · 2023')],
    [('<b>01</b> · Sharewood Pilar', 'Arena, livings y barra al aire libre.', [1,2,3,10]),
     ('<b>02</b> · Molino Resto', 'El bar Corona: madera, luces y mesas largas.', [8,4,5,7,6,9])],
-   hero_n=4, hero_pos='center 45%'))
+   hero_n=4, hero_pos='center 45%', credits=[('Cliente','Corona'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Año','2023')]))
 
 CASES['brahma'] = dict(light=False, acc='#e30613', plates=brand_case('brahma', '16', 'Brahma', 'Brahma', 'Experiencias de marca', 'Experiencia · BTL',
    'Rojo neón<br>y birra.',
    'Espacios y experiencias para Brahma. De noche, el rojo de la marca se vuelve luz: neones, una jaula para bandas en vivo, barras y un rincón selfie. En Konex, la marca toma la calle con un mural tipográfico de gran escala («Más birra por favor»), la barra de chopp, el puesto de producto y el espacio Brahma Lime.',
    'Brand spaces for Brahma: neon-red night experiences with live-band cages and bars, and a large-scale typographic takeover at Konex with chopp bar and the Brahma Lime area.',
-   [('Cliente','Brahma · Cervecería y Maltería Quilmes'),('Lugares','Experiencias nocturnas · Ciudad Cultural Konex'),('Alcance','Diseño de espacios · Gráfica · BTL'),('Rol / año',TBD)],
+   [('Cliente','Brahma'),('País','Argentina'),('Lugares','Experiencias nocturnas · Ciudad Cultural Konex'),('Alcance','Diseño de espacios · Gráfica · BTL'),('Rol','Dirección creativa y de arte'),('Agencia / año','Catch · 2023')],
    [('<b>01</b> · De noche', 'El rojo Brahma hecho luz: neón, música en vivo y barra.', [4,3,1,6,2,5]),
     ('<b>02</b> · Brahma en Konex', 'Mural tipográfico, chopp y Brahma Lime.', [11,12,7,8,10,9,13])],
-   hero_n=4, hero_pos='center 40%'))
+   hero_n=4, hero_pos='center 40%', credits=[('Cliente','Brahma'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Año','2023')]))
 
 def prisma_hero():
     return P('1400/880', f"""
@@ -393,13 +393,13 @@ def _prisma():
       statement('El brief', 'Emitir tarjetas,<br>100% online.',
        'Prisma necesitaba una marca nueva para lanzar su servicio de procesamiento de tarjetas: que bancos, fintechs y bancos digitales puedan emitir y procesar tarjetas físicas y digitales de forma 100% online, más rápida, flexible y transparente que la tradicional. Planteamos dos caminos. <b>Línea 1, «by Prisma»</b>: apoyarse en la experiencia y la solidez de Prisma (experto, veloz, simple, confiable). <b>Línea 2, marca independiente</b>: crear una categoría nueva, con paleta e imaginario de vanguardia digital (eficiente, innovador, flexible, personalizado).',
        'A new brand for Prisma’s card-processing service, letting banks and fintechs issue physical and digital cards 100% online. Two strategic lines: endorsed “by Prisma” or a fully independent brand.',
-       [('Cliente','Prisma Medios de Pago'),('Rubro','Fintech · Pagos'),('Alcance','Estrategia de marca · Naming · Identidad · Moodboards'),('Propuestas','Nuvo · Accel · FastPay · Bamboo'),('Rol / año',TBD)])]
+       [('Cliente','Prisma Medios de Pago'),('País','Argentina'),('Rubro','Fintech · Pagos'),('Alcance','Estrategia de marca · Naming · Identidad · Moodboards'),('Propuestas','Nuvo · Accel · FastPay · Bamboo'),('Rol','Dirección creativa y de arte'),('Agencia / año','Hogarth · 2022')])]
     for i, (name, txt, a, b) in enumerate([('Nuvo', 'Azul profundo y tipografía redonda: lo nuevo, sin perder confianza.', 1, 2),
                                           ('Accel', 'Velocidad hecha signo: la A como flecha.', 3, 4),
                                           ('FastPay', 'Turquesa y un ícono que es tarjeta y pago a la vez.', 5, 6),
                                           ('Bamboo', 'Verde, orgánico y flexible: crecer rápido.', 7, 8)], 1):
         plates.append(P('1400/170', band(f'<b>{i:02d}</b> · {name}', txt)))
         plates += jrows(_dims('prisma', [a, b]), target=3.4)
-    plates.append(closing([('Cliente','Prisma Medios de Pago'),('Dirección creativa / arte','José Carrillo'),('Rol / agencia / año',TBD)]))
+    plates.append(closing([('Cliente','Prisma Medios de Pago'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]))
     return plates
 CASES['prisma'] = dict(light=False, acc='#4f8cff', plates=_prisma())

@@ -12,11 +12,18 @@
     "texto_en": "Making a product nobody picks with emotion feel desirable. Up Sí Vale solves it with a word already in its name: “Sí” (Yes). Copy first, full colour from orange to pink and one visual rule: people float, because life weighs less.",
     "ficha": {
       "Cliente": "Up Sí Vale",
+      "País": "México",
       "Rubro": "Beneficios B2B · México",
       "Alcance": "Plataforma de copy · Key visual · Rollout en medios",
       "Producción": "Imagen con IA",
-      "Rol": "[a confirmar]",
-      "Agencia / año": "[a confirmar]"
+      "Rol": "Dirección de arte",
+      "Agencia / año": "Morfina · 2025"
+    },
+    "creditos": {
+      "Agencia": "Morfina",
+      "Dirección de arte": "José Carrillo",
+      "Producción": "Imagen con IA bajo dirección de arte",
+      "Año": "2025"
     }
   },
   "pollito-go": {
@@ -32,11 +39,18 @@
     "texto_en": "Packaging system for 7-Eleven Mexico’s food and drinks line: 11 Pollito Go products and 8 Blendio, plus frappé cups. The NOM-051 warning octagons are part of the grid, not an interruption.",
     "ficha": {
       "Cliente": "7-Eleven México",
+      "País": "México",
       "Marcas": "Pollito Go · Blendio",
       "Alcance": "Sistema de packaging · 19 empaques",
       "Producción": "Imagen con IA",
-      "Rol": "[a confirmar]",
-      "Aprobación": "[a confirmar]"
+      "Rol": "Dirección de arte",
+      "Agencia / año": "Morfina · 2025"
+    },
+    "creditos": {
+      "Agencia": "Morfina",
+      "Dirección de arte": "José Carrillo",
+      "Producción": "Imagen con IA bajo dirección de arte",
+      "Año": "2025"
     }
   },
   "cerveza-cordoba": {
@@ -52,11 +66,19 @@
     "texto_en": "A regional brand doesn’t compete on budget, it competes on belonging. A territory of hard summer light, wide angles and real people in recognisable landscapes, carried all the way to the kiosk and the corner store.",
     "ficha": {
       "Cliente": "Cerveza Córdoba",
+      "País": "Argentina",
       "Rubro": "Cerveza · Argentina",
       "Alcance": "Territorio de marca · Trade · Vía pública",
       "Producción": "Imagen con IA",
-      "Rol / año": "[a confirmar]",
+      "Rol": "Dirección de arte",
+      "Agencia / año": "Dataki · 2026",
       "Legal": "Beber con moderación. Prohibida su venta a menores de 18 años."
+    },
+    "creditos": {
+      "Agencia": "Dataki",
+      "Dirección de arte": "José Carrillo",
+      "Producción": "Imagen y video con IA bajo dirección de arte",
+      "Año": "2026"
     }
   },
   "santos": {
@@ -72,13 +94,22 @@
     "texto_en": "Identity for a frozen yogurt brand in two directions: an illustrated blue V1 with its own illustration system, and a Mediterranean V2 with an olive tree.",
     "ficha": {
       "Cliente": "Santo's",
+      "País": "[a confirmar]",
       "Rubro": "Frozen yogurt",
       "Alcance": "Identidad · Sistema de ilustración · Aplicaciones",
       "Producción": "Imagen con IA",
-      "Año": "[a confirmar]"
+      "Año": "2025 · Cliente directo",
+      "Rol": "Dirección creativa y de arte"
     },
     "portada_imagen": "assets/cases/santos/hero.jpg",
-    "portada_posicion": "center 40%"
+    "portada_posicion": "center 40%",
+    "creditos": {
+      "Estudio": "Porra IA · Buenos Aires",
+      "Cliente": "Cliente directo",
+      "Dirección creativa y de arte": "José Carrillo",
+      "Producción": "Imagen con IA bajo dirección de arte",
+      "Año": "2025"
+    }
   },
   "babysec": {
     "oscuro_o_claro": "claro",
@@ -93,10 +124,19 @@
     "texto_en": "A trade-fair stand designed as a journey: arrival and validation, product and changing station, reward and sale. Plus Children’s Day, a family event for the company’s employees.",
     "ficha": {
       "Cliente": "Babysec",
+      "País": "[a confirmar]",
       "Rubro": "Consumo masivo · BTL",
       "Alcance": "Stand por zonas · Evento corporativo",
       "Producción": "Imagen con IA",
-      "Estado": "Propuesta o construido [a confirmar]"
+      "Rol": "Dirección creativa y de arte",
+      "Año": "2026 · Cliente directo"
+    },
+    "creditos": {
+      "Estudio": "Porra IA · Buenos Aires",
+      "Cliente": "Cliente directo",
+      "Dirección creativa y de arte": "José Carrillo",
+      "Producción": "Imagen con IA bajo dirección de arte",
+      "Año": "2026"
     }
   },
   "totis": {
@@ -112,10 +152,18 @@
     "texto_en": "Lifestyle key visuals for Totis in Mexico: direct flash, wide angle, saturated colour and the rabbit mascot kept identical across every scene.",
     "ficha": {
       "Cliente": "Totis",
+      "País": "México",
       "Rubro": "Snacks · México",
       "Alcance": "Key visuals lifestyle",
       "Producción": "Imagen con IA",
-      "Aprobación": "[a confirmar]"
+      "Rol": "Dirección de arte",
+      "Agencia / año": "Morfina · 2026"
+    },
+    "creditos": {
+      "Agencia": "Morfina",
+      "Dirección de arte": "José Carrillo",
+      "Producción": "Imagen con IA bajo dirección de arte",
+      "Año": "2026"
     }
   },
   "salty-flame": {
@@ -131,10 +179,19 @@
     "texto_en": "Content for a Miami steakhouse and nightlife spot: football-season fashion editorial, a Mother’s Day film and the meat. One rule: black, gold and flash.",
     "ficha": {
       "Cliente": "Salty Flame",
+      "País": "Estados Unidos (Miami)",
       "Rubro": "Steakhouse · Nightlife · Miami",
       "Alcance": "Editorial · Video · Producto",
       "Producción": "Imagen y video con IA",
-      "Año": "[a confirmar]"
+      "Año": "2025 · Cliente directo",
+      "Rol": "Dirección creativa y de arte"
+    },
+    "creditos": {
+      "Estudio": "Porra IA · Buenos Aires",
+      "Cliente": "Cliente directo",
+      "Dirección creativa y de arte": "José Carrillo",
+      "Producción": "Imagen y video con IA bajo dirección de arte",
+      "Año": "2025"
     }
   }
 }

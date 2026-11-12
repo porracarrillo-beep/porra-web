@@ -30,7 +30,7 @@ TITLES = home['titulos_de_casos']
 # Claves en castellano (content/home.json) -> claves que usa el código de la página
 WK = {'titulo': 'title', 'bajada': 'sub', 'categoria': 'cat', 'descripcion': 'desc', 'filtro': 'f', 'proporcion': 'r',
       'imagen': 'img', 'video': 'video', 'video_completo': 'full', 'caso': 'caso', 'posicion': 'pos', 'tipo': 'kind',
-      'color': 'color', 'link': 'href', 'reel': 'reel'}
+      'color': 'color', 'link': 'href', 'reel': 'reel', 'pais': 'pais'}
 RK = {'video': 'src', 'titulo': 'title', 'descripcion': 'desc', 'tipo': 'kind'}
 WORKS = [{WK[k]: v for k, v in w.items()} for w in home['tarjetas_home']]
 REELS = [{RK[k]: v for k, v in r.items()} for r in home['reels']]
