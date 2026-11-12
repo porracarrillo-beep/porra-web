@@ -68,7 +68,7 @@ lolla = [
    'Coca-Cola llegó a Lollapalooza Argentina 2023 con un stand de dos niveles pensado para la Generación Z. Afuera, un volumen que funciona como pantalla de día y de noche. Adentro, dos mundos: el rojo de Coke Studio, con música y streaming, y el rosa de Coca-Cola Move, la co-creación con Rosalía.',
    'Coca-Cola arrived at Lollapalooza Argentina 2023 with a two-level stand built for Gen Z. Outside, a volume that works as a screen by day and by night. Inside, two worlds: the red of Coke Studio, with music and streaming, and the pink of Coca-Cola Move, the co-creation with Rosalía.',
    [('Cliente','Coca-Cola'),('País','Argentina'),('Evento','Lollapalooza Argentina 2023'),('Pieza','Stand oficial de marca'),('Superficie','100 m² · dos niveles con terraza'),
-    ('Disciplinas','Diseño de stand · Arquitectura efímera · Render 3D'),('Herramientas','3ds Max · Photoshop'),('Rol','Dirección creativa y de arte'),('Stand','Liebre Studio')]),
+    ('Disciplinas','Diseño de stand · Arquitectura efímera · Render 3D'),('Herramientas','3ds Max · Photoshop'),('Rol','Dirección creativa y de arte'),('Agencia','Catch'),('Stand','Liebre Studio')]),
  P('1400/900', cls='txt', inner=f'''
 <div class="lay0" style="display:grid;grid-template-columns:1fr calc(var(--u)*500);height:100%">
  <div class="pad lay" style="display:flex;flex-direction:column;justify-content:space-between">
@@ -130,7 +130,7 @@ lolla = [
 <div class="grid" style="grid-template-columns:1.55fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*90);height:calc(100% - var(--u)*210)">
  <div style="overflow:hidden"><img class="cover" src="{L}r13.jpg" style="object-position:center 30%" alt=""></div><div style="overflow:hidden"><img class="cover" src="{L}real.jpg" alt=""></div></div>
 <div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023 <span class="tbd">[confirmar foto y sumar más registros]</span></div>'''),
- closing([('Cliente','Coca-Cola'),('Dirección creativa y de arte','José Carrillo'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
+ closing([('Cliente','Coca-Cola'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
          [('330 mil','personas en los tres días del festival'),('110 mil','personas por jornada'),('+1 millón','siguieron los shows en vivo por Flow')]),
 ]
 

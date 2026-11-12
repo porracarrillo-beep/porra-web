@@ -266,7 +266,8 @@
       "caso": "santos",
       "imagen": "assets/ia/santos.jpg",
       "descripcion": "Dos direcciones de marca. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "EE.UU."
     },
     {
       "titulo": "Babysec · Expo Mamá",
@@ -277,7 +278,8 @@
       "caso": "babysec",
       "imagen": "assets/ia/babysec.jpg",
       "descripcion": "Stand diseñado por zonas de experiencia. Producción con IA.",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Real Estate",
@@ -287,7 +289,8 @@
       "proporcion": 2.0,
       "caso": "real-estate",
       "imagen": "assets/ia/real-estate-cover.jpg",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "ENA",
@@ -297,7 +300,8 @@
       "proporcion": 1.78,
       "caso": "ena",
       "imagen": "assets/cases/ena/ena-cover.jpg",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Conexo Finance",
