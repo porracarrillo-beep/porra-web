@@ -137,14 +137,22 @@ lolla = [
 # ---------------------------------------------------------------- OTROS CASOS
 V = 'assets/vuse/'
 vuse = [
- hero(V+'10.jpg', 'Caso 02 · VUSE', 'VUSE USA', 'Identidad visual y packaging', 'Branding · Packaging · Punto de venta', pos='60% center'),
- statement('El proyecto', 'Un sistema de packaging,<br>dos direcciones.',
-   'Sistema visual y de packaging para VUSE en Estados Unidos. Exploramos dos caminos: fotografía de ciudad con el dispositivo en mano y un sistema de formas de color sobre blanco y negro. Después lo llevamos al backbar del punto de venta y a la campaña.',
-   'Visual and packaging system for VUSE in the United States: two directions, city photography and a colour-shape system on black and white, extended to the retail backbar and the campaign.',
-   [('Cliente','VUSE'),('País','Estados Unidos'),('Alcance','Identidad visual · Packaging · Punto de venta'),('Año','2021'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
+ hero(V+'10.jpg', 'Caso 02 · VUSE', 'VUSE USA', 'Identidad visual, campaña y packaging', 'Branding · Campaña · Packaging · PDV', pos='60% center'),
+ statement('El proyecto', 'Más que un pack:<br>un sistema de marca.',
+   'Identidad visual para VUSE en Estados Unidos, del dispositivo al punto de venta. Una campaña con energía de color («Your creative fire is built from the sparks of history»), un sistema de formas y degradés que cambia de color según la variante, packaging en dos direcciones (fotografía de ciudad y formas de color sobre blanco y negro) y su bajada a afiches, displays y el backbar del punto de venta.',
+   'Visual identity for VUSE in the United States, from device to retail: a colour-driven campaign, a shape-and-gradient system that shifts with each variant, packaging in two directions and its rollout to posters, displays and the retail backbar.',
+   [('Cliente','VUSE'),('País','Estados Unidos'),('Alcance','Identidad visual · Campaña · Packaging · Punto de venta'),('Disciplinas','Diseño gráfico · Fotografía · Diseño de producto'),('Año','2021'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
+ P('1400/170', band('<b>01</b> · Campaña', 'Your creative fire: color, energía y el dispositivo como protagonista.')),
+ full(V+'b01.jpg','1400/787','cover'),
+ full(V+'b02.jpg','1200/954','contain',pad=40),
+ full(V+'b03.jpg','1400/880','contain',pad=40),
+ P('1400/170', band('<b>02</b> · Packaging', 'Un sistema de color por variante y dos direcciones de diseño.')),
+ full(V+'b04.jpg','1400/574','contain',pad=40),
+ full(V+'b05.jpg','1400/588','contain',pad=40),
  row([V+'03.jpg',V+'04.jpg',V+'05.jpg'],'1400/520',fit='contain',pad=40,gap=20),
  full(V+'06.jpg','1400/676','contain',pad=40),
  full(V+'07.jpg','1400/676','contain',pad=40),
+ P('1400/170', band('<b>03</b> · Punto de venta', 'Del pack al backbar.')),
  row([V+'01.jpg',V+'08.jpg'],'1400/700',fit='contain',pad=40,gap=20),
  full(V+'09.jpg','1400/560','contain',pad=40),
  closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
@@ -403,3 +411,17 @@ def _prisma():
     plates.append(closing([('Cliente','Prisma Medios de Pago'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]))
     return plates
 CASES['prisma'] = dict(light=False, acc='#4f8cff', plates=_prisma())
+
+
+# ---------------------------------------------------------------- VUSE · grabado láser
+L = 'assets/cases/vuse-laser/'
+CASES['vuse-laser'] = dict(light=False, acc='#9be15d', plates=[
+ hero(L+'01.jpg', 'Caso 18 · VUSE', 'VUSE<br>Grabado láser', 'Ilustraciones para el dispositivo', 'Ilustración · Diseño de producto', pos='center'),
+ statement('El proyecto', 'El dispositivo<br>como lienzo.',
+   'Propuesta de ilustraciones para grabar con láser sobre el cuerpo del dispositivo VUSE. Líneas, ondas y el monograma de la marca convertidos en patrones que recorren todo el dispositivo, pensados para ediciones especiales. Ilustración vectorial en Illustrator y visualización de producto en Photoshop.',
+   'Proposed illustrations for laser engraving on the VUSE device: lines, waves and the brand monogram turned into patterns wrapping the whole device, for special editions.',
+   [('Cliente','VUSE'),('País','Estados Unidos'),('Alcance','Ilustración · Diseño de producto · Identidad'),('Herramientas','Illustrator · Photoshop'),('Año','2022'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
+ full(L+'02.jpg','1400/879','cover'),
+ full(L+'cover.jpg','808/632','cover'),
+ closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]),
+])

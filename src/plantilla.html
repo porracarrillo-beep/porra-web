@@ -204,7 +204,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
 
 <main id="top">
   <section class="hero" id="reel">
-    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/reels/hero-poster.jpg"></video>
+    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/reels/hero-poster.jpg?v=3"></video>
     <div class="scrim"></div>
     <div class="big"><div class="who">José Fernando Carrillo · Director creativo IA</div><h1><span>Dirección creativa</span><span><em>+</em> producción IA</span></h1></div>
     <div class="foot">
@@ -270,7 +270,7 @@ const small=matchMedia('(max-width:900px)').matches;
 
 /* hero video */
 const hv=$('#heroVid');
-hv.src=small?'assets/reels/hero-loop-sm.mp4':'assets/reels/hero-loop.mp4';
+hv.src=small?'assets/reels/hero-loop-sm.mp4?v=3':'assets/reels/hero-loop.mp4?v=3';
 hv.addEventListener('timeupdate',()=>{ if(hv.duration) $('#heroBar').style.width=(hv.currentTime/hv.duration*100)+'%'; });
 document.querySelectorAll('[data-reel]').forEach(b=>b.onclick=()=>openLB(REELS,+b.dataset.reel));
 
@@ -320,7 +320,7 @@ render();
 
 /* menu */
 const menu=$('#menu');
-const MI=[['Reel','#reel','assets/reels/hero-poster.jpg',''],['Trabajos','#trabajos','assets/lolla/r01.jpg',WORKS.length],['Lollapalooza','#caso-lollapalooza','assets/lolla/r13.jpg','Caso'],['VUSE','#caso-vuse','assets/vuse/06.jpg','Caso'],['Estudio','#estudio','assets/ia/donatella-poster.jpg',''],['Contacto','#contacto','assets/ia/up-si-vale.jpg','']];
+const MI=[['Reel','#reel','assets/reels/hero-poster.jpg?v=3',''],['Trabajos','#trabajos','assets/lolla/r01.jpg',WORKS.length],['Lollapalooza','#caso-lollapalooza','assets/lolla/r13.jpg','Caso'],['VUSE','#caso-vuse','assets/vuse/06.jpg','Caso'],['Estudio','#estudio','assets/ia/donatella-poster.jpg',''],['Contacto','#contacto','assets/ia/up-si-vale.jpg','']];
 $('#menuNav').innerHTML=MI.map((m,i)=>`<a href="${m[1]}" data-i="${i}">${m[0]}${m[3]!==''?`<small>${m[3]}</small>`:''}</a>`).join('');
 $('#menuPv').innerHTML=MI.map((m,i)=>`<img src="${m[2]}" alt="" data-i="${i}" ${i===0?'class="on"':''}>`).join('');
 document.querySelectorAll('#menuNav a').forEach(a=>{

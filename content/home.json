@@ -3,6 +3,7 @@
   "orden_de_casos": [
     "lollapalooza",
     "vuse",
+    "vuse-laser",
     "donatella",
     "la-nacion",
     "volkswagen",
@@ -46,7 +47,8 @@
     "volkswagen": "Volkswagen Amarok",
     "corona": "Corona · Pilar",
     "brahma": "Brahma",
-    "prisma": "Prisma Medios de Pago"
+    "prisma": "Prisma Medios de Pago",
+    "vuse-laser": "VUSE · Grabado láser"
   },
   "tarjetas_home": [
     {
@@ -63,13 +65,24 @@
     },
     {
       "titulo": "VUSE USA",
-      "bajada": "Identidad y packaging",
-      "categoria": "Caso · Packaging",
+      "bajada": "Identidad, campaña y packaging",
+      "categoria": "Caso · Identidad",
       "filtro": "caso",
       "proporcion": 0.9,
-      "imagen": "assets/vuse/06.jpg",
+      "imagen": "assets/vuse/10.jpg",
       "caso": "vuse",
-      "posicion": "center",
+      "posicion": "62% center",
+      "tipo": "media",
+      "pais": "EE.UU."
+    },
+    {
+      "titulo": "VUSE · Grabado láser",
+      "bajada": "Ilustraciones para el dispositivo",
+      "categoria": "Caso · Ilustración",
+      "filtro": "caso",
+      "proporcion": 1.28,
+      "imagen": "assets/cases/vuse-laser/cover.jpg",
+      "caso": "vuse-laser",
       "tipo": "media",
       "pais": "EE.UU."
     },
@@ -79,7 +92,7 @@
       "categoria": "Reel",
       "filtro": "reel",
       "proporcion": 1.78,
-      "video": "assets/reels/reel-videos-thumb.mp4",
+      "video": "assets/reels/reel-videos-thumb.mp4?v=3",
       "reel": 1,
       "tipo": "media"
     },
@@ -89,7 +102,7 @@
       "categoria": "Reel",
       "filtro": "reel",
       "proporcion": 1.78,
-      "video": "assets/reels/reel-images-thumb.mp4",
+      "video": "assets/reels/reel-images-thumb.mp4?v=3",
       "reel": 0,
       "tipo": "media"
     },
@@ -206,7 +219,7 @@
       "categoria": "Caso · Packaging",
       "filtro": "caso",
       "proporcion": 1.0,
-      "imagen": "assets/nas/02.jpg",
+      "imagen": "assets/nas/cover.jpg",
       "caso": "natural-american-spirit",
       "tipo": "media",
       "pais": "EE.UU.",
@@ -218,9 +231,9 @@
       "categoria": "Caso · Campaña",
       "filtro": "caso",
       "proporcion": 0.78,
-      "imagen": "assets/camel/02.jpg",
+      "imagen": "assets/camel/cover.jpg",
       "caso": "camel-snus",
-      "posicion": "center 25%",
+      "posicion": "center",
       "tipo": "media",
       "pais": "EE.UU."
     },
@@ -231,10 +244,11 @@
       "filtro": "ia",
       "proporcion": 0.85,
       "caso": "up-si-vale",
-      "imagen": "assets/ia/up-si-vale.jpg",
+      "imagen": "assets/cases/up-si-vale/g07.jpg",
       "descripcion": "Plataforma de campaña “Sí”. Producción de imagen con IA.",
       "tipo": "media",
-      "pais": "México"
+      "pais": "México",
+      "posicion": "center"
     },
     {
       "titulo": "Totis Donitas",
@@ -243,10 +257,11 @@
       "filtro": "ia",
       "proporcion": 0.8,
       "caso": "totis",
-      "imagen": "assets/ia/totis.jpg",
+      "imagen": "assets/cases/totis/g06.jpg",
       "descripcion": "Key visual de producto. Producción con IA.",
       "tipo": "media",
-      "pais": "México"
+      "pais": "México",
+      "posicion": "center 35%"
     },
     {
       "titulo": "Pollito Go · Blendio",
@@ -280,10 +295,11 @@
       "filtro": "ia",
       "proporcion": 1.6,
       "caso": "babysec",
-      "imagen": "assets/ia/babysec.jpg",
+      "imagen": "assets/cases/babysec/g06.jpg",
       "descripcion": "Stand diseñado por zonas de experiencia. Producción con IA.",
       "tipo": "media",
-      "pais": "Argentina"
+      "pais": "Argentina",
+      "posicion": "center"
     },
     {
       "titulo": "Real Estate",
@@ -292,9 +308,10 @@
       "filtro": "ia",
       "proporcion": 2.0,
       "caso": "real-estate",
-      "imagen": "assets/ia/real-estate-cover.jpg",
+      "imagen": "assets/cases/real-estate/cover-sunset.jpg",
       "tipo": "media",
-      "pais": "Argentina"
+      "pais": "Argentina",
+      "posicion": "center"
     },
     {
       "titulo": "ENA",
@@ -323,7 +340,7 @@
       "bajada": "Naming e identidad · Fintech",
       "categoria": "Caso · Fintech",
       "proporcion": 1.71,
-      "imagen": "assets/cases/prisma/01.jpg",
+      "imagen": "assets/cases/prisma/06.jpg",
       "caso": "prisma",
       "tipo": "media",
       "filtro": "caso",

@@ -46,7 +46,7 @@ for w in WORKS:
     if w.get('caso') and w['caso'] not in ORDER:
         errors.append(f'tarjeta "{w.get("title")}": el caso "{w["caso"]}" no está en orden_de_casos')
     for key in ('img', 'video', 'full'):
-        if w.get(key) and not os.path.exists(os.path.join(ROOT, 'public', w[key])):
+        if w.get(key) and not os.path.exists(os.path.join(ROOT, 'public', w[key].split('?')[0])):
             errors.append(f'tarjeta "{w.get("title")}": no encuentro el archivo {w[key]}')
 if errors:
     print('ERRORES:\n - ' + '\n - '.join(errors))
