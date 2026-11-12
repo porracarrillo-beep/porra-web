@@ -214,7 +214,7 @@ if __name__ == '__main__':
 import json as _json, os as _os
 _DIMS = _json.load(open(_os.path.join(ROOT, 'src', 'ia_dims.json')))
 
-def jrows(items, target=2.7, pad=40, gap=12):
+def jrows(items, target=2.7, pad=72, gap=22):
     rows, cur, s = [], [], 0
     for it in items:
         cur.append(it); s += it[1] / it[2]

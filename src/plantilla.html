@@ -55,6 +55,26 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 .hero .sw{display:flex;gap:8px}
 
 /* gallery */
+/* grilla minimalista (v6) */
+.work{max-width:1440px;margin:0 auto;padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)}
+.grp{margin-top:clamp(36px,5vw,72px)}
+.grp:first-of-type{margin-top:clamp(20px,3vw,40px)}
+.grp>.lbl{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;margin-bottom:clamp(20px,2.4vw,32px)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(20px,2.6vw,44px);row-gap:clamp(36px,4.2vw,64px)}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{display:block;min-width:0;cursor:none}
+.card .ph{position:relative;overflow:hidden;border-radius:2px;background:#151514}
+.card .ph img,.card .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.card:hover .ph img,.card:hover .ph video{transform:scale(1.03)}
+.card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:14px}
+.card .cap b{font-size:clamp(15px,1.15vw,18px);font-weight:500;letter-spacing:-.005em;line-height:1.2}
+.card .cap span{font-size:13px;color:var(--mut);white-space:nowrap}
+.card .cap i{display:block;font-style:normal;font-size:13px;color:var(--mut);margin-top:3px}
+.card .play{position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:7px;opacity:.85}
+.card .play::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc2)}
+@media (max-width:900px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:600px){ .grid,.grid.two{grid-template-columns:1fr} .card{cursor:pointer} .card .cap span{white-space:normal;text-align:right} }
+
 .work{padding:clamp(28px,4vh,44px) var(--pad) 0}
 .whead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:18px;flex-wrap:wrap}
 .whead h2{font-size:clamp(31px,3.96vw,65px);font-weight:600;letter-spacing:-.012em;line-height:.9;text-transform:uppercase}
@@ -199,7 +219,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
       <h2>Trabajos<sup id="count">16</sup></h2>
       <div class="chips" id="chips"></div>
     </div>
-    <div class="rows" id="rows"></div>
+    <div id="rows"></div>
   </section>
 
   <div class="marquee" aria-label="Clientes"><div class="track" id="mq"></div></div>
@@ -267,28 +287,24 @@ const CH=[['todo','Todo'],['caso','Casos de marca'],['ia','Producción IA'],['re
 let filt='todo';
 $('#chips').innerHTML=CH.map(([k,l])=>`<button class="chip${k==='todo'?' on':''}" data-k="${k}">${l}</button>`).join('');
 document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{filt=c.dataset.k; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c)); render();});
-function tileHTML(w,i){
-  const media = w.kind==='text' ? '' : (w.video
-     ? `<div class="m"><video muted loop playsinline preload="metadata" src="${w.video}"></video></div>`
-     : `<div class="m"><img loading="lazy" class="kb" src="${w.img}" alt="" style="object-position:${w.pos||'center'}"></div>`);
-  if(w.kind==='text') return `<a class="tile txt" href="${w.href}" target="_blank" rel="noopener" style="flex:${w.r};aspect-ratio:${w.r};--c:${w.color}"><div class="in"><span class="lbl" style="color:rgba(255,255,255,.75)">${w.cat}</span><div><b>${w.title}</b><div style="font-size:14px;margin-top:8px;opacity:.85">${w.sub}</div></div><span class="go">Ver en Behance ↗</span></div></a>`;
-  const tag = (w.video ? `<span class="tag v">${w.cat}</span>` : `<span class="tag">${w.cat}</span>`) + (w.pais ? `<span class="tag pais">${w.pais}</span>` : '');
-  const href = w.caso ? `href="#caso-${w.caso}"` : `href="#" data-lb="${i}"`;
-  return `<a class="tile" ${href} data-cur="${w.caso?'Ver caso':'Ver'}" style="flex:${w.r};aspect-ratio:${w.r}">${media}<div class="ov"></div>${tag}<div class="t"><div><b>${w.title}</b><span>${w.sub}</span></div></div></a>`;
+function cardHTML(w,i,ar){
+  const media = w.video
+     ? `<video muted loop playsinline preload="metadata" src="${w.video}"></video><span class="play">${w.reel!=null?'Reel':'Video'}</span>`
+     : `<img loading="lazy" src="${w.img}" alt="${w.title}" style="object-position:${w.pos||'center'}">`;
+  const href = w.caso ? `href="#caso-${w.caso}"` : (w.kind==='text' ? `href="${w.href}" target="_blank" rel="noopener"` : `href="#" data-lb="${i}"`);
+  const meta = [w.cat.replace(/^Caso · /,''), w.pais].filter(Boolean).join(' · ');
+  return `<a class="card" ${href} data-cur="${w.caso?'Ver caso':'Ver'}"><div class="ph" style="aspect-ratio:${ar}">${media}</div><div class="cap"><div><b>${w.title}</b><i>${w.sub}</i></div><span>${meta}</span></div></a>`;
 }
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target; if(e.isIntersecting){const p=v.play(); p&&p.catch(()=>{});} else v.pause();}),{threshold:.15});
 function render(){
-  const list=WORKS.map((w,i)=>[w,i]).filter(([w])=>filt==='todo'||w.f===filt);
-  $('#count').textContent=list.length;
-  const target = innerWidth<600 ? 1.15 : innerWidth<900 ? 2.0 : 3.3;
-  const rows=[]; let cur=[],sum=0;
-  for(const it of list){ cur.push(it); sum+=it[0].r; if(sum>=target){rows.push(cur);cur=[];sum=0;} }
-  if(cur.length) rows.push(cur);
-  $('#rows').innerHTML=rows.map((r,ri)=>{
-    const s=r.reduce((a,[w])=>a+w.r,0);
-    const last = ri===rows.length-1 && s<target*.6;
-    return `<div class="row" style="${last?`width:${s/target*100}%`:''}">${r.map(([w,i])=>tileHTML(w,i)).join('')}</div>`;
-  }).join('');
+  const all=WORKS.map((w,i)=>[w,i]).filter(([w])=>filt==='todo'||w.f===filt);
+  $('#count').textContent=all.length;
+  const reels=all.filter(([w])=>w.reel!=null), vids=all.filter(([w])=>w.video&&w.reel==null), stills=all.filter(([w])=>!w.video);
+  let html='';
+  if(reels.length) html+=`<div class="grp"><div class="lbl"><span>Reels 2026</span><span>${reels.length}</span></div><div class="grid two">${reels.map(([w,i])=>cardHTML(w,i,'16/9')).join('')}</div></div>`;
+  if(vids.length) html+=`<div class="grp"><div class="lbl"><span>Video con IA</span><span>${vids.length}</span></div><div class="grid">${vids.map(([w,i])=>cardHTML(w,i,'4/5')).join('')}</div></div>`;
+  if(stills.length) html+=`<div class="grp"><div class="lbl"><span>Casos e imagen</span><span>${stills.length}</span></div><div class="grid">${stills.map(([w,i])=>cardHTML(w,i,'4/3')).join('')}</div></div>`;
+  $('#rows').innerHTML=html;
   document.querySelectorAll('#rows video').forEach(v=>vio.observe(v));
   document.querySelectorAll('[data-lb]').forEach(a=>a.onclick=e=>{e.preventDefault(); const i=+a.dataset.lb; const w=WORKS[i]; if(w.reel!=null) openLB(REELS,w.reel); else openLB(IALIST,IALIST.findIndex(x=>x.i===i));});
   bindCursor();
@@ -299,7 +315,7 @@ let rz; addEventListener('resize',()=>{clearTimeout(rz); rz=setTimeout(render,15
 /* cursor bubble */
 const cur=$('#cur');
 addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';},{passive:true});
-function bindCursor(){ document.querySelectorAll('.tile[data-cur]').forEach(t=>{ t.onmouseenter=()=>{cur.textContent=t.dataset.cur; cur.classList.add('on');}; t.onmouseleave=()=>cur.classList.remove('on'); }); }
+function bindCursor(){ document.querySelectorAll('.card[data-cur]').forEach(t=>{ t.onmouseenter=()=>{cur.textContent=t.dataset.cur; cur.classList.add('on');}; t.onmouseleave=()=>cur.classList.remove('on'); }); }
 render();
 
 /* menu */

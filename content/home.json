@@ -67,9 +67,9 @@
       "categoria": "Caso · Packaging",
       "filtro": "caso",
       "proporcion": 0.9,
-      "imagen": "assets/vuse/10.jpg",
+      "imagen": "assets/vuse/06.jpg",
       "caso": "vuse",
-      "posicion": "62% center",
+      "posicion": "center",
       "tipo": "media",
       "pais": "EE.UU."
     },
@@ -113,9 +113,10 @@
       "filtro": "ia",
       "proporcion": 1.0,
       "caso": "miami-restaurants",
-      "imagen": "assets/cases/miami-restaurants/FOOD_01.jpg",
+      "imagen": "assets/cases/miami-restaurants/cover.jpg",
       "tipo": "media",
-      "pais": "EE.UU."
+      "pais": "EE.UU.",
+      "posicion": "center"
     },
     {
       "titulo": "La Nación · LN Campo",
@@ -192,11 +193,12 @@
       "bajada": "Experiencias de marca · Neón y Konex",
       "categoria": "Caso · Experiencia",
       "proporcion": 0.8,
-      "imagen": "assets/cases/brahma/02.jpg",
+      "imagen": "assets/cases/brahma/03.jpg",
       "caso": "brahma",
       "tipo": "media",
       "filtro": "caso",
-      "pais": "Argentina"
+      "pais": "Argentina",
+      "posicion": "center"
     },
     {
       "titulo": "Natural American Spirit",
@@ -204,10 +206,11 @@
       "categoria": "Caso · Packaging",
       "filtro": "caso",
       "proporcion": 1.0,
-      "imagen": "assets/nas/01.jpg",
+      "imagen": "assets/nas/02.jpg",
       "caso": "natural-american-spirit",
       "tipo": "media",
-      "pais": "EE.UU."
+      "pais": "EE.UU.",
+      "posicion": "center"
     },
     {
       "titulo": "Camel SNUS",
@@ -264,10 +267,11 @@
       "filtro": "ia",
       "proporcion": 1.3,
       "caso": "santos",
-      "imagen": "assets/ia/santos.jpg",
+      "imagen": "assets/cases/santos/hero.jpg",
       "descripcion": "Dos direcciones de marca. Producción con IA.",
       "tipo": "media",
-      "pais": "EE.UU."
+      "pais": "EE.UU.",
+      "posicion": "center 45%"
     },
     {
       "titulo": "Babysec · Expo Mamá",
@@ -319,11 +323,12 @@
       "bajada": "Naming e identidad · Fintech",
       "categoria": "Caso · Fintech",
       "proporcion": 1.71,
-      "imagen": "assets/cases/prisma/09.jpg",
+      "imagen": "assets/cases/prisma/01.jpg",
       "caso": "prisma",
       "tipo": "media",
       "filtro": "caso",
-      "pais": "Argentina"
+      "pais": "Argentina",
+      "posicion": "center"
     }
   ],
   "reels": [
