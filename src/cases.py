@@ -329,3 +329,77 @@ def beh_fragment(cid):
         if b.get('video') and i == b['video'][1]:
             out.append(f'<video class="vmod" src="{b["video"][0]}" muted loop playsinline controls autoplay style="display:block;width:100%;max-height:90vh;background:{b["bg"]}"></video>')
     return f'<div style="background:{b["bg"]}">' + ''.join(out) + '</div>'
+
+
+# ================================================================ CASOS DE MARCA (v5): VW, Corona, Brahma, Prisma
+# Medidas de las imágenes (src/brand_dims.json) para no depender de librerías externas en el build
+_BDIMS = _json.load(open(_os.path.join(ROOT, 'src', 'brand_dims.json')))
+def _dims(cid, nums):
+    return [[f'assets/cases/{cid}/{n:02d}.jpg'] + _BDIMS[f'assets/cases/{cid}/{n:02d}.jpg'] for n in nums]
+
+def brand_case(cid, num, kicker, title, sub, label, head, es, en, rows, sections, hero_n, hero_pos='center', credits=None):
+    plates = [hero(f'assets/cases/{cid}/{hero_n:02d}.jpg', f'Caso {num} · {kicker}', title, sub, label, pos=hero_pos),
+              statement('El proyecto', head, es, en, rows)]
+    for lab, txt, nums in sections:
+        plates.append(P('1400/170', band(lab, txt)))
+        plates += jrows(_dims(cid, nums))
+    plates.append(closing(credits or [('Cliente', kicker), ('Dirección creativa / arte', 'José Carrillo'), ('Rol / agencia / año', TBD)]))
+    return plates
+
+CASES['volkswagen'] = dict(light=False, acc='#4fb3ff', plates=brand_case('volkswagen', '14', 'Volkswagen', 'Volkswagen<br>Amarok', 'Fotografía y campaña', 'Automotriz · Campaña',
+   'Una pick-up<br>con pedigree.',
+   'Fotografía y piezas de campaña para la Amarok V6. Una camioneta de trabajo puesta en el mundo del polo: caballerizas, fardos, tacos y la luz baja del atardecer en la cancha, para la acción del Abierto de Polo. La misma mirada se lleva al barro, al monte y al campo abierto, donde la Amarok vuelve a su terreno. Más piezas de la marca: Camiones Delivery y la plataforma de movilidad VMove.',
+   'Photography and campaign pieces for the Amarok V6, set in the world of polo for the Argentine Polo Open, and taken back to mud, woods and open fields.',
+   [('Cliente','Volkswagen Argentina'),('Producto','Amarok V6 · Camiones Delivery · VMove'),('Alcance','Fotografía · Campaña · Vía pública'),('Acción','Abierto de Polo'),('Rol / año',TBD)],
+   [('<b>01</b> · Amarok en el Abierto de Polo', 'Caballerizas, fardos y atardecer: la pick-up en un mundo premium.', [7,3,4,9,14]),
+    ('<b>02</b> · Fotografía Amarok', 'Barro, monte y campo abierto.', [13,16,6,8,11,5,15,12]),
+    ('<b>03</b> · Más Volkswagen', 'Camiones Delivery y la plataforma VMove.', [1,2])],
+   hero_n=7, hero_pos='center 60%'))
+
+CASES['corona'] = dict(light=False, acc='#f2c14e', plates=brand_case('corona', '15', 'Corona', 'Corona', 'Espacios de marca · Pilar', 'Experiencia · Espacios',
+   'Llevar la playa<br>a Pilar.',
+   'Espacios de marca para Corona en Pilar, provincia de Buenos Aires: el parador de Sharewood y el bar del Molino Resto. Arcos de madera tallada, arena, tablas de surf, guirnaldas de luces y fibras naturales que traducen el universo Corona (sol, mar, desconexión) a un lugar donde quedarse toda la tarde.',
+   'Brand spaces for Corona in Pilar, Buenos Aires: the Sharewood beach-style hangout and the Molino Resto bar, translating Corona’s sun-and-sea world into places to stay all afternoon.',
+   [('Cliente','Corona · Cervecería y Maltería Quilmes'),('Lugares','Sharewood Pilar · Molino Resto'),('Alcance','Diseño de espacios · Ambientación · Señalética'),('Rol / año',TBD)],
+   [('<b>01</b> · Sharewood Pilar', 'Arena, livings y barra al aire libre.', [1,2,3,10]),
+    ('<b>02</b> · Molino Resto', 'El bar Corona: madera, luces y mesas largas.', [8,4,5,7,6,9])],
+   hero_n=4, hero_pos='center 45%'))
+
+CASES['brahma'] = dict(light=False, acc='#e30613', plates=brand_case('brahma', '16', 'Brahma', 'Brahma', 'Experiencias de marca', 'Experiencia · BTL',
+   'Rojo neón<br>y birra.',
+   'Espacios y experiencias para Brahma. De noche, el rojo de la marca se vuelve luz: neones, una jaula para bandas en vivo, barras y un rincón selfie. En Konex, la marca toma la calle con un mural tipográfico de gran escala («Más birra por favor»), la barra de chopp, el puesto de producto y el espacio Brahma Lime.',
+   'Brand spaces for Brahma: neon-red night experiences with live-band cages and bars, and a large-scale typographic takeover at Konex with chopp bar and the Brahma Lime area.',
+   [('Cliente','Brahma · Cervecería y Maltería Quilmes'),('Lugares','Experiencias nocturnas · Ciudad Cultural Konex'),('Alcance','Diseño de espacios · Gráfica · BTL'),('Rol / año',TBD)],
+   [('<b>01</b> · De noche', 'El rojo Brahma hecho luz: neón, música en vivo y barra.', [4,3,1,6,2,5]),
+    ('<b>02</b> · Brahma en Konex', 'Mural tipográfico, chopp y Brahma Lime.', [11,12,7,8,10,9,13])],
+   hero_n=4, hero_pos='center 40%'))
+
+def prisma_hero():
+    return P('1400/880', f"""
+<div class="abs" style="background:#231f5c"></div>
+<div class="abs" style="left:calc(var(--u)*520);right:calc(var(--u)*64);top:calc(var(--u)*150);bottom:calc(var(--u)*64);border-radius:calc(var(--u)*6);overflow:hidden">
+  <img src="assets/cases/prisma/09.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
+</div>
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#fff">Naming · Identidad</div>
+<div class="bottom" style="color:#fff;right:auto;max-width:calc(var(--u)*420)">
+  <div class="lbl" style="color:#fff;margin-bottom:calc(var(--u)*18)">Caso 17 · Prisma</div>
+  <div class="h1" style="font-size:calc(var(--u)*96)">Prisma</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#fff">Medios de Pago · Una marca nueva para emitir tarjetas</div>
+</div>""")
+
+def _prisma():
+    plates = [prisma_hero(),
+      statement('El brief', 'Emitir tarjetas,<br>100% online.',
+       'Prisma necesitaba una marca nueva para lanzar su servicio de procesamiento de tarjetas: que bancos, fintechs y bancos digitales puedan emitir y procesar tarjetas físicas y digitales de forma 100% online, más rápida, flexible y transparente que la tradicional. Planteamos dos caminos. <b>Línea 1, «by Prisma»</b>: apoyarse en la experiencia y la solidez de Prisma (experto, veloz, simple, confiable). <b>Línea 2, marca independiente</b>: crear una categoría nueva, con paleta e imaginario de vanguardia digital (eficiente, innovador, flexible, personalizado).',
+       'A new brand for Prisma’s card-processing service, letting banks and fintechs issue physical and digital cards 100% online. Two strategic lines: endorsed “by Prisma” or a fully independent brand.',
+       [('Cliente','Prisma Medios de Pago'),('Rubro','Fintech · Pagos'),('Alcance','Estrategia de marca · Naming · Identidad · Moodboards'),('Propuestas','Nuvo · Accel · FastPay · Bamboo'),('Rol / año',TBD)])]
+    for i, (name, txt, a, b) in enumerate([('Nuvo', 'Azul profundo y tipografía redonda: lo nuevo, sin perder confianza.', 1, 2),
+                                          ('Accel', 'Velocidad hecha signo: la A como flecha.', 3, 4),
+                                          ('FastPay', 'Turquesa y un ícono que es tarjeta y pago a la vez.', 5, 6),
+                                          ('Bamboo', 'Verde, orgánico y flexible: crecer rápido.', 7, 8)], 1):
+        plates.append(P('1400/170', band(f'<b>{i:02d}</b> · {name}', txt)))
+        plates += jrows(_dims('prisma', [a, b]), target=3.4)
+    plates.append(closing([('Cliente','Prisma Medios de Pago'),('Dirección creativa / arte','José Carrillo'),('Rol / agencia / año',TBD)]))
+    return plates
+CASES['prisma'] = dict(light=False, acc='#4f8cff', plates=_prisma())

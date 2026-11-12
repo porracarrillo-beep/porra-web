@@ -5,10 +5,13 @@
     "vuse",
     "donatella",
     "la-nacion",
+    "volkswagen",
     "miami-restaurants",
     "salty-flame",
     "cerveza-cordoba",
     "oxxo",
+    "corona",
+    "brahma",
     "natural-american-spirit",
     "camel-snus",
     "up-si-vale",
@@ -18,7 +21,8 @@
     "babysec",
     "real-estate",
     "ena",
-    "conexo"
+    "conexo",
+    "prisma"
   ],
   "titulos_de_casos": {
     "lollapalooza": "Coca-Cola × Lollapalooza",
@@ -38,7 +42,11 @@
     "babysec": "Babysec",
     "totis": "Totis",
     "salty-flame": "Salty Flame",
-    "conexo": "Conexo Finance"
+    "conexo": "Conexo Finance",
+    "volkswagen": "Volkswagen Amarok",
+    "corona": "Corona · Pilar",
+    "brahma": "Brahma",
+    "prisma": "Prisma Medios de Pago"
   },
   "tarjetas_home": [
     {
@@ -116,6 +124,16 @@
       "tipo": "media"
     },
     {
+      "titulo": "Volkswagen Amarok",
+      "bajada": "Fotografía y campaña · Abierto de Polo",
+      "categoria": "Caso · Automotriz",
+      "proporcion": 2.07,
+      "imagen": "assets/cases/volkswagen/13.jpg",
+      "caso": "volkswagen",
+      "tipo": "media",
+      "filtro": "caso"
+    },
+    {
       "titulo": "Salty Flame",
       "bajada": "Hospitality · Miami",
       "categoria": "Caso · Video IA",
@@ -148,6 +166,26 @@
       "imagen": "assets/cases/oxxo/OXXO_01.jpg",
       "caso": "oxxo",
       "tipo": "media"
+    },
+    {
+      "titulo": "Corona",
+      "bajada": "Espacios de marca · Pilar",
+      "categoria": "Caso · Experiencia",
+      "proporcion": 1.33,
+      "imagen": "assets/cases/corona/04.jpg",
+      "caso": "corona",
+      "tipo": "media",
+      "filtro": "caso"
+    },
+    {
+      "titulo": "Brahma",
+      "bajada": "Experiencias de marca · Neón y Konex",
+      "categoria": "Caso · Experiencia",
+      "proporcion": 0.8,
+      "imagen": "assets/cases/brahma/02.jpg",
+      "caso": "brahma",
+      "tipo": "media",
+      "filtro": "caso"
     },
     {
       "titulo": "Natural American Spirit",
@@ -254,6 +292,16 @@
       "imagen": "assets/cases/conexo/CONEXO_01.jpg",
       "caso": "conexo",
       "tipo": "media"
+    },
+    {
+      "titulo": "Prisma Medios de Pago",
+      "bajada": "Naming e identidad · Fintech",
+      "categoria": "Caso · Fintech",
+      "proporcion": 1.71,
+      "imagen": "assets/cases/prisma/09.jpg",
+      "caso": "prisma",
+      "tipo": "media",
+      "filtro": "caso"
     }
   ],
   "reels": [
