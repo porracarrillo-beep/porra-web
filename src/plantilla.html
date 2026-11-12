@@ -216,7 +216,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
     <div class="lbl" style="margin-bottom:16px">Contacto</div>
     <h2>Hablemos.</h2>
     <div class="row2">
-      <a class="mail" href="mailto:porracarrillo@gmail.com">porracarrillo@gmail.com</a>
+      <a class="mail" href="mailto:hola@porra.studio">hola@porra.studio</a>
       <div class="links">
         <a class="pill" href="https://www.behance.net/JoseCarrillo" target="_blank" rel="noopener">Behance ↗</a>
         <a class="pill" href="https://www.linkedin.com/in/josecarrilloporraia" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -285,7 +285,7 @@ function render(){
   if(cur.length) rows.push(cur);
   $('#rows').innerHTML=rows.map((r,ri)=>{
     const s=r.reduce((a,[w])=>a+w.r,0);
-    const last = ri===rows.length-1 && s<target*.75;
+    const last = ri===rows.length-1 && s<target*.6;
     return `<div class="row" style="${last?`width:${s/target*100}%`:''}">${r.map(([w,i])=>tileHTML(w,i)).join('')}</div>`;
   }).join('');
   document.querySelectorAll('#rows video').forEach(v=>vio.observe(v));

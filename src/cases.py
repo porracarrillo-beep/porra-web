@@ -290,6 +290,29 @@ OXXO = [oxxo_hero(),
   closing([('Cliente','Coca-Cola México'),('Retail','OXXO'),('Dirección de arte','José Carrillo'),('Rol / agencia',TBD)])]
 CASES['oxxo'] = dict(light=True, acc='#e4002b', plates=OXXO)
 
+def conexo_hero():
+    return P('1400/880', f"""
+<div class="abs" style="background:#0098b8"></div>
+<img class="abs" src="assets/cases/conexo/CONEXO_01.jpg" alt="" style="left:auto;right:0;width:66%;height:100%;object-fit:cover;object-position:12% center">
+<img class="mark" src="assets/logo-white.png" alt="Porra">
+<div class="tr lbl" style="color:#fff">Identidad · Campaña</div>
+<div class="bottom" style="color:#fff;right:auto;max-width:calc(var(--u)*440)">
+  <div class="lbl" style="color:#fff;margin-bottom:calc(var(--u)*18)">Caso 13 · Conexo</div>
+  <div class="h1" style="font-size:calc(var(--u)*88)">Presta<br>Conexo</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#fff">Préstamos simples · Fintech</div>
+</div>""")
+
+CONEXO = [conexo_hero(),
+  statement('El proyecto', 'Un préstamo<br>en una palabra.',
+   'Identidad y campaña para Presta Conexo, la línea de préstamos de Conexo Finance. Todo el sistema se apoya en una sola idea: <b>simple</b>. Una palabra gigante, un cian propio y retratos llenos de energía, que bajan sin perder fuerza a mailings, piezas de punto de contacto, posteos, banners y un set de botones por monto, de $50 mil a $300 mil.',
+   'Identity and campaign for Presta Conexo, Conexo Finance’s loan line, built on a single word, “simple”, rolled out to mailings, point-of-contact pieces, social posts, banners and a set of amount buttons.',
+   [('Cliente','Conexo Finance'),('Rubro','Fintech · Préstamos'),('Alcance','Identidad · Campaña · Piezas digitales y POP'),('Concepto','“Simple”'),('Rol / año',TBD)]),
+  full('assets/cases/conexo/CONEXO_02.jpg', ratio='2088/1694', fit='contain'),
+  full('assets/cases/conexo/CONEXO_03.jpg', ratio='2088/1694', fit='contain'),
+  closing([('Cliente','Conexo Finance'),('Dirección de arte','José Carrillo'),('Rol / agencia',TBD)])]
+CASES['conexo'] = dict(light=True, acc='#0098b8', plates=CONEXO)
+
+
 
 # Casos con placas de Behance ya armadas
 BEH = {

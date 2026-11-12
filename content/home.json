@@ -17,7 +17,8 @@
     "santos",
     "babysec",
     "real-estate",
-    "ena"
+    "ena",
+    "conexo"
   ],
   "titulos_de_casos": {
     "lollapalooza": "Coca-Cola × Lollapalooza",
@@ -36,7 +37,8 @@
     "santos": "Santo's",
     "babysec": "Babysec",
     "totis": "Totis",
-    "salty-flame": "Salty Flame"
+    "salty-flame": "Salty Flame",
+    "conexo": "Conexo Finance"
   },
   "tarjetas_home": [
     {
@@ -228,9 +230,9 @@
       "bajada": "Vender lo que todavía no existe",
       "categoria": "Caso · Imagen IA",
       "filtro": "ia",
-      "proporcion": 2.2,
+      "proporcion": 2.0,
       "caso": "real-estate",
-      "imagen": "assets/ia/real-estate.jpg",
+      "imagen": "assets/ia/real-estate-cover.jpg",
       "tipo": "media"
     },
     {
@@ -244,14 +246,14 @@
       "tipo": "media"
     },
     {
-      "tipo": "text",
       "titulo": "Conexo Finance",
-      "bajada": "Identidad de marca",
+      "bajada": "Préstamos simples · Identidad y campaña",
       "categoria": "Caso · Fintech",
       "filtro": "caso",
-      "proporcion": 0.9,
-      "color": "#1d2a6b",
-      "link": "https://www.behance.net/gallery/152835085/Brand-identity-Conexo-Finance-Company"
+      "proporcion": 1.22,
+      "imagen": "assets/cases/conexo/CONEXO_01.jpg",
+      "caso": "conexo",
+      "tipo": "media"
     }
   ],
   "reels": [
