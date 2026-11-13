@@ -209,6 +209,21 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 .contact .row2{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:28px;flex-wrap:wrap}
 .contact .mail{font-size:clamp(22px,2.6vw,40px);font-weight:500;letter-spacing:-.03em;border-bottom:2px solid var(--acc);padding-bottom:4px}
 .contact .mail:hover{color:var(--acc)}
+
+.lead-form{margin-top:40px;max-width:980px}
+.lead-form .intro{color:var(--mut);font-size:clamp(15px,1.2vw,18px);margin:0 0 22px;max-width:620px}
+.lead-form .g{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+.lead-form label{display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.lead-form label.full{grid-column:1/-1}.lead-form .hp{position:absolute;left:-9999px}
+.lead-form input,.lead-form select,.lead-form textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--fg,#f3f3ef);background:transparent;border:0;border-bottom:1px solid var(--line);padding:8px 0;border-radius:0;outline:none}
+.lead-form select option{color:#111}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{border-color:var(--acc)}
+.lead-form .send{display:flex;align-items:center;gap:18px;margin-top:26px;flex-wrap:wrap}
+.lead-form .send-btn{background:var(--acc);color:#fff;border-color:var(--acc);font-size:15px;padding:12px 22px;cursor:pointer}
+.lead-form .send-btn[disabled]{opacity:.5}
+#leadMsg{font-size:14px;color:var(--mut)}#leadMsg.ok{color:#7ad38a}#leadMsg.err{color:#ff8a7a}
+@media(max-width:700px){.lead-form .g{grid-template-columns:1fr}}
+
 .contact .links{display:flex;gap:8px;flex-wrap:wrap}
 footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin:60px var(--pad) 0;padding:16px 0 24px;font-size:13px;color:var(--mut)}
 
@@ -312,6 +327,20 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
   <section class="contact" id="contacto">
     <div class="lbl" style="margin-bottom:16px">Contacto</div>
     <h2>Hablemos.</h2>
+    <form id="leadForm" class="lead-form" novalidate>
+      <p class="intro">Contame qué tenés en mente: una campaña, contenido con IA, una marca nueva. Te respondo en menos de 24 horas.</p>
+      <div class="g">
+        <label>Nombre *<input name="nombre" required autocomplete="name"></label>
+        <label>Mail *<input name="email" type="email" required autocomplete="email"></label>
+        <label>Empresa / marca<input name="empresa" autocomplete="organization"></label>
+        <label>Teléfono / WhatsApp<input name="telefono" autocomplete="tel"></label>
+        <label>Tipo de proyecto<select name="tipo"><option value="">Elegí una opción</option><option>Campaña con IA</option><option>Contenido para redes</option><option>Imagen de producto / packaging</option><option>Video con IA</option><option>Branding / identidad</option><option>Dirección creativa</option><option>Otro</option></select></label>
+        <label>Presupuesto estimado<select name="presupuesto"><option value="">Prefiero conversarlo</option><option>Menos de USD 1.000</option><option>USD 1.000 – 3.000</option><option>USD 3.000 – 10.000</option><option>Más de USD 10.000</option></select></label>
+        <label class="full">Mensaje<textarea name="mensaje" rows="4"></textarea></label>
+        <label class="hp" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="send"><button type="submit" class="pill send-btn">Enviar consulta →</button><span id="leadMsg" role="status"></span></div>
+    </form>
     <div class="row2">
       <a class="mail" href="mailto:hola@porra.studio">hola@porra.studio</a>
       <div class="links">
@@ -1173,6 +1202,27 @@ $('#caseBack').onclick=()=>{ history.pushState('',document.title,location.pathna
 addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if(lb.classList.contains('open')) closeLB(); else if(caseEl.classList.contains('open')) $('#caseBack').click(); else if(menu.classList.contains('open')) toggleMenu(false); });
 
 if(location.hash.startsWith('#caso-')) route();
+
+/* CRM: casos vistos + envío del formulario */
+(function(){
+  const KEY='porra_vistos';
+  const seen=()=>{try{return JSON.parse(sessionStorage.getItem(KEY)||'[]')}catch(e){return[]}};
+  const track=()=>{const m=location.hash.match(/^#caso-(.+)$/);if(!m)return;const t=(typeof TITLES!=='undefined'&&TITLES[m[1]])||m[1];const s=seen();if(!s.includes(t)){s.push(t);try{sessionStorage.setItem(KEY,JSON.stringify(s.slice(-20)))}catch(e){}}};
+  addEventListener('hashchange',track);track();
+  try{if(!sessionStorage.getItem('porra_origen')){const u=new URLSearchParams(location.search);sessionStorage.setItem('porra_origen',[u.get('utm_source'),u.get('utm_medium'),u.get('utm_campaign')].filter(Boolean).join(' / ')||document.referrer||'directo')}}catch(e){}
+  const f=document.getElementById('leadForm');if(!f)return;
+  const msg=document.getElementById('leadMsg'),btn=f.querySelector('button');
+  f.addEventListener('submit',async e=>{e.preventDefault();
+    const d=Object.fromEntries(new FormData(f).entries());
+    if(!d.nombre||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)){msg.className='err';msg.textContent='Completá tu nombre y un mail válido.';return;}
+    d.casos_vistos=seen().join(', ');d.pagina=location.href;try{d.origen=sessionStorage.getItem('porra_origen')||''}catch(e){}
+    btn.disabled=true;msg.className='';msg.textContent='Enviando…';
+    try{const r=await fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)});const j=await r.json();
+      if(!r.ok||!j.ok)throw new Error(j.error||'Error');
+      f.reset();msg.className='ok';msg.textContent='¡Gracias! Recibí tu consulta y te escribo a la brevedad.';}
+    catch(err){msg.className='err';msg.innerHTML='No se pudo enviar. Escribime a <a href="mailto:hola@porra.studio" style="text-decoration:underline">hola@porra.studio</a>.';}
+    btn.disabled=false;});
+})();
 </script>
 
 </body>

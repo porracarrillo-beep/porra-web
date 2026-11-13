@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Porra · CRM</title>
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<style>
+@font-face{font-family:IT;src:url(/assets/fonts/inter-tight-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:IT;src:url(/assets/fonts/inter-tight-latin-500-normal.woff2) format('woff2');font-weight:500}
+@font-face{font-family:IT;src:url(/assets/fonts/inter-tight-latin-600-normal.woff2) format('woff2');font-weight:600}
+:root{--bg:#f4f3ef;--card:#fff;--ink:#141413;--mut:#77756f;--line:#e4e2dc;--acc:#e5462b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 IT,-apple-system,Helvetica,Arial,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 28px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:3}
+header .l{display:flex;align-items:center;gap:14px}header img{height:22px;filter:invert(1)}header h1{font-size:15px;font-weight:600;margin:0}
+.btn{font:inherit;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;cursor:pointer}.btn.dk{background:var(--ink);color:#fff;border-color:var(--ink)}
+.wrap{padding:24px 28px;max-width:1500px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}.stat b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em}.stat span{color:var(--mut);font-size:12px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.tools input,.tools select{font:inherit;border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:#fff}
+.board{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:12px}
+.col{background:#ebe9e3;border-radius:10px;padding:10px;min-height:220px}
+.col h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:4px 4px 10px;display:flex;justify-content:space-between}
+.col.over{outline:2px dashed var(--acc)}
+.lead{background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin-bottom:8px;cursor:pointer}
+.lead:hover{border-color:#bbb}.lead b{display:block;font-weight:600}.lead .s{color:var(--mut);font-size:12px}
+.lead .m{display:flex;justify-content:space-between;margin-top:6px;font-size:12px}.lead .due{color:var(--acc);font-weight:500}
+.tag{display:inline-block;font-size:11px;background:#f1efe9;border-radius:999px;padding:2px 8px;margin-top:6px}
+#panel{position:fixed;top:0;right:0;width:min(520px,100%);height:100%;background:#fff;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s;z-index:5;overflow:auto;padding:24px 26px}
+#panel.on{transform:none}#panel h2{margin:0 0 4px;font-size:20px}#panel .meta{color:var(--mut);font-size:12px;margin-bottom:18px}
+label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:14px 0 5px}
+input.f,select.f,textarea.f{width:100%;font:inherit;border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:#fff}textarea.f{min-height:90px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.msg{background:#f6f5f1;border-radius:8px;padding:12px;white-space:pre-wrap}
+.row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.del{color:#b42318;border-color:#f1c4bf}
+#veil{position:fixed;inset:0;background:rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .25s;z-index:4}#veil.on{opacity:1;pointer-events:auto}
+.empty{color:var(--mut);font-size:12px;text-align:center;padding:18px 0}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.wrap,header{padding-left:16px;padding-right:16px}}
+</style></head><body>
+<header><div class="l"><img src="/assets/logo-white.png" alt="Porra"><h1>CRM</h1></div>
+<div style="display:flex;gap:8px"><button class="btn" id="csv">Exportar CSV</button><button class="btn dk" id="add">+ Nuevo lead</button></div></header>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b id="sTotal">–</b><span>Leads totales</span></div>
+    <div class="stat"><b id="sMes">–</b><span>Nuevos este mes</span></div>
+    <div class="stat"><b id="sPipe">–</b><span>En negociación (USD)</span></div>
+    <div class="stat"><b id="sWon">–</b><span>Ganado (USD)</span></div>
+  </div>
+  <div class="tools"><input id="q" placeholder="Buscar nombre, empresa, mail…" style="min-width:260px"><span id="due" class="s" style="color:var(--mut)"></span></div>
+  <div class="board" id="board"></div>
+</div>
+<div id="veil"></div>
+<aside id="panel"></aside>
+<script>
+const ET={nuevo:'Nuevo',contactado:'Contactado',reunion:'Reunión',propuesta:'Propuesta',ganado:'Ganado',perdido:'Perdido'};
+let LEADS=[],ETAPAS=Object.keys(ET);
+const $=s=>document.querySelector(s), esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const usd=n=>'USD '+Math.round(n||0).toLocaleString('es-AR');
+const today=()=>new Date().toISOString().slice(0,10);
+async function api(path,opt={}){const r=await fetch('/admin/api/leads'+path,{...opt,headers:{'content-type':'application/json'}});if(!r.ok)throw new Error(await r.text());return r.json();}
+async function load(){const d=await api('');LEADS=d.leads;ETAPAS=d.etapas;render();}
+function render(){
+  const q=$('#q').value.toLowerCase().trim();
+  const L=LEADS.filter(l=>!q||[l.nombre,l.empresa,l.email,l.tipo,l.notas].join(' ').toLowerCase().includes(q));
+  const m=new Date().toISOString().slice(0,7);
+  $('#sTotal').textContent=LEADS.length;
+  $('#sMes').textContent=LEADS.filter(l=>(l.created_at||'').startsWith(m)).length;
+  $('#sPipe').textContent=usd(LEADS.filter(l=>['contactado','reunion','propuesta'].includes(l.etapa)).reduce((a,l)=>a+(l.valor_usd||0),0));
+  $('#sWon').textContent=usd(LEADS.filter(l=>l.etapa==='ganado').reduce((a,l)=>a+(l.valor_usd||0),0));
+  const vencidos=LEADS.filter(l=>l.fecha_seguimiento&&l.fecha_seguimiento<=today()&&!['ganado','perdido'].includes(l.etapa)).length;
+  $('#due').textContent=vencidos?`${vencidos} seguimiento${vencidos>1?'s':''} para hoy o atrasado${vencidos>1?'s':''}`:'';
+  $('#board').innerHTML=ETAPAS.map(e=>{const items=L.filter(l=>(l.etapa||'nuevo')===e);
+    return `<div class="col" data-e="${e}"><h3><span>${ET[e]}</span><span>${items.length}</span></h3>${items.map(card).join('')||'<div class="empty">—</div>'}</div>`}).join('');
+  document.querySelectorAll('.lead').forEach(c=>{c.onclick=()=>open(+c.dataset.id);c.ondragstart=ev=>ev.dataTransfer.setData('id',c.dataset.id);});
+  document.querySelectorAll('.col').forEach(c=>{c.ondragover=ev=>{ev.preventDefault();c.classList.add('over')};c.ondragleave=()=>c.classList.remove('over');
+    c.ondrop=async ev=>{ev.preventDefault();c.classList.remove('over');const id=+ev.dataTransfer.getData('id');const l=LEADS.find(x=>x.id===id);if(!l||l.etapa===c.dataset.e)return;l.etapa=c.dataset.e;render();await api('/'+id,{method:'PATCH',body:JSON.stringify({etapa:l.etapa})});};});
+}
+function card(l){const due=l.fecha_seguimiento&&l.fecha_seguimiento<=today()&&!['ganado','perdido'].includes(l.etapa);
+  return `<div class="lead" draggable="true" data-id="${l.id}"><b>${esc(l.nombre)}</b><div class="s">${esc(l.empresa||l.email)}</div>
+  ${l.tipo?`<span class="tag">${esc(l.tipo)}</span>`:''}<div class="m"><span>${l.valor_usd?usd(l.valor_usd):''}</span><span class="${due?'due':'s'}">${l.fecha_seguimiento?('↻ '+l.fecha_seguimiento):(l.created_at||'').slice(0,10)}</span></div></div>`;}
+function open(id){const l=id?LEADS.find(x=>x.id===id):{etapa:'nuevo'};const nuevo=!id;
+  $('#panel').innerHTML=`<button class="btn" id="x" style="float:right">Cerrar ✕</button>
+  <h2>${nuevo?'Nuevo lead':esc(l.nombre)}</h2>
+  <div class="meta">${nuevo?'Carga manual':`#${l.id} · ${(l.created_at||'').slice(0,16).replace('T',' ')} · ${esc(l.pais||'')} · ${esc(l.origen||'web')}`}</div>
+  ${!nuevo&&l.mensaje?`<label>Mensaje</label><div class="msg">${esc(l.mensaje)}</div>`:''}
+  ${!nuevo&&l.casos_vistos?`<label>Casos que miró en la web</label><div class="s">${esc(l.casos_vistos)}</div>`:''}
+  <div class="two"><div><label>Nombre</label><input class="f" id="f_nombre" value="${esc(l.nombre)}"></div><div><label>Empresa</label><input class="f" id="f_empresa" value="${esc(l.empresa)}"></div></div>
+  <div class="two"><div><label>Mail</label><input class="f" id="f_email" value="${esc(l.email)}"></div><div><label>Teléfono</label><input class="f" id="f_telefono" value="${esc(l.telefono)}"></div></div>
+  <div class="two"><div><label>Tipo de proyecto</label><input class="f" id="f_tipo" value="${esc(l.tipo)}"></div><div><label>Presupuesto indicado</label><input class="f" id="f_presupuesto" value="${esc(l.presupuesto)}"></div></div>
+  <div class="two"><div><label>Etapa</label><select class="f" id="f_etapa">${ETAPAS.map(e=>`<option value="${e}" ${l.etapa===e?'selected':''}>${ET[e]}</option>`).join('')}</select></div>
+  <div><label>Valor estimado (USD)</label><input class="f" id="f_valor_usd" type="number" min="0" step="50" value="${l.valor_usd??''}"></div></div>
+  <div class="two"><div><label>Próximo paso</label><input class="f" id="f_proximo_paso" value="${esc(l.proximo_paso)}" placeholder="Ej: enviar propuesta"></div>
+  <div><label>Fecha de seguimiento</label><input class="f" id="f_fecha_seguimiento" type="date" value="${esc(l.fecha_seguimiento)}"></div></div>
+  <label>Notas</label><textarea class="f" id="f_notas">${esc(l.notas)}</textarea>
+  <div class="row"><button class="btn dk" id="save">Guardar</button>
+  ${!nuevo&&l.email?`<a class="btn" href="mailto:${esc(l.email)}?subject=${encodeURIComponent('Porra · '+(l.tipo||'tu proyecto'))}">Responder por mail</a>`:''}
+  ${!nuevo&&l.telefono?`<a class="btn" target="_blank" href="https://wa.me/${(l.telefono||'').replace(/\D/g,'')}">WhatsApp</a>`:''}
+  ${!nuevo?'<button class="btn del" id="del">Eliminar</button>':''}</div>`;
+  $('#panel').classList.add('on');$('#veil').classList.add('on');
+  $('#x').onclick=close;
+  $('#save').onclick=async()=>{const b={};['nombre','empresa','email','telefono','tipo','presupuesto','etapa','valor_usd','proximo_paso','fecha_seguimiento','notas'].forEach(k=>b[k]=$('#f_'+k).value);
+    if(nuevo){if(!b.nombre)return alert('Falta el nombre');await api('',{method:'POST',body:JSON.stringify({...b,mensaje:''})});}
+    else await api('/'+id,{method:'PATCH',body:JSON.stringify(b)});
+    close();load();};
+  const d=$('#del');if(d)d.onclick=async()=>{if(!confirm('¿Eliminar este lead? No se puede deshacer.'))return;await api('/'+id,{method:'DELETE'});close();load();};
+}
+function close(){$('#panel').classList.remove('on');$('#veil').classList.remove('on');}
+$('#veil').onclick=close;$('#q').oninput=render;$('#add').onclick=()=>open(0);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+$('#csv').onclick=()=>{const cols=['id','created_at','nombre','empresa','email','telefono','tipo','presupuesto','etapa','valor_usd','proximo_paso','fecha_seguimiento','pais','origen','casos_vistos','mensaje','notas'];
+  const rows=[cols.join(',')].concat(LEADS.map(l=>cols.map(c=>'"'+String(l[c]??'').replace(/"/g,'""')+'"').join(',')));
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+rows.join('\n')],{type:'text/csv'}));a.download='porra-leads-'+today()+'.csv';a.click();};
+load().catch(e=>{$('#board').innerHTML='<div class="empty">No pude cargar los leads: '+esc(e.message)+'</div>';});
+</script></body></html>
