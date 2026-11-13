@@ -1,9 +1,18 @@
 {
-  // Configuración para publicar en Cloudflare (Workers con archivos estáticos)
   "name": "porra-web",
+  "main": "src/worker.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/admin", "/admin/*", "/_crm/*"]
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "porra-crm", "database_id": "97eeed5b-e7a8-42a8-9d2e-17f65e5063aa" }
+  ],
+  "send_email": [
+    { "name": "AVISO", "destination_address": "porracarrillo@gmail.com" }
+  ],
+  "observability": { "enabled": true }
 }
