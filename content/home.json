@@ -248,7 +248,8 @@
       "imagen": "assets/cases/roota/09.jpg",
       "posicion": "center 30%",
       "caso": "roota",
-      "tipo": "media"
+      "tipo": "media",
+      "pais": "Argentina"
     },
     {
       "titulo": "Up Sí Vale",
