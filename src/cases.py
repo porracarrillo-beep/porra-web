@@ -454,7 +454,7 @@ CASES['roota'] = dict(light=True, acc='#3f7d4f', plates=[
  statement('El proyecto', 'El producto real,<br>en escenas reales.',
    'Identidad, packaging y campaña para Roota, una línea de suplementos. El trabajo con IA partió del envase: cada producto se genera a partir de su etiqueta y de la información del pack (nombre, variante, color, tabla nutricional) para que se vea exactamente como es, en cualquier escena. Sobre esa base, imágenes y videos hiperrealistas de situaciones cotidianas: entrenar, correr, la cocina de casa, el momento de tomarlo. Y una campaña, «Volver a la raíz», que ordena todo el sistema: Dormir mejor, Pensar mejor, Rendir mejor.',
    'Identity, packaging and campaign for Roota supplements. AI imagery built from each label and pack information so every product stays true to the real thing, placed in hyper-realistic everyday scenes, plus the “Back to the root” campaign.',
-   [('Cliente','Roota'),('Rubro','Suplementos'),('Alcance','Identidad · Packaging · Campaña · Imagen y video con IA'),('Proceso','Producto generado desde etiqueta e info del envase'),('Rol / año',TBD)]),
+   [('Cliente','Roota'),('Rubro','Suplementos'),('Alcance','Identidad · Packaging · Campaña · Imagen y video con IA'),('Proceso','Producto generado desde etiqueta e info del envase'),('Rol','Dirección creativa y de arte'),('Año','2026 · Cliente directo')]),
  P('1400/170', band('<b>01</b> · Identidad y packaging', 'Un sistema de color por variante y un símbolo que nace de la raíz.')),
  *jrows([_r('03',1122,1402),_r('07',1792,2400),_r('08',1856,2304),_r('13',992,1280)]),
  full(R+'10.jpg','2400/965','contain',pad=40),
@@ -467,5 +467,5 @@ CASES['roota'] = dict(light=True, acc='#3f7d4f', plates=[
  P('1400/170', band('<b>04</b> · Campaña «Volver a la raíz»', 'Del key visual al feed de redes.')),
  *jrows([_r('01',1122,1402),_r('11',1856,2304)]),
  *jrows([_r('06a',2400,2996),_r('06b',2400,2995)]),
- closing([('Cliente','Roota'),('Dirección creativa y de arte','José Carrillo'),('Producción','Imagen y video con IA'),('Rol / año',TBD)]),
+ closing([('Cliente','Roota · cliente directo'),('Dirección creativa y de arte','José Carrillo'),('Producción','Imagen y video con IA'),('Año','2026')]),
 ])
