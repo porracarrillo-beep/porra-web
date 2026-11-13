@@ -21,6 +21,11 @@ const SCHEMA = `CREATE TABLE IF NOT EXISTS leads (
   updated_at TEXT
 )`;
 
+const PROP_SCHEMA = `CREATE TABLE IF NOT EXISTS propuestas (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, lead_id INTEGER UNIQUE, slug TEXT UNIQUE, data TEXT,
+  created_at TEXT, updated_at TEXT, vistas INTEGER DEFAULT 0, primera_vista TEXT, ultima_vista TEXT,
+  clics TEXT, respuesta TEXT, respondida_at TEXT)`;
+
 let schemaReady = false;
 async function db(env) {
   if (!schemaReady) {
@@ -28,6 +33,7 @@ async function db(env) {
     const { results } = await env.DB.prepare('PRAGMA table_info(leads)').all();
     const have = new Set(results.map(r => r.name));
     for (const [k, t] of Object.entries(EXTRA)) if (!have.has(k)) await env.DB.prepare(`ALTER TABLE leads ADD COLUMN ${k} ${t}`).run();
+    await env.DB.prepare(PROP_SCHEMA).run();
     schemaReady = true;
   }
   return env.DB;
@@ -79,6 +85,105 @@ async function login(request, env) {
 }
 const logout = () => new Response(null, { status: 303, headers: { location: '/admin',
   'set-cookie': `${COOKIE}=; Path=/admin; Max-Age=0; HttpOnly; Secure; SameSite=Strict` } });
+
+async function sendMail(env, subject, lines, replyTo) {
+  if (!env.AVISO) return;
+  const from = 'crm@porra.studio', to = env.AVISO_DESTINO || 'porracarrillo@gmail.com';
+  const enc = s => '=?UTF-8?B?' + btoa(unescape(encodeURIComponent(s))) + '?=';
+  const raw = [
+    `From: Porra CRM <${from}>`, `To: ${to}`, ...(replyTo ? [`Reply-To: ${replyTo}`] : []), `Subject: ${enc(subject)}`,
+    `Message-ID: <crm-${Date.now()}-${Math.random().toString(36).slice(2)}@porra.studio>`, `Date: ${new Date().toUTCString()}`,
+    'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '',
+    btoa(unescape(encodeURIComponent(lines.join('\n')))).replace(/(.{76})/g, '$1\r\n'),
+  ].join('\r\n');
+  try { await env.AVISO.send(new EmailMessage(from, to, raw)); } catch (e) { console.log('mail error', e.message); }
+}
+
+// ── Propuestas personalizadas: porra.studio/p/<slug> ──
+const slugify = s => (s || 'propuesta').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
+const rnd = n => [...crypto.getRandomValues(new Uint8Array(n))].map(b => 'abcdefghijkmnpqrstuvwxyz23456789'[b % 32]).join('');
+const htmlHeaders = { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' };
+const notFound = () => new Response('<!doctype html><meta charset=utf-8><title>PORRA</title><body style="background:#0c0c0b;color:#f3f3ef;font:16px system-ui;display:grid;place-items:center;height:100vh;margin:0"><div>Esta propuesta no está disponible. <a style="color:#00d9ff" href="https://porra.studio">porra.studio</a></div>', { status: 404, headers: htmlHeaders });
+
+async function propuestaPublica(request, env, ctx, url) {
+  const m = url.pathname.match(/^\/p\/([a-z0-9-]+)(?:\/(respuesta|ev))?\/?$/);
+  if (!m) return notFound();
+  const D = await db(env);
+  const p = await D.prepare('SELECT * FROM propuestas WHERE slug=?').bind(m[1]).first();
+  if (!p) return notFound();
+  const lead = await D.prepare('SELECT id, empresa, nombre, etapa, notas FROM leads WHERE id=?').bind(p.lead_id).first();
+  const marca = (lead && (lead.empresa || lead.nombre)) || 'Prospecto';
+  const esAdmin = await authorized(request, env);
+  const now = new Date().toISOString();
+  if (m[2] === 'ev' && request.method === 'POST') {
+    let ev = ''; try { ev = clip((JSON.parse(await request.text()) || {}).ev, 20); } catch {}
+    if (ev && !esAdmin) await D.prepare(`UPDATE propuestas SET clics=COALESCE(clics,'')||? WHERE id=?`).bind(`${now.slice(0, 16)} ${ev}\n`, p.id).run();
+    return new Response(null, { status: 204 });
+  }
+  if (m[2] === 'respuesta') {
+    if (request.method !== 'POST') return json({ ok: false }, 405);
+    let b; try { b = await request.json(); } catch { return json({ ok: false, error: 'Formato inválido' }, 400); }
+    if (b.web) return json({ ok: true });
+    const r = { nombre: clip(b.nombre, 120), contacto: clip(b.contacto, 160), mensaje: clip(b.mensaje, 3000) };
+    if (!r.nombre || !r.contacto) return json({ ok: false, error: 'Dejame tu nombre y un contacto' }, 400);
+    const txt = `${now.slice(0, 16).replace('T', ' ')} · ${r.nombre} (${r.contacto}): ${r.mensaje || '-'}`;
+    await D.prepare('UPDATE propuestas SET respuesta=COALESCE(respuesta,\'\')||?, respondida_at=? WHERE id=?').bind(txt + '\n', now, p.id).run();
+    if (lead) {
+      const pasa = ['identificado', 'investigado', 'contactado'].includes(lead.etapa);
+      await D.prepare('UPDATE leads SET etapa=?, notas=?, updated_at=? WHERE id=?')
+        .bind(pasa ? 'respondio' : lead.etapa, ((lead.notas || '') + '\n[Respuesta a la propuesta] ' + txt).trim(), now, lead.id).run();
+    }
+    ctx.waitUntil(sendMail(env, `${marca} respondió tu propuesta`, [
+      `${r.nombre} respondió la propuesta de ${marca}.`, '', `Contacto: ${r.contacto}`, '', 'Mensaje:', r.mensaje || '-', '',
+      'Ver en el CRM: https://porra.studio/admin'], /@/.test(r.contacto) ? r.contacto : undefined));
+    return json({ ok: true });
+  }
+  // vista
+  if (!esAdmin && !url.searchParams.has('preview')) {
+    const primera = !p.primera_vista;
+    await D.prepare('UPDATE propuestas SET vistas=vistas+1, primera_vista=COALESCE(primera_vista,?), ultima_vista=? WHERE id=?').bind(now, now, p.id).run();
+    if (primera) ctx.waitUntil(sendMail(env, `${marca} abrió tu propuesta`, [
+      `${marca} abrió por primera vez la propuesta (${now.slice(0, 16).replace('T', ' ')} UTC).`, '',
+      'Buen momento para un follow-up suave en las próximas 24 h.', '', `Propuesta: https://porra.studio/p/${p.slug}`, 'CRM: https://porra.studio/admin']));
+  }
+  const tpl = await (await env.ASSETS.fetch(new Request(new URL('/_crm/propuesta', url), request))).text();
+  let data = {}; try { data = JSON.parse(p.data || '{}'); } catch {}
+  data.marca = data.marca || marca;
+  const safe = JSON.stringify(data).replace(/</g, '\\u003c');
+  return new Response(tpl.replace('%%DATA%%', safe), { headers: htmlHeaders });
+}
+
+async function adminPropuestas(request, env, url) {
+  const D = await db(env);
+  const m = url.pathname.match(/^\/admin\/api\/propuestas(?:\/(\d+))?$/);
+  if (!m) return json({ error: 'no encontrado' }, 404);
+  const leadId = m[1];
+  if (request.method === 'GET' && !leadId) {
+    const { results } = await D.prepare('SELECT lead_id, slug, vistas, primera_vista, ultima_vista, respondida_at FROM propuestas').all();
+    return json({ propuestas: results });
+  }
+  if (!leadId) return json({ error: 'falta lead' }, 400);
+  if (request.method === 'GET') {
+    const p = await D.prepare('SELECT * FROM propuestas WHERE lead_id=?').bind(leadId).first();
+    return json({ propuesta: p || null });
+  }
+  if (request.method === 'PUT') {
+    const b = await request.json(); const now = new Date().toISOString();
+    const lead = await D.prepare('SELECT empresa, nombre FROM leads WHERE id=?').bind(leadId).first();
+    if (!lead) return json({ ok: false, error: 'lead inexistente' }, 404);
+    const data = JSON.stringify(b.data || {});
+    const ex = await D.prepare('SELECT slug FROM propuestas WHERE lead_id=?').bind(leadId).first();
+    if (ex) { await D.prepare('UPDATE propuestas SET data=?, updated_at=? WHERE lead_id=?').bind(data, now, leadId).run(); return json({ ok: true, slug: ex.slug }); }
+    const slug = slugify(lead.empresa || lead.nombre) + '-' + rnd(5);
+    await D.prepare('INSERT INTO propuestas (lead_id, slug, data, created_at, updated_at) VALUES (?,?,?,?,?)').bind(leadId, slug, data, now, now).run();
+    return json({ ok: true, slug });
+  }
+  if (request.method === 'DELETE') {
+    await D.prepare('DELETE FROM propuestas WHERE lead_id=?').bind(leadId).run();
+    return json({ ok: true });
+  }
+  return json({ error: 'método no permitido' }, 405);
+}
 
 async function notify(env, lead, id) {
   if (!env.AVISO) return;
@@ -184,10 +289,12 @@ export default {
           if (url.pathname.startsWith('/admin/api/')) return json({ ok: false, error: 'Sesión vencida' }, 401);
           return loginPage();
         }
+        if (url.pathname.startsWith('/admin/api/propuestas')) return await adminPropuestas(request, env, url);
         if (url.pathname.startsWith('/admin/api/')) return await adminApi(request, env, url);
         const page = await env.ASSETS.fetch(new Request(new URL('/_crm/admin', url), request));
         return new Response(page.body, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex' } });
       }
+      if (url.pathname.startsWith('/p/')) return await propuestaPublica(request, env, ctx, url);
       if (url.pathname.startsWith('/_crm/')) return new Response('No encontrado', { status: 404 });
     } catch (e) {
       return json({ ok: false, error: 'Error del servidor', detail: e.message }, 500);

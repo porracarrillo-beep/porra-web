@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Propuesta · PORRA</title>
+<meta name="theme-color" content="#0c0c0b">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Inter Tight";src:url(/assets/fonts/inter-tight-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:"Inter Tight";src:url(/assets/fonts/inter-tight-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:"Inter Tight";src:url(/assets/fonts/inter-tight-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:"Inter Tight";src:url(/assets/fonts/inter-tight-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap}
+:root{--bg:#0c0c0b;--fg:#f3f3ef;--mut:#8f8f89;--line:#272725;--card:#151514;--acc:#00d9ff;--pad:clamp(20px,5vw,72px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:500}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px max(var(--pad),calc((100vw - 1180px)/2 + var(--pad)));border-bottom:1px solid var(--line)}
+header img{height:24px}
+header .lbl{text-align:right}
+.hero{padding:clamp(56px,10vw,130px) 0 clamp(48px,8vw,96px)}
+.hero .lbl{margin-bottom:22px}
+.hero h1{font-size:clamp(38px,6.4vw,92px);font-weight:600;letter-spacing:-.025em;line-height:.98;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{font-size:clamp(18px,1.6vw,22px);color:#cfcfca;max-width:56ch;margin-top:28px}
+.by{display:flex;gap:14px;align-items:center;margin-top:40px;font-size:14px;color:var(--mut)}
+.by b{color:var(--fg);font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none}
+section{padding:clamp(56px,8vw,110px) 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,3.6vw,48px);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:14px 0 clamp(28px,4vw,48px);max-width:22ch}
+.cols{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(28px,5vw,80px)}
+.list{list-style:none}
+.list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:12px}
+.list li::before{content:"✓";color:var(--acc);font-weight:600}
+.opp{display:grid;gap:14px}
+.opp .o{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.opp .n{font-size:14px;color:var(--acc);font-weight:600;grid-row:span 2;padding-top:3px}
+.opp h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.opp p{color:#bdbdb7;font-size:16px}
+.idea p.lead{font-size:clamp(19px,1.8vw,24px);color:#dcdcd6;max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;color:#d6d6d0}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:40px}
+.gal figure{aspect-ratio:4/5;overflow:hidden;border-radius:10px;background:#1a1a19}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal figcaption{display:none}
+.note{font-size:13px;color:var(--mut);margin-top:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.steps div{border-top:2px solid var(--fg);padding-top:18px}
+.steps div::before{counter-increment:s;content:"0" counter(s);display:block;font-size:13px;color:var(--acc);font-weight:600;margin-bottom:12px}
+.steps h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.steps p{font-size:15px;color:#bdbdb7}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.plan.hi{border-color:var(--acc)}
+.plan .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:10px}
+.plan h3{font-size:24px;font-weight:600;letter-spacing:-.015em}
+.plan .para{color:var(--mut);font-size:15px;margin:6px 0 18px}
+.plan ul{list-style:none;flex:1}
+.plan li{padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.plan .precio{margin-top:20px;font-size:22px;font-weight:600}
+.plan .precio small{font-size:13px;color:var(--mut);font-weight:400;display:block}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cases a{text-decoration:none}
+.cases figure{aspect-ratio:1/1;overflow:hidden;border-radius:12px;background:#1a1a19}
+.cases img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cases a:hover img{transform:scale(1.04)}
+.cases b{display:block;margin-top:10px;font-weight:500}
+.cases span{font-size:13px;color:var(--mut)}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,80px);align-items:start}
+.about p{color:#cfcfca;margin-bottom:16px;max-width:58ch}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stats div{border-top:1px solid var(--line);padding-top:14px}
+.stats b{display:block;font-size:30px;font-weight:600;letter-spacing:-.02em}
+.stats span{font-size:14px;color:var(--mut)}
+.cta{text-align:left}
+.cta h2{max-width:18ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:15px 24px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid var(--fg);cursor:pointer;font-family:inherit;background:none;color:var(--fg)}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#001318}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px}
+form .full{grid-column:1/-1}
+input,textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;color:var(--fg);font:inherit;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--acc)}
+.hp{position:absolute;left:-9999px}
+#msg{font-size:15px;margin-top:6px}
+footer{padding:36px max(var(--pad),calc((100vw - 1180px)/2 + var(--pad))) 48px;border-top:1px solid var(--line);color:var(--mut);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--fg)}
+@media(max-width:820px){.cols,.about{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.cases{grid-template-columns:1fr 1fr}form{grid-template-columns:1fr}.gal{grid-template-columns:repeat(3,1fr)}.gal figure{aspect-ratio:3/4;border-radius:8px}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}body{font-size:16px}}
+</style></head>
+<body>
+<script id="data" type="application/json">%%DATA%%</script>
+<header><img src="/assets/logo-white.png" alt="PORRA"><div class="lbl" id="hd"></div></header>
+<main id="app"></main>
+<footer><div id="ft"></div><div><a href="https://porra.studio" target="_blank">www.porra.studio</a></div></footer>
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rich=s=>esc(s).replace(/\*(.+?)\*/g,'<em>$1</em>');
+document.title='Propuesta para '+D.marca+' · PORRA';
+document.getElementById('hd').innerHTML='Propuesta para '+esc(D.marca)+'<br>'+esc(D.fecha||'');
+const tel=(D.contacto&&D.contacto.whatsapp)||'5491164564030';
+const mail=(D.contacto&&D.contacto.email)||'josecarrillo@porra.studio';
+const wa='https://wa.me/'+tel+'?text='+encodeURIComponent('Hola José, vi la propuesta para '+D.marca+' y me gustaría charlarlo.');
+const S=[];
+S.push(`<div class="hero"><div class="wrap"><div class="lbl">${esc(D.kicker||('Propuesta · '+D.marca))}</div><h1>${rich(D.titular)}</h1><p>${esc(D.intro)}</p>
+<div class="by"><span class="dot"></span><span><b>José F. Carrillo</b> · AI Creative Director · PORRA</span></div></div></div>`);
+if(D.lo_que_vimos){const v=D.lo_que_vimos;S.push(`<section><div class="wrap"><div class="lbl">01 · Lo que vimos</div><h2>${esc(v.titulo||'Una marca querida, con más para mostrar.')}</h2>
+<div class="cols"><div><div class="lbl" style="margin-bottom:8px">Lo que ya funciona</div><ul class="list">${(v.fortalezas||[]).map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>
+<div><div class="lbl" style="margin-bottom:14px">Dónde hay más para ganar</div><div class="opp">${(v.oportunidades||[]).map((o,i)=>`<div class="o"><span class="n">0${i+1}</span><h3>${esc(o.titulo)}</h3><p>${esc(o.detalle)}</p></div>`).join('')}</div></div></div></div></section>`);}
+if(D.idea){const v=D.idea;S.push(`<section class="idea"><div class="wrap"><div class="lbl">02 · La idea</div><h2>${rich(v.titulo)}</h2><p class="lead">${esc(v.texto)}</p>
+${v.piezas?`<div class="chips">${v.piezas.map(p=>`<span>${esc(p)}</span>`).join('')}</div>`:''}
+${v.imagenes&&v.imagenes.length?`<div class="gal">${v.imagenes.map(im=>`<figure><img src="${esc(im.src||im)}" alt="${esc(im.alt||'')}" loading="lazy"></figure>`).join('')}</div><p class="note">${esc(v.nota_imagenes||'')}</p>`:''}</div></section>`);}
+const pasos=D.proceso||[
+{t:'Guía visual de la marca',d:'Definimos cómo se ve tu marca: luz, encuadre, paleta y tono. Es la regla que hace que todo parezca de la misma casa.'},
+{t:'Plan del mes',d:'Armamos el calendario de piezas según tus fechas, platos y promos. Vos aprobás antes de producir.'},
+{t:'Producción con IA + dirección',d:'Producimos con IA y cada pieza pasa por dirección creativa senior. Nada sale genérico ni con cara de banco de imágenes.'},
+{t:'Entrega lista para publicar',d:'Recibís las piezas en todos los formatos (feed, stories, reels, delivery) con copy sugerido.'}];
+S.push(`<section><div class="wrap"><div class="lbl">03 · Cómo trabajamos</div><h2>Calidad de agencia, a la velocidad de la IA.</h2><div class="steps">${pasos.map(p=>`<div><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p></div>`).join('')}</div></div></section>`);
+if(D.planes&&D.planes.length){S.push(`<section><div class="wrap"><div class="lbl">04 · La propuesta</div><h2>${esc(D.planes_titulo||'Empezamos con un piloto y seguimos con un fee mensual.')}</h2>
+<div class="plans">${D.planes.map(p=>`<div class="plan ${p.destacado?'hi':''}">${p.tag?`<div class="tag">${esc(p.tag)}</div>`:''}<h3>${esc(p.nombre)}</h3><div class="para">${esc(p.para||'')}</div><ul>${(p.items||[]).map(i=>`<li>${esc(i)}</li>`).join('')}</ul>
+<div class="precio">${p.precio?esc(p.precio):'Plan a medida'}<small>${esc(p.precio_nota||(p.precio?'':'Consultá y lo armamos según tu volumen.'))}</small></div></div>`).join('')}</div>
+${D.planes_nota?`<p class="note" style="margin-top:20px">${esc(D.planes_nota)}</p>`:''}</div></section>`);}
+const casos=D.casos||[];
+if(casos.length)S.push(`<section><div class="wrap"><div class="lbl">05 · Trabajo reciente</div><h2>Algunas marcas con las que trabajamos.</h2><div class="cases">${casos.map(c=>`<a href="${esc(c.link||'https://porra.studio')}" target="_blank"><figure><img src="${esc(c.img)}" alt="${esc(c.titulo)}" loading="lazy"></figure><b>${esc(c.titulo)}</b><span>${esc(c.cat||'')}</span></a>`).join('')}</div>
+<p class="note" style="margin-top:22px">Portfolio completo en <a href="https://porra.studio" target="_blank">porra.studio</a></p></div></section>`);
+S.push(`<section><div class="wrap about"><div><div class="lbl">06 · Quién está detrás</div><h2>Dirección creativa senior, no un generador de imágenes.</h2>
+<p>${esc(D.bio||'Soy José F. Carrillo, director creativo y de arte con más de 25 años en agencias como Ogilvy, Geometry y Hogarth-WPP. Hoy dirijo PORRA, un estudio que produce imagen y video con IA para marcas de gastronomía, consumo y real estate en Argentina, México y Estados Unidos.')}</p>
+<p>${esc(D.bio2||'La IA es la herramienta. Lo que hace la diferencia es el criterio: saber qué mostrar, cómo y para qué, en cada pieza.')}</p></div>
+<div class="stats"><div><b>25+</b><span>años en agencias multinacionales</span></div><div><b>3</b><span>países con marcas en el portfolio</span></div><div><b>ES / EN</b><span>equipo bilingüe</span></div><div><b>1</b><span>interlocutor, de la idea a la entrega</span></div></div></div></section>`);
+S.push(`<section class="cta" id="charlemos"><div class="wrap"><div class="lbl">Próximo paso</div><h2>${esc(D.cta_titulo||'¿Lo charlamos 15 minutos?')}</h2>
+<div class="btns"><a class="btn p" href="${wa}" target="_blank" data-ev="whatsapp">Escribime por WhatsApp</a><a class="btn" href="mailto:${esc(mail)}?subject=${encodeURIComponent('Propuesta '+D.marca)}" data-ev="mail">Mandame un mail</a></div>
+<form id="f"><input name="nombre" placeholder="Tu nombre" required><input name="contacto" placeholder="WhatsApp o mail" required>
+<textarea class="full" name="mensaje" placeholder="¿Qué te pareció? ¿Cuándo te queda bien charlar?"></textarea><input class="hp" name="web" tabindex="-1" autocomplete="off">
+<div class="full"><button class="btn p" type="submit">Enviar respuesta →</button><div id="msg"></div></div></form></div></section>`);
+document.getElementById('app').innerHTML=S.join('');
+document.getElementById('ft').textContent=D.pie||'Propuesta preparada para '+D.marca+'. Válida por 30 días. No incluye pauta en medios, producción física, talentos ni licencias de música.';
+const slug=location.pathname.split('/')[2];
+document.querySelectorAll('[data-ev]').forEach(a=>a.addEventListener('click',()=>{try{navigator.sendBeacon('/p/'+slug+'/ev',JSON.stringify({ev:a.dataset.ev}))}catch(e){}}));
+document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();const fd=Object.fromEntries(new FormData(e.target));const m=document.getElementById('msg');m.textContent='Enviando…';
+  try{const r=await fetch('/p/'+slug+'/respuesta',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(fd)});const j=await r.json();
+    if(j.ok){e.target.querySelectorAll('input,textarea,button').forEach(x=>x.disabled=true);m.style.color='var(--acc)';m.textContent='¡Gracias! Te escribo hoy mismo.';}else{m.textContent=j.error||'No se pudo enviar. Escribime por WhatsApp.';}}
+  catch(_){m.textContent='No se pudo enviar. Escribime por WhatsApp.';}});
+</script></body></html>

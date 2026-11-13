@@ -54,14 +54,14 @@ input.f,select.f,textarea.f{width:100%;font:inherit;border:1px solid var(--line)
 <script>
 const ET={nuevo:'Nuevo (web)',identificado:'Identificado',investigado:'Investigado',contactado:'Contactado',respondio:'Respondió',reunion:'Reunión',propuesta:'Propuesta',ganado:'Ganado',perdido:'Perdido'};
 const COLS={todos:Object.keys(ET),web:['nuevo','contactado','respondio','reunion','propuesta','ganado','perdido'],prospeccion:['identificado','investigado','contactado','respondio','reunion','propuesta','ganado','perdido']};
-let LEADS=[],ETAPAS=Object.keys(ET),FILTRO='todos';
+let LEADS=[],ETAPAS=Object.keys(ET),FILTRO='todos',PROPS={};
 const $=s=>document.querySelector(s), esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const usd=n=>'USD '+Math.round(n||0).toLocaleString('es-AR');
 const today=()=>new Date().toISOString().slice(0,10);
 const fuente=l=>l.fuente||(l.origen==='manual'?'manual':'web');
 const abierto=l=>!['ganado','perdido'].includes(l.etapa);
 async function api(path,opt={}){const r=await fetch('/admin/api/leads'+path,{...opt,headers:{'content-type':'application/json'}});if(r.status===401){location.href='/admin';throw new Error('sesión');}if(!r.ok)throw new Error(await r.text());return r.json();}
-async function load(){const d=await api('');LEADS=d.leads;ETAPAS=d.etapas;render();}
+async function load(){const [d,pp]=await Promise.all([api(''),fetch('/admin/api/propuestas').then(r=>r.ok?r.json():{propuestas:[]}).catch(()=>({propuestas:[]}))]);LEADS=d.leads;ETAPAS=d.etapas;PROPS={};(pp.propuestas||[]).forEach(p=>PROPS[p.lead_id]=p);render();}
 function render(){
   const q=$('#q').value.toLowerCase().trim();
   const L=LEADS.filter(l=>(FILTRO==='todos'||fuente(l)===FILTRO||(FILTRO==='web'&&fuente(l)==='manual'))&&(!q||[l.nombre,l.empresa,l.email,l.tipo,l.notas,l.zona,l.rubro,l.instagram].join(' ').toLowerCase().includes(q)));
@@ -83,7 +83,7 @@ function card(l){const due=l.fecha_seguimiento&&l.fecha_seguimiento<=today()&&ab
   const t2=pr?[l.nombre&&(l.nombre+(l.cargo?' · '+l.cargo:'')),l.zona].filter(Boolean).join(' — '):(l.empresa||l.email);
   return `<div class="lead" draggable="true" data-id="${l.id}"><b>${esc(t1)}</b><div class="s">${esc(t2)}</div>
   <span class="tag ${pr?'pr':'wb'}">${pr?'Prospección':(fuente(l)==='manual'?'Manual':'Web')}</span>
-  ${l.score?`<span class="tag sc">★ ${l.score}</span>`:''}${l.no_contactar?'<span class="tag nc">No contactar</span>':''}
+  ${l.score?`<span class="tag sc">★ ${l.score}</span>`:''}${PROPS[l.id]?`<span class="tag ${PROPS[l.id].respondida_at?'wb':PROPS[l.id].vistas?'pr':''}">${PROPS[l.id].respondida_at?'Respondió la propuesta':PROPS[l.id].vistas?'Vio la propuesta ×'+PROPS[l.id].vistas:'Propuesta lista'}</span>`:''}${l.no_contactar?'<span class="tag nc">No contactar</span>':''}
   ${!pr&&l.tipo?`<span class="tag">${esc(l.tipo)}</span>`:''}${pr&&l.rubro?`<span class="tag">${esc(l.rubro)}</span>`:''}
   <div class="m"><span>${l.valor_usd?usd(l.valor_usd):''}</span><span class="${due?'due':'s'}">${l.fecha_seguimiento?('↻ '+l.fecha_seguimiento):(l.created_at||'').slice(0,10)}</span></div></div>`;}
 const F=(k,lab,l,opt={})=>`<div><label>${lab}</label>${opt.sel?`<select class="f" id="f_${k}">${opt.sel.map(o=>`<option value="${o[0]}" ${String(l[k]??'')===String(o[0])?'selected':''}>${o[1]}</option>`).join('')}</select>`:`<input class="f" id="f_${k}" ${opt.type?`type="${opt.type}"`:''} value="${esc(l[k])}" ${opt.ph?`placeholder="${opt.ph}"`:''}>`}</div>`;
@@ -109,6 +109,7 @@ function open(id){const l=id?LEADS.find(x=>x.id===id):{etapa:FILTRO==='prospecci
   <label>Fuente del decisor</label><input class="f" id="f_decisor_fuente" value="${esc(l.decisor_fuente)}" placeholder="Link de donde sale el nombre">
   <div class="two">${F('tipo','Tipo de proyecto',l)}${F('presupuesto','Presupuesto indicado',l)}</div>
   <label>Notas</label><textarea class="f" id="f_notas">${esc(l.notas)}</textarea>
+  ${!nuevo?'<div class="sub">Propuesta personalizada</div><div id="propBox" class="s" style="margin-top:10px">Cargando…</div>':''}
   <label style="display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink)"><input type="checkbox" id="f_no_contactar" ${l.no_contactar?'checked':''}> No contactar (pidió la baja)</label>
   <div class="row"><button class="btn dk" id="save">Guardar</button>
   ${!nuevo&&l.email&&!l.no_contactar?`<a class="btn" href="mailto:${esc(l.email)}?subject=${encodeURIComponent('Porra · '+(l.tipo||l.empresa||'tu proyecto'))}">Mail</a>`:''}
@@ -118,6 +119,12 @@ function open(id){const l=id?LEADS.find(x=>x.id===id):{etapa:FILTRO==='prospecci
   ${!nuevo?'<button class="btn del" id="del">Eliminar</button>':''}</div>`;
   $('#panel').classList.add('on');$('#veil').classList.add('on');
   $('#x').onclick=close;
+  if(!nuevo)fetch('/admin/api/propuestas/'+id).then(r=>r.json()).then(({propuesta:p})=>{const b=$('#propBox');if(!b)return;
+    if(!p){b.innerHTML='Todavía no hay propuesta para este prospecto. Pedile a Harvey que la arme.';return;}
+    const u='https://porra.studio/p/'+p.slug;const f=t=>t?t.slice(0,16).replace('T',' '):'—';
+    b.innerHTML=`<div class="msg" style="white-space:normal"><b style="font-weight:600">${esc(u)}</b><br>Vistas: ${p.vistas||0} · Primera: ${f(p.primera_vista)} · Última: ${f(p.ultima_vista)}${p.clics?'<br>Clics: '+esc(p.clics.trim().split('\n').map(x=>x.split(' ').pop()).join(', ')):''}${p.respuesta?'<br><br><b>Respuesta:</b> '+esc(p.respuesta):''}</div>
+    <div class="row" style="margin-top:10px"><a class="btn" target="_blank" href="${u}?preview">Ver propuesta</a><button class="btn" id="cp">Copiar link</button></div>`;
+    $('#cp').onclick=()=>{navigator.clipboard.writeText(u);$('#cp').textContent='¡Copiado!';};}).catch(()=>{});
   $('#save').onclick=async()=>{const b={};['nombre','empresa','fuente','cargo','email','estado_email','telefono','canal','etapa','valor_usd','proximo_paso','fecha_seguimiento','rubro','zona','web_url','instagram','score','ultimo_toque','senales','gatillo','decisor_fuente','tipo','presupuesto','notas'].forEach(k=>b[k]=$('#f_'+k).value);
     b.no_contactar=$('#f_no_contactar').checked;
     if(nuevo){if(!b.nombre&&!b.empresa)return alert('Falta la marca o el nombre');await api('',{method:'POST',body:JSON.stringify(b)});}
