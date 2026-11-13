@@ -1,6 +1,6 @@
 // Porra · Worker: sirve la web (public/) + mini CRM
 //   POST /api/lead            → guarda la consulta en D1 y avisa por mail
-//   /admin                    → panel privado (usuario: porra · clave: secreto ADMIN_PASSWORD)
+//   /admin                    → panel privado (login con el secreto ADMIN_PASSWORD, cookie 30 días)
 //   /admin/api/leads[/:id]    → API del panel (GET, PATCH, DELETE)
 import { EmailMessage } from 'cloudflare:email';
 
@@ -27,17 +27,47 @@ const json = (data, status = 200) => new Response(JSON.stringify(data), {
 
 const clip = (v, n = 2000) => (v == null ? '' : String(v)).trim().slice(0, n);
 
-function authorized(request, env) {
-  if (!env.ADMIN_PASSWORD) return false;
-  const h = request.headers.get('authorization') || '';
-  if (!h.startsWith('Basic ')) return false;
-  try {
-    const [user, pass] = atob(h.slice(6)).split(':');
-    return user === 'porra' && pass === env.ADMIN_PASSWORD;
-  } catch { return false; }
+// ── Acceso al panel: login propio con cookie firmada (HMAC con ADMIN_PASSWORD) ──
+const COOKIE = 'porra_crm';
+const enc8 = new TextEncoder();
+async function sign(env, msg) {
+  const key = await crypto.subtle.importKey('raw', enc8.encode('porra-crm:' + env.ADMIN_PASSWORD), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', key, enc8.encode(msg));
+  return btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/[+/=]/g, c => ({ '+': '-', '/': '_', '=': '' }[c]));
 }
-const askAuth = () => new Response('Acceso restringido', {
-  status: 401, headers: { 'www-authenticate': 'Basic realm="Porra CRM", charset="UTF-8"' } });
+function safeEq(a, b) { if (a.length !== b.length) return false; let r = 0; for (let i = 0; i < a.length; i++) r |= a.charCodeAt(i) ^ b.charCodeAt(i); return r === 0; }
+async function authorized(request, env) {
+  if (!env.ADMIN_PASSWORD) return false;
+  const c = (request.headers.get('cookie') || '').split(/;\s*/).find(x => x.startsWith(COOKIE + '='));
+  if (!c) return false;
+  const [exp, sig] = c.slice(COOKIE.length + 1).split('.');
+  if (!exp || !sig || Number(exp) < Date.now()) return false;
+  return safeEq(sig, await sign(env, exp));
+}
+const loginPage = (error = '', status = 200) => new Response(`<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Porra CRM · Ingresar</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f3f1ec;font:15px/1.4 Inter,system-ui,-apple-system,sans-serif;color:#111}
+form{width:min(340px,90vw);background:#fff;border-radius:14px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.06)}h1{font-size:18px;margin:0 0 4px}p{margin:0 0 22px;color:#777;font-size:13px}
+label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#888;margin-bottom:6px}input{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:8px;font:inherit;margin-bottom:16px}
+button{width:100%;padding:12px;border:0;border-radius:999px;background:#111;color:#fff;font:inherit;font-weight:600;cursor:pointer}.err{color:#c0392b;font-size:13px;margin:-6px 0 14px}</style></head>
+<body><form method="post" action="/admin/login"><h1>Porra CRM</h1><p>Panel privado de consultas</p>
+<label for="pw">Contraseña</label><input id="pw" name="password" type="password" autocomplete="current-password" autofocus required>
+${error ? `<div class="err">${error}</div>` : ''}<button type="submit">Ingresar</button></form></body></html>`,
+  { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex' } });
+
+async function login(request, env) {
+  if (!env.ADMIN_PASSWORD) return loginPage('Falta configurar la contraseña del panel en Cloudflare.', 503);
+  let pw = '';
+  try { pw = String((await request.formData()).get('password') || ''); } catch {}
+  if (!safeEq(await sign(env, 'pw:' + pw), await sign(env, 'pw:' + env.ADMIN_PASSWORD))) {
+    await new Promise(r => setTimeout(r, 800));
+    return loginPage('Contraseña incorrecta.', 401);
+  }
+  const exp = String(Date.now() + 30 * 864e5);
+  return new Response(null, { status: 303, headers: { location: '/admin', 'cache-control': 'no-store',
+    'set-cookie': `${COOKIE}=${exp}.${await sign(env, exp)}; Path=/admin; Max-Age=2592000; HttpOnly; Secure; SameSite=Strict` } });
+}
+const logout = () => new Response(null, { status: 303, headers: { location: '/admin',
+  'set-cookie': `${COOKIE}=; Path=/admin; Max-Age=0; HttpOnly; Secure; SameSite=Strict` } });
 
 async function notify(env, lead, id) {
   if (!env.AVISO) return;
@@ -129,7 +159,12 @@ export default {
         return await newLead(request, env, ctx);
       }
       if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
-        if (!authorized(request, env)) return askAuth();
+        if (url.pathname === '/admin/login' && request.method === 'POST') return await login(request, env);
+        if (url.pathname === '/admin/logout') return logout();
+        if (!(await authorized(request, env))) {
+          if (url.pathname.startsWith('/admin/api/')) return json({ ok: false, error: 'Sesión vencida' }, 401);
+          return loginPage();
+        }
         if (url.pathname.startsWith('/admin/api/')) return await adminApi(request, env, url);
         const page = await env.ASSETS.fetch(new Request(new URL('/_crm/admin', url), request));
         return new Response(page.body, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex' } });

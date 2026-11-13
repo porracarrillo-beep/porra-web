@@ -35,7 +35,7 @@ input.f,select.f,textarea.f{width:100%;font:inherit;border:1px solid var(--line)
 @media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.wrap,header{padding-left:16px;padding-right:16px}}
 </style></head><body>
 <header><div class="l"><img src="/assets/logo-white.png" alt="Porra"><h1>CRM</h1></div>
-<div style="display:flex;gap:8px"><button class="btn" id="csv">Exportar CSV</button><button class="btn dk" id="add">+ Nuevo lead</button></div></header>
+<div style="display:flex;gap:8px"><button class="btn" id="csv">Exportar CSV</button><button class="btn dk" id="add">+ Nuevo lead</button><a class="btn" href="/admin/logout" style="text-decoration:none">Salir</a></div></header>
 <div class="wrap">
   <div class="stats">
     <div class="stat"><b id="sTotal">–</b><span>Leads totales</span></div>
@@ -54,7 +54,7 @@ let LEADS=[],ETAPAS=Object.keys(ET);
 const $=s=>document.querySelector(s), esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const usd=n=>'USD '+Math.round(n||0).toLocaleString('es-AR');
 const today=()=>new Date().toISOString().slice(0,10);
-async function api(path,opt={}){const r=await fetch('/admin/api/leads'+path,{...opt,headers:{'content-type':'application/json'}});if(!r.ok)throw new Error(await r.text());return r.json();}
+async function api(path,opt={}){const r=await fetch('/admin/api/leads'+path,{...opt,headers:{'content-type':'application/json'}});if(r.status===401){location.href='/admin';throw new Error('sesión');}if(!r.ok)throw new Error(await r.text());return r.json();}
 async function load(){const d=await api('');LEADS=d.leads;ETAPAS=d.etapas;render();}
 function render(){
   const q=$('#q').value.toLowerCase().trim();
