@@ -16,6 +16,7 @@
     "natural-american-spirit",
     "camel-snus",
     "up-si-vale",
+    "roota",
     "totis",
     "pollito-go",
     "santos",
@@ -48,7 +49,8 @@
     "corona": "Corona · Pilar",
     "brahma": "Brahma",
     "prisma": "Prisma Medios de Pago",
-    "vuse-laser": "VUSE · Grabado láser"
+    "vuse-laser": "VUSE · Grabado láser",
+    "roota": "Roota"
   },
   "tarjetas_home": [
     {
@@ -236,6 +238,17 @@
       "posicion": "center",
       "tipo": "media",
       "pais": "EE.UU."
+    },
+    {
+      "titulo": "Roota",
+      "bajada": "Producto desde la etiqueta · Escenas hiperrealistas",
+      "categoria": "Caso · Imagen IA",
+      "filtro": "ia",
+      "proporcion": 0.8,
+      "imagen": "assets/cases/roota/09.jpg",
+      "posicion": "center 30%",
+      "caso": "roota",
+      "tipo": "media"
     },
     {
       "titulo": "Up Sí Vale",

@@ -425,3 +425,47 @@ CASES['vuse-laser'] = dict(light=False, acc='#9be15d', plates=[
  full(L+'cover.jpg','808/632','cover'),
  closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]),
 ])
+
+
+# ---------------------------------------------------------------- ROOTA
+R = 'assets/cases/roota/'
+def _r(n, w, h): return [R+n+'.jpg', w, h]
+def roota_hero():
+    return P('1400/880', f"""
+<div class="abs" style="background:#ece3d6"></div>
+<div class="abs" style="left:auto;right:0;width:46%;overflow:hidden"><img class="cover" src="{R}09.jpg" style="object-position:center 30%" alt=""></div>
+<img class="mark" src="assets/logo-white.png" alt="Porra" style="filter:invert(1)">
+<div class="tr lbl" style="color:#3a3a36;right:calc(46% + var(--u)*40)">Identidad · Packaging · Imagen con IA</div>
+<div class="bottom" style="color:#1d1d1b;right:auto;max-width:calc(var(--u)*640)">
+  <div class="lbl" style="color:#3a3a36;margin-bottom:calc(var(--u)*18)">Caso 19 · Roota</div>
+  <div class="h1" style="font-size:calc(var(--u)*104)">Roota</div>
+  <div class="h3" style="margin-top:calc(var(--u)*20);font-weight:400;color:#1d1d1b">Volver a la raíz · Suplementos</div>
+</div>""")
+
+def roota_videos():
+    return P('1400/660', f"""
+<div class="abs grid" style="grid-template-columns:0.75fr 1.52fr;gap:calc(var(--u)*22);padding:calc(var(--u)*72)">
+  <div style="overflow:hidden;min-height:0;border-radius:2px"><video class="cover" src="{R}v1.mp4" poster="{R}v1-poster.jpg" autoplay muted loop playsinline controls></video></div>
+  <div style="overflow:hidden;min-height:0;border-radius:2px"><video class="cover" src="{R}v2.mp4" poster="{R}v2-poster.jpg" autoplay muted loop playsinline controls></video></div>
+</div>""")
+
+CASES['roota'] = dict(light=True, acc='#3f7d4f', plates=[
+ roota_hero(),
+ statement('El proyecto', 'El producto real,<br>en escenas reales.',
+   'Identidad, packaging y campaña para Roota, una línea de suplementos. El trabajo con IA partió del envase: cada producto se genera a partir de su etiqueta y de la información del pack (nombre, variante, color, tabla nutricional) para que se vea exactamente como es, en cualquier escena. Sobre esa base, imágenes y videos hiperrealistas de situaciones cotidianas: entrenar, correr, la cocina de casa, el momento de tomarlo. Y una campaña, «Volver a la raíz», que ordena todo el sistema: Dormir mejor, Pensar mejor, Rendir mejor.',
+   'Identity, packaging and campaign for Roota supplements. AI imagery built from each label and pack information so every product stays true to the real thing, placed in hyper-realistic everyday scenes, plus the “Back to the root” campaign.',
+   [('Cliente','Roota'),('Rubro','Suplementos'),('Alcance','Identidad · Packaging · Campaña · Imagen y video con IA'),('Proceso','Producto generado desde etiqueta e info del envase'),('Rol / año',TBD)]),
+ P('1400/170', band('<b>01</b> · Identidad y packaging', 'Un sistema de color por variante y un símbolo que nace de la raíz.')),
+ *jrows([_r('03',1122,1402),_r('07',1792,2400),_r('08',1856,2304),_r('13',992,1280)]),
+ full(R+'10.jpg','2400/965','contain',pad=40),
+ P('1400/170', band('<b>02</b> · Situaciones hiperrealistas', 'Personas, luz y gestos reales, con el producto fiel a su etiqueta.')),
+ *jrows([_r('02',1024,1536),_r('09',1792,2400),_r('12',1856,2304)]),
+ *jrows([_r('04',2400,1579)]),
+ *jrows([_r('05',2400,1340)]),
+ P('1400/170', band('<b>03</b> · Video con IA', 'Avatar y piezas en movimiento para redes.')),
+ roota_videos(),
+ P('1400/170', band('<b>04</b> · Campaña «Volver a la raíz»', 'Del key visual al feed de redes.')),
+ *jrows([_r('01',1122,1402),_r('11',1856,2304)]),
+ *jrows([_r('06a',2400,2996),_r('06b',2400,2995)]),
+ closing([('Cliente','Roota'),('Dirección creativa y de arte','José Carrillo'),('Producción','Imagen y video con IA'),('Rol / año',TBD)]),
+])
