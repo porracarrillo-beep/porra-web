@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Firma de mail · Porra</title>
+<style>
+body{margin:0;background:#f3f3ef;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#111}
+.wrap{max-width:720px;margin:48px auto;padding:0 24px}
+h1{font-size:20px;font-weight:600;margin:0 0 6px}.how{font-size:14px;color:#555;line-height:1.55;margin:0 0 28px}
+.box{background:#fff;border-radius:10px;padding:32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#888;margin:0 0 14px}
+button{font:inherit;font-size:14px;background:#111;color:#fff;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;margin-top:18px}
+button.ok{background:#1a7f37}
+</style></head><body><div class="wrap">
+<h1>Firma de mail · Porra</h1>
+<p class="how">1. Tocá <b>Copiar firma</b> en la versión que prefieras.<br>2. En Gmail: <b>Configuración → Ver todos los ajustes → General → Firma → Crear</b>, nombrala “Porra” y pegá (Cmd + V).<br>3. Abajo, en <b>Configuración predeterminada de firma</b>, elegí “Porra” para <b>josecarrillo@porra.studio</b> en mensajes nuevos y respuestas. Guardá los cambios al pie de la página.</p>
+
+<div class="box"><p class="lbl">Versión completa</p>
+<div id="sig1">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Helvetica,Arial,sans-serif;color:#111111;border-collapse:collapse">
+<tr>
+<td style="vertical-align:middle;padding:0 18px 0 0;border-right:1px solid #dddddd"><a href="https://porra.studio" style="text-decoration:none"><img src="https://porra.studio/assets/logo-firma.png" width="76" alt="Porra" style="display:block;width:76px;height:auto;border:0"></a></td>
+<td style="vertical-align:middle;padding:0 0 0 18px">
+<div style="font-size:15px;font-weight:bold;line-height:20px;color:#111111">José Fernando Carrillo</div>
+<div style="font-size:13px;line-height:19px;color:#555555">Director creativo · Dirección creativa y producción con IA</div>
+<div style="font-size:13px;line-height:19px;color:#555555;padding-top:6px"><a href="https://porra.studio" style="color:#111111;text-decoration:none;font-weight:bold">porra.studio</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="mailto:josecarrillo@porra.studio" style="color:#555555;text-decoration:none">josecarrillo@porra.studio</a></div>
+<div style="font-size:12px;line-height:18px;color:#888888;padding-top:2px"><a href="https://www.instagram.com/porra_ia/" style="color:#888888;text-decoration:none">Instagram</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.behance.net/JoseCarrillo" style="color:#888888;text-decoration:none">Behance</a>&nbsp;&nbsp;·&nbsp;&nbsp;Buenos Aires</div>
+</td></tr></table>
+</div>
+<button data-copy="sig1">Copiar firma</button></div>
+
+<div class="box"><p class="lbl">Versión corta (para respuestas)</p>
+<div id="sig2">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Helvetica,Arial,sans-serif;color:#111111;border-collapse:collapse"><tr><td style="font-size:13px;line-height:19px;color:#555555"><b style="color:#111111">José Fernando Carrillo</b> · Director creativo IA · <a href="https://porra.studio" style="color:#111111;text-decoration:none;font-weight:bold">porra.studio</a></td></tr></table>
+</div>
+<button data-copy="sig2">Copiar firma</button></div>
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{
+  const el=document.getElementById(b.dataset.copy);
+  try{await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([el.innerHTML],{type:'text/html'}),'text/plain':new Blob([el.innerText],{type:'text/plain'})})]);}
+  catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');s.removeAllRanges();}
+  b.textContent='Copiada ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='Copiar firma';b.classList.remove('ok')},2200);
+});
+</script></body></html>
