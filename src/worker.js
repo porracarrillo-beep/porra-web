@@ -4,7 +4,12 @@
 //   /admin/api/leads[/:id]    → API del panel (GET, PATCH, DELETE)
 import { EmailMessage } from 'cloudflare:email';
 
-const ETAPAS = ['nuevo', 'contactado', 'reunion', 'propuesta', 'ganado', 'perdido'];
+const ETAPAS = ['nuevo', 'identificado', 'investigado', 'contactado', 'respondio', 'reunion', 'propuesta', 'ganado', 'perdido'];
+// Campos de prospección (Harvey). Se agregan solos a la tabla si faltan.
+const EXTRA = { fuente: 'TEXT', cargo: 'TEXT', decisor_fuente: 'TEXT', estado_email: 'TEXT', canal: 'TEXT', instagram: 'TEXT',
+  web_url: 'TEXT', zona: 'TEXT', rubro: 'TEXT', senales: 'TEXT', gatillo: 'TEXT', score: 'INTEGER', no_contactar: 'INTEGER', ultimo_toque: 'TEXT' };
+const TEXTOS = ['proximo_paso', 'fecha_seguimiento', 'notas', 'empresa', 'telefono', 'nombre', 'email', 'tipo', 'presupuesto', 'mensaje',
+  'fuente', 'cargo', 'decisor_fuente', 'estado_email', 'canal', 'instagram', 'web_url', 'zona', 'rubro', 'senales', 'gatillo', 'ultimo_toque'];
 
 const SCHEMA = `CREATE TABLE IF NOT EXISTS leads (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,7 +23,13 @@ const SCHEMA = `CREATE TABLE IF NOT EXISTS leads (
 
 let schemaReady = false;
 async function db(env) {
-  if (!schemaReady) { await env.DB.prepare(SCHEMA).run(); schemaReady = true; }
+  if (!schemaReady) {
+    await env.DB.prepare(SCHEMA).run();
+    const { results } = await env.DB.prepare('PRAGMA table_info(leads)').all();
+    const have = new Set(results.map(r => r.name));
+    for (const [k, t] of Object.entries(EXTRA)) if (!have.has(k)) await env.DB.prepare(`ALTER TABLE leads ADD COLUMN ${k} ${t}`).run();
+    schemaReady = true;
+  }
   return env.DB;
 }
 
@@ -103,13 +114,23 @@ async function newLead(request, env, ctx) {
   };
   if (!lead.nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return json({ ok: false, error: 'Completá nombre y un mail válido' }, 400);
   const now = new Date().toISOString();
-  const r = await (await db(env)).prepare(`INSERT INTO leads (created_at,nombre,email,empresa,telefono,tipo,presupuesto,mensaje,origen,pagina,casos_vistos,referrer,pais,idioma,etapa,updated_at)
-     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, 'nuevo', ?)`)
+  const r = await (await db(env)).prepare(`INSERT INTO leads (created_at,nombre,email,empresa,telefono,tipo,presupuesto,mensaje,origen,pagina,casos_vistos,referrer,pais,idioma,etapa,fuente,updated_at)
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, 'nuevo', 'web', ?)`)
     .bind(now, lead.nombre, lead.email, lead.empresa, lead.telefono, lead.tipo, lead.presupuesto, lead.mensaje,
           lead.origen, lead.pagina, lead.casos_vistos, lead.referrer, lead.pais, lead.idioma, now).run();
   const id = r.meta && r.meta.last_row_id;
   ctx.waitUntil(notify(env, lead, id));
   return json({ ok: true, id });
+}
+
+function cleanFields(b) {
+  const out = {};
+  for (const k of TEXTOS) if (k in b) out[k] = clip(b[k], k === 'notas' || k === 'mensaje' ? 4000 : 600);
+  if ('etapa' in b && ETAPAS.includes(b.etapa)) out.etapa = b.etapa;
+  if ('valor_usd' in b) out.valor_usd = b.valor_usd === '' || b.valor_usd == null ? null : Number(b.valor_usd);
+  if ('score' in b) out.score = b.score === '' || b.score == null ? null : Math.max(1, Math.min(5, Math.round(Number(b.score)) || 1));
+  if ('no_contactar' in b) out.no_contactar = b.no_contactar ? 1 : 0;
+  return out;
 }
 
 async function adminApi(request, env, url) {
@@ -123,12 +144,8 @@ async function adminApi(request, env, url) {
   }
   if (request.method === 'PATCH' && id) {
     const b = await request.json();
-    const allowed = ['etapa', 'valor_usd', 'proximo_paso', 'fecha_seguimiento', 'notas', 'empresa', 'telefono', 'nombre', 'email', 'tipo', 'presupuesto'];
     const sets = [], vals = [];
-    for (const k of allowed) if (k in b) {
-      if (k === 'etapa' && !ETAPAS.includes(b[k])) continue;
-      sets.push(`${k}=?`); vals.push(k === 'valor_usd' ? (b[k] === '' || b[k] == null ? null : Number(b[k])) : clip(b[k], 4000));
-    }
+    for (const [k, v] of Object.entries(cleanFields(b))) { sets.push(`${k}=?`); vals.push(v); }
     if (!sets.length) return json({ ok: false }, 400);
     sets.push('updated_at=?'); vals.push(new Date().toISOString());
     await D.prepare(`UPDATE leads SET ${sets.join(',')} WHERE id=?`).bind(...vals, id).run();
@@ -138,13 +155,15 @@ async function adminApi(request, env, url) {
     await D.prepare('DELETE FROM leads WHERE id=?').bind(id).run();
     return json({ ok: true });
   }
-  if (request.method === 'POST' && !id) {                    // alta manual desde el panel
+  if (request.method === 'POST' && !id) {                    // alta manual o de prospección (Harvey)
     const b = await request.json(); const now = new Date().toISOString();
-    const r = await D.prepare(`INSERT INTO leads (created_at,nombre,email,empresa,telefono,tipo,mensaje,origen,etapa,valor_usd,proximo_paso,fecha_seguimiento,notas,updated_at)
-       VALUES (?,?,?,?,?,?,?,'manual',?,?,?,?,?,?)`)
-      .bind(now, clip(b.nombre, 120), clip(b.email, 160), clip(b.empresa, 160), clip(b.telefono, 60), clip(b.tipo, 80), clip(b.mensaje, 4000),
-            ETAPAS.includes(b.etapa) ? b.etapa : 'nuevo', b.valor_usd ? Number(b.valor_usd) : null, clip(b.proximo_paso, 300),
-            clip(b.fecha_seguimiento, 20), clip(b.notas, 4000), now).run();
+    const f = cleanFields(b);
+    if (!f.nombre && !f.empresa) return json({ ok: false, error: 'Falta nombre o empresa' }, 400);
+    if (!f.fuente) f.fuente = 'manual';
+    if (!f.etapa) f.etapa = f.fuente === 'prospeccion' ? 'identificado' : 'nuevo';
+    f.origen = f.fuente; f.created_at = now; f.updated_at = now;
+    const keys = Object.keys(f);
+    const r = await D.prepare(`INSERT INTO leads (${keys.join(',')}) VALUES (${keys.map(() => '?').join(',')})`).bind(...keys.map(k => f[k])).run();
     return json({ ok: true, id: r.meta && r.meta.last_row_id });
   }
   return json({ error: 'método no permitido' }, 405);
