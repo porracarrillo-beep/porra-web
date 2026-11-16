@@ -58,7 +58,7 @@ def closing(credits, results=None):
   <div><div class="lbl" style="margin-bottom:calc(var(--u)*28)">Créditos</div>{ficha(credits)}</div>
 </div>
 <img class="ft" src="assets/logo-white.png" alt="Porra" style="position:absolute;left:calc(var(--u)*72);bottom:calc(var(--u)*48);width:calc(var(--u)*96);height:auto;filter:var(--logo-filter,none)">
-<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">hola@porra.studio · behance.net/JoseCarrillo</div>''')
+<div class="small ft" style="position:absolute;right:calc(var(--u)*72);bottom:calc(var(--u)*52)">hola@porra.studio · porra.studio</div>''')
 
 # ---------------------------------------------------------------- LOLLAPALOOZA
 L = 'assets/lolla/'
@@ -130,7 +130,7 @@ lolla = [
 <div class="grid" style="grid-template-columns:1.55fr 1fr;gap:calc(var(--u)*12);padding:0 calc(var(--u)*64) calc(var(--u)*90);height:calc(100% - var(--u)*210)">
  <div style="overflow:hidden"><img class="cover" src="{L}r13.jpg" style="object-position:center 30%" alt=""></div><div style="overflow:hidden"><img class="cover" src="{L}real.jpg" alt=""></div></div>
 <div class="lbl" style="position:absolute;left:calc(var(--u)*64);bottom:calc(var(--u)*44)">Render · stand en Lollapalooza Argentina 2023</div>'''),
- closing([('Cliente','Coca-Cola'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
+ closing([('Cliente','Coca-Cola'),('Agencia','Catch'),('Dirección creativa y de arte','Porra'),('Diseño y producción del stand','Liebre Studio'),('Año','2023')],
          [('330 mil','personas en los tres días del festival'),('110 mil','personas por jornada'),('+1 millón','siguieron los shows en vivo por Flow')]),
 ]
 
@@ -155,7 +155,7 @@ vuse = [
  P('1400/170', band('<b>03</b> · Punto de venta', 'Del pack al backbar.')),
  row([V+'01.jpg',V+'08.jpg'],'1400/700',fit='contain',pad=40,gap=20),
  full(V+'09.jpg','1400/560','contain',pad=40),
- closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
+ closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra')]),
 ]
 N = 'assets/nas/'
 nas = [
@@ -168,7 +168,7 @@ nas = [
  row([N+'02.jpg',N+'04.jpg'],'1400/420',fit='contain',pad=40,gap=20),
  row([N+'05.jpg',N+'06.jpg'],'1400/760',fit='contain',pad=40,gap=20),
  row([N+'07.jpg',N+'08.jpg'],'1400/760',fit='contain',pad=40,gap=20,cols='0.7fr 1.3fr'),
- closing([('Cliente','Natural American Spirit'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
+ closing([('Cliente','Natural American Spirit'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra')]),
 ]
 K = 'assets/camel/'
 camel = [
@@ -179,7 +179,7 @@ camel = [
    [('Cliente','Camel SNUS'),('País','Estados Unidos'),('Alcance','Sistema gráfico · Piezas de campaña'),('Año','2022'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  row([K+'01.jpg',K+'02.jpg'],'1400/880',fit='contain',pad=40,gap=20),
  row([K+'03.jpg',K+'04.jpg',K+'05.jpg'],'1400/600',fit='contain',pad=40,gap=20),
- closing([('Cliente','Camel SNUS'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
+ closing([('Cliente','Camel SNUS'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra')]),
 ]
 LN = 'assets/lanacion/'
 lanacion = [
@@ -192,7 +192,7 @@ lanacion = [
  row([LN+'p-3.jpg',LN+'p-4.jpg'],'1400/400',pad=40,gap=20),
  row([LN+'p-5.jpg',LN+'p-6.jpg'],'1400/400',pad=40,gap=20),
  row([LN+'p-8.jpg',LN+'p-9.jpg'],'1400/400',pad=40,gap=20),
- closing([('Cliente','La Nación'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo')]),
+ closing([('Cliente','La Nación'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra')]),
 ]
 
 CASES = {
@@ -249,7 +249,7 @@ def ia_case(cid, num, kicker, title, sub, label, head, es, en, rows, credits=Non
             plates += jrows(imgs[a:b])
     else:
         plates += jrows(imgs[1:])
-    plates.append(closing(credits or [('Estudio', 'Porra IA · Buenos Aires'), ('Dirección creativa', 'José Carrillo'), ('Producción', 'Imagen con IA bajo dirección de arte'), ('Rol / agencia', TBD)]))
+    plates.append(closing(credits or [('Estudio', 'Porra IA · Buenos Aires'), ('Dirección creativa', 'Porra'), ('Producción', 'Imagen con IA bajo dirección de arte'), ('Rol / agencia', TBD)]))
     return plates
 
 # Los textos de los casos IA viven en content/casos-ia.json (editable sin tocar código)
@@ -295,7 +295,7 @@ OXXO = [oxxo_hero(),
   P('1400/170', band('<b>02</b> · Llévatela Chilloxxo', 'Con Coca-Cola Sin Azúcar: el premio son dos Dolphin Mini.')),
   full('assets/cases/oxxo/OXXO_03.jpg', ratio='2400/1264', fit='contain'),
   full('assets/cases/oxxo/OXXO_04.jpg', ratio='2400/1264', fit='contain'),
-  closing([('Cliente','Coca-Cola México'),('Retail','OXXO'),('Agencia','Morfina'),('Dirección de arte','José Carrillo'),('Año','2023')])]
+  closing([('Cliente','Coca-Cola México'),('Retail','OXXO'),('Agencia','Morfina'),('Dirección de arte','Porra'),('Año','2023')])]
 CASES['oxxo'] = dict(light=True, acc='#e4002b', plates=OXXO)
 
 def conexo_hero():
@@ -317,7 +317,7 @@ CONEXO = [conexo_hero(),
    [('Cliente','Conexo Finance'),('País','Argentina'),('Rubro','Fintech · Préstamos'),('Alcance','Identidad · Campaña · Piezas digitales y POP'),('Concepto','“Simple”'),('Rol','Dirección creativa y de arte'),('Año','2022 · Cliente directo')]),
   full('assets/cases/conexo/CONEXO_02.jpg', ratio='2088/1694', fit='contain'),
   full('assets/cases/conexo/CONEXO_03.jpg', ratio='2088/1694', fit='contain'),
-  closing([('Cliente','Conexo Finance · cliente directo'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')])]
+  closing([('Cliente','Conexo Finance · cliente directo'),('Dirección creativa y de arte','Porra'),('Año','2022')])]
 CASES['conexo'] = dict(light=True, acc='#0098b8', plates=CONEXO)
 
 
@@ -351,7 +351,7 @@ def brand_case(cid, num, kicker, title, sub, label, head, es, en, rows, sections
     for lab, txt, nums in sections:
         plates.append(P('1400/170', band(lab, txt)))
         plates += jrows(_dims(cid, nums))
-    plates.append(closing(credits or [('Cliente', kicker), ('Dirección creativa / arte', 'José Carrillo'), ('Rol / agencia / año', TBD)]))
+    plates.append(closing(credits or [('Cliente', kicker), ('Dirección creativa / arte', 'Porra'), ('Rol / agencia / año', TBD)]))
     return plates
 
 CASES['volkswagen'] = dict(light=False, acc='#4fb3ff', plates=brand_case('volkswagen', '14', 'Volkswagen', 'Volkswagen<br>Amarok', 'Fotografía y campaña', 'Automotriz · Campaña',
@@ -362,7 +362,7 @@ CASES['volkswagen'] = dict(light=False, acc='#4fb3ff', plates=brand_case('volksw
    [('<b>01</b> · Amarok en el Abierto de Polo', 'Caballerizas, fardos y atardecer: la pick-up en un mundo premium.', [7,3,4,9,14]),
     ('<b>02</b> · Fotografía Amarok', 'Barro, monte y campo abierto.', [13,16,6,8,11,5,15,12]),
     ('<b>03</b> · Más Volkswagen', 'Camiones Delivery y la plataforma VMove.', [1,2])],
-   hero_n=7, hero_pos='center 60%', credits=[('Cliente','Volkswagen Argentina'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]))
+   hero_n=7, hero_pos='center 60%', credits=[('Cliente','Volkswagen Argentina'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra'),('Año','2022')]))
 
 CASES['corona'] = dict(light=False, acc='#f2c14e', plates=brand_case('corona', '15', 'Corona', 'Corona', 'Espacios de marca · Pilar', 'Experiencia · Espacios',
    'Llevar la playa<br>a Pilar.',
@@ -371,7 +371,7 @@ CASES['corona'] = dict(light=False, acc='#f2c14e', plates=brand_case('corona', '
    [('Cliente','Corona'),('País','Argentina'),('Lugares','Sharewood Pilar · Molino Resto'),('Alcance','Diseño de espacios · Ambientación · Señalética'),('Rol','Dirección creativa y de arte'),('Agencia / año','Catch · 2023')],
    [('<b>01</b> · Sharewood Pilar', 'Arena, livings y barra al aire libre.', [1,2,3,10]),
     ('<b>02</b> · Molino Resto', 'El bar Corona: madera, luces y mesas largas.', [8,4,5,7,6,9])],
-   hero_n=4, hero_pos='center 45%', credits=[('Cliente','Corona'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Año','2023')]))
+   hero_n=4, hero_pos='center 45%', credits=[('Cliente','Corona'),('Agencia','Catch'),('Dirección creativa y de arte','Porra'),('Año','2023')]))
 
 CASES['brahma'] = dict(light=False, acc='#e30613', plates=brand_case('brahma', '16', 'Brahma', 'Brahma', 'Experiencias de marca', 'Experiencia · BTL',
    'Rojo neón<br>y birra.',
@@ -380,7 +380,7 @@ CASES['brahma'] = dict(light=False, acc='#e30613', plates=brand_case('brahma', '
    [('Cliente','Brahma'),('País','Argentina'),('Lugares','Experiencias nocturnas · Ciudad Cultural Konex'),('Alcance','Diseño de espacios · Gráfica · BTL'),('Rol','Dirección creativa y de arte'),('Agencia / año','Catch · 2023')],
    [('<b>01</b> · De noche', 'El rojo Brahma hecho luz: neón, música en vivo y barra.', [4,3,1,6,2,5]),
     ('<b>02</b> · Brahma en Konex', 'Mural tipográfico, chopp y Brahma Lime.', [11,12,7,8,10,9,13])],
-   hero_n=4, hero_pos='center 40%', credits=[('Cliente','Brahma'),('Agencia','Catch'),('Dirección creativa y de arte','José Carrillo'),('Año','2023')]))
+   hero_n=4, hero_pos='center 40%', credits=[('Cliente','Brahma'),('Agencia','Catch'),('Dirección creativa y de arte','Porra'),('Año','2023')]))
 
 def prisma_hero():
     return P('1400/880', f"""
@@ -408,7 +408,7 @@ def _prisma():
                                           ('Bamboo', 'Verde, orgánico y flexible: crecer rápido.', 7, 8)], 1):
         plates.append(P('1400/170', band(f'<b>{i:02d}</b> · {name}', txt)))
         plates += jrows(_dims('prisma', [a, b]), target=3.4)
-    plates.append(closing([('Cliente','Prisma Medios de Pago'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]))
+    plates.append(closing([('Cliente','Prisma Medios de Pago'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra'),('Año','2022')]))
     return plates
 CASES['prisma'] = dict(light=False, acc='#4f8cff', plates=_prisma())
 
@@ -423,7 +423,7 @@ CASES['vuse-laser'] = dict(light=False, acc='#9be15d', plates=[
    [('Cliente','VUSE'),('País','Estados Unidos'),('Alcance','Ilustración · Diseño de producto · Identidad'),('Herramientas','Illustrator · Photoshop'),('Año','2022'),('Rol','Dirección creativa y de arte'),('Agencia','Hogarth')]),
  full(L+'02.jpg','1400/879','cover'),
  full(L+'cover.jpg','808/632','cover'),
- closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','José Carrillo'),('Año','2022')]),
+ closing([('Cliente','VUSE'),('Agencia','Hogarth'),('Dirección creativa y de arte','Porra'),('Año','2022')]),
 ])
 
 
@@ -467,5 +467,5 @@ CASES['roota'] = dict(light=True, acc='#3f7d4f', plates=[
  P('1400/170', band('<b>04</b> · Campaña «Volver a la raíz»', 'Del key visual al feed de redes.')),
  *jrows([_r('01',1122,1402),_r('11',1856,2304)]),
  *jrows([_r('06a',2400,2996),_r('06b',2400,2995)]),
- closing([('Cliente','Roota · cliente directo'),('Dirección creativa y de arte','José Carrillo'),('Producción','Imagen y video con IA'),('Año','2026')]),
+ closing([('Cliente','Roota · cliente directo'),('Dirección creativa y de arte','Porra'),('Producción','Imagen y video con IA'),('Año','2026')]),
 ])
