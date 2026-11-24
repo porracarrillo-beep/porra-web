@@ -131,7 +131,8 @@
       "imagen": "assets/cases/miami-restaurants/cover.jpg",
       "tipo": "media",
       "pais": "EE.UU.",
-      "posicion": "center"
+      "posicion": "center",
+      "descripcion": "Contenido semanal para restaurantes de Miami: platos, salones, brunch, delivery, noches y fechas especiales. Dirección creativa, dirección de arte e imagen con IA, con una regla visual distinta para cada marca."
     },
     {
       "titulo": "La Nación · LN Campo",
@@ -325,7 +326,8 @@
       "imagen": "assets/cases/real-estate/cover-sunset.jpg",
       "tipo": "media",
       "pais": "Argentina",
-      "posicion": "center"
+      "posicion": "center",
+      "descripcion": "Una desarrolladora necesita vender antes de tener obra, y para eso necesita imagen. Branding de proyectos, dirección creativa e imagen con IA para la preventa y comercialización de desarrollos residenciales."
     },
     {
       "titulo": "ENA",
@@ -336,7 +338,8 @@
       "caso": "ena",
       "imagen": "assets/cases/ena/ena-cover.jpg",
       "tipo": "media",
-      "pais": "Argentina"
+      "pais": "Argentina",
+      "descripcion": "Un barrio que todavía no existe necesitaba una marca propia y una vida para mostrar. Branding del proyecto, dirección creativa e imagen con IA para la preventa de un desarrollo residencial."
     },
     {
       "titulo": "Conexo Finance",

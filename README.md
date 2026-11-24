@@ -19,8 +19,22 @@ porra-web/
     ├── build.py         arma public/index.html a partir de content/
     ├── cases.py         casos de marca (Lollapalooza, VUSE, NAS, Camel, La Nación, OXXO) y placas
     ├── plantilla.html   estructura y estilos de la página
-    └── plates.css       estilos de las placas (sirven también para Behance)
+    ├── plates.css       estilos de las placas (sirven también para Behance)
+    ├── paginas.py       SEO: página propia por caso, schema, sitemap y llms.txt
+    └── optimizar_imagenes.py   crea las versiones .webp livianas de las fotos
 ```
+
+`public/trabajos/`, `public/sitemap.xml` y `public/llms.txt` también se generan solos con cada build: no los edites a mano.
+
+---
+
+## SEO (noviembre 2026)
+
+- **Una página por caso** en `porra.studio/trabajos/<caso>` (por ejemplo `/trabajos/corona`), con su título, descripción y schema. Salen de los mismos textos de `content/`; un caso nuevo en `orden_de_casos` suma su página y su entrada en el sitemap automáticamente. En el home, las tarjetas siguen abriendo la ventana del caso.
+- Los casos que solo tienen placas de imagen (ENA, Real Estate, Miami Restaurants) toman su texto del campo `descripcion` de su tarjeta en `home.json`.
+- **404 real:** las direcciones que no existen muestran `public/404.html` con código 404 (`wrangler.jsonc` → `not_found_handling: "404-page"`).
+- **Imágenes nuevas:** después de sumarlas, correr `python3 src/optimizar_imagenes.py` (necesita Pillow). Crea el `.webp` liviano y actualiza `src/img_dims.json`. Si no se corre, la web usa el original y funciona igual, solo que más pesada.
+- El nombre del director creativo figura solo en los datos para buscadores (schema y llms.txt), no en la página. Está en `PERSONA`, en `src/paginas.py`.
 
 ---
 

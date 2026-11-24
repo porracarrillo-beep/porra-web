@@ -16,7 +16,8 @@
 <meta property="og:image" content="%%SITE_URL%%/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="%%SITE_URL%%/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "PORRA", "alternateName": "Porra Studio", "url": "%%SITE_URL%%/", "image": "%%SITE_URL%%/og-image.jpg", "email": "hola@porra.studio", "description": "Estudio de dirección creativa y producción visual con IA en Buenos Aires. Campañas, imágenes y videos para marcas de gastronomía, consumo y real estate, con agilidad y una identidad consistente.", "address": {"@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR"}, "areaServed": ["Argentina", "México", "Estados Unidos"], "knowsAbout": ["Producción de contenido con IA", "Fotografía de producto con IA", "Fotografía gastronómica con IA", "Video con IA para marcas", "Reels para restaurantes", "Dirección creativa", "Dirección de arte", "Imagen para real estate", "Packaging y key visuals"], "sameAs": ["https://www.instagram.com/porra_ia/", "https://www.behance.net/JoseCarrillo"]}</script>
+<script type="application/ld+json">%%SCHEMA%%</script>
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="llms.txt">
 <style>
 %%PLATES_CSS%%
 :root{--bg:#0c0c0b;--fg:#f3f3ef;--mut:#8f8f89;--line:#272725;--acc:#00d9ff;--acc2:#ff006e;--pad:clamp(16px,2.6vw,40px);--gap:clamp(6px,.8vw,12px)}
@@ -26,7 +27,7 @@ body{background:var(--bg);color:var(--fg);font-family:"Inter Tight",Helvetica,Ar
 body.locked{overflow:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
-.svc{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,4vw,48px)}.svc li{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;color:#cfcfca}
+.svcw{margin-top:clamp(28px,4vw,48px)}.svcw .lbl{margin-bottom:14px}.studio .svcw h2.lbl{font-size:12px;letter-spacing:.12em;line-height:1.45;font-weight:500}.svc{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.svc h3{font:inherit;color:inherit}.svc li{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;color:#cfcfca}
 .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:500}
 .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 15px;font-size:14px;font-weight:500;transition:background .2s,color .2s,border-color .2s;backdrop-filter:blur(6px)}
 .pill:hover{background:#fff;color:#000;border-color:#fff}
@@ -37,7 +38,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 /* header */
 header{position:fixed;top:0;left:0;right:0;z-index:13;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px var(--pad);transition:background .3s,border-color .3s;border-bottom:1px solid transparent;color:#fff}
 header.solid{background:rgba(12,12,11,.88);border-color:var(--line)}
-header .logo img{height:30px;display:block}
+header .logo img{height:30px;width:auto;display:block}
 header .mid{font-size:13px;color:rgba(255,255,255,.85);display:flex;gap:10px;align-items:center}
 header .mid i{width:7px;height:7px;border-radius:50%;background:var(--acc2);display:inline-block;animation:blink 1.6s infinite}
 @keyframes blink{50%{opacity:.25}}
@@ -50,7 +51,7 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 .hero .big{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(120px,15vh,150px);color:#fff}
 .hero h1{font-size:clamp(38px,6.6vw,118px);font-weight:600;letter-spacing:-.018em;line-height:.9;text-transform:uppercase}
 .hero h1 span{display:block}
-.hero .who{font-size:clamp(13px,1vw,16px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;color:rgba(255,255,255,.9)}
+.hero h1 .who{line-height:1.45;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(13px,1vw,16px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;color:rgba(255,255,255,.9)}
 .hero h1 em{font-style:normal;color:var(--acc)}
 .hero .foot{position:absolute;left:var(--pad);right:var(--pad);bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#fff;font-size:14px}
 .hero .foot p{max-width:74ch;color:rgba(255,255,255,.85);font-size:15px;line-height:1.45}
@@ -70,7 +71,7 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 .card .ph img,.card .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .4s}
 .card:hover .ph img,.card:hover .ph video{transform:scale(1.03)}
 .card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:14px}
-.card .cap b{font-size:clamp(15px,1.15vw,18px);font-weight:500;letter-spacing:-.005em;line-height:1.2}
+.card .cap b,.card .cap h3{font-size:clamp(15px,1.15vw,18px);font-weight:500;letter-spacing:-.005em;line-height:1.2}
 .card .cap span{font-size:13px;color:var(--mut);white-space:nowrap}
 .card .cap i{display:block;font-style:normal;font-size:13px;color:var(--mut);margin-top:3px}
 .card .play{position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:7px;opacity:.85}
@@ -152,6 +153,7 @@ header .right{display:flex;justify-content:flex-end;gap:8px}
 @media(max-width:700px){.lead-form .g{grid-template-columns:1fr}}
 
 .contact .links{display:flex;gap:8px;flex-wrap:wrap}
+.allcases{margin:clamp(60px,8vh,100px) var(--pad) 0;border-top:1px solid var(--line);padding-top:16px}.allcases .lbl{margin-bottom:14px}.allcases ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 22px}.allcases a{font-size:14px;color:#bdbdb7;transition:color .2s}.allcases a:hover{color:#fff}
 footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin:60px var(--pad) 0;padding:16px 0 24px;font-size:13px;color:var(--mut)}
 
 /* menu */
@@ -223,9 +225,9 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
 
 <main id="top">
   <section class="hero" id="reel">
-    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/reels/hero-poster.jpg?v=3"></video>
+    <video id="heroVid" autoplay muted loop playsinline preload="metadata" poster="assets/reels/hero-poster.jpg?v=3"></video>
     <div class="scrim"></div>
-    <div class="big"><div class="who">Estudio de dirección creativa y producción visual con IA</div><h1><span>Más posibilidades</span><span>para grandes ideas</span></h1></div>
+    <div class="big"><h1><span class="who">Estudio de dirección creativa y producción visual con IA</span><span>Más posibilidades</span><span>para grandes ideas</span></h1></div>
     <div class="foot">
       <p>Transformamos lo que hace única a tu marca en campañas, imágenes y videos que captan la atención. Combinamos concepto, dirección de arte y producción con IA para llevar cada idea a más formatos, con agilidad y una identidad consistente.</p>
       <div class="sw"><button class="pill solid" data-reel="1">▶ Reel video IA</button><button class="pill" data-reel="0">▶ Reel imagen IA</button></div>
@@ -250,7 +252,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
       <div class="step"><span class="n">02</span><div><b>Producción con IA</b><p>Imagen y video con un flujo propio, con selección, consistencia y retoque bajo dirección de arte.</p></div></div>
       <div class="step"><span class="n">03</span><div><b>Entrega lista</b><p>Archivos finales para pauta, redes, punto de venta o impresión. La publicación queda del lado de la marca.</p></div></div>
     </div>
-    <ul class="svc" aria-label="Servicios"><li>Fotografía de producto con IA</li><li>Fotos de comida y bebida con IA</li><li>Video y reels con IA</li><li>Contenido para redes de restaurantes</li><li>Key visuals y campañas</li><li>Imagen para real estate</li><li>Packaging y branding</li></ul>
+    <div class="svcw"><h2 class="lbl">Servicios</h2><ul class="svc"><li><h3>Fotografía de producto con IA</h3></li><li><h3>Fotos de comida y bebida con IA</h3></li><li><h3>Video y reels con IA</h3></li><li><h3>Contenido para redes de restaurantes</h3></li><li><h3>Key visuals y campañas</h3></li><li><h3>Imagen para real estate</h3></li><li><h3>Packaging y branding</h3></li></ul></div>
   </section>
 
   <section class="contact" id="contacto">
@@ -279,6 +281,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
       </div>
     </div>
   </section>
+  <nav class="allcases" aria-label="Todos los casos"><h2 class="lbl">Todos los casos</h2><ul>%%CASE_LINKS%%</ul></nav>
   <footer><span>© 2026 Porra · Dirección creativa y producción visual con IA · Buenos Aires</span><span>hola@porra.studio</span></footer>
 </main>
 
@@ -324,10 +327,10 @@ document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{filt=c.dataset.k; d
 function cardHTML(w,i,ar){
   const media = w.video
      ? `<video muted loop playsinline preload="metadata" src="${w.video}"></video><span class="play">${w.reel!=null?'Reel':'Video'}</span>`
-     : `<img loading="lazy" src="${w.img}" alt="${w.title}" style="object-position:${w.pos||'center'}">`;
-  const href = w.caso ? `href="#caso-${w.caso}"` : (w.kind==='text' ? `href="${w.href}" target="_blank" rel="noopener"` : `href="#" data-lb="${i}"`);
+     : `<img loading="lazy" src="${w.thumb||w.img}"${w.w?` width="${w.w}" height="${w.h}"`:''} alt="${w.alt||w.title}" style="object-position:${w.pos||'center'}">`;
+  const href = w.caso ? `href="/trabajos/${w.caso}" data-caso="${w.caso}"` : (w.kind==='text' ? `href="${w.href}" target="_blank" rel="noopener"` : `href="#" data-lb="${i}"`);
   const meta = [w.cat.replace(/^Caso · /,''), w.pais].filter(Boolean).join(' · ');
-  return `<a class="card" ${href} data-cur="${w.caso?'Ver caso':'Ver'}"><div class="ph" style="aspect-ratio:${ar}">${media}</div><div class="cap"><div><b>${w.title}</b><i>${w.sub}</i></div><span>${meta}</span></div></a>`;
+  return `<a class="card" ${href} data-cur="${w.caso?'Ver caso':'Ver'}"><div class="ph" style="aspect-ratio:${ar}">${media}</div><div class="cap"><div><h3>${w.title}</h3><i>${w.sub}</i></div><span>${meta}</span></div></a>`;
 }
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target; if(e.isIntersecting){const p=v.play(); p&&p.catch(()=>{});} else v.pause();}),{threshold:.15});
 function render(){
@@ -340,6 +343,7 @@ function render(){
   if(stills.length) html+=`<div class="grp"><div class="lbl"><span>Casos e imagen</span><span>${stills.length}</span></div><div class="grid">${stills.map(([w,i])=>cardHTML(w,i,'4/3')).join('')}</div></div>`;
   $('#rows').innerHTML=html;
   document.querySelectorAll('#rows video').forEach(v=>vio.observe(v));
+  document.querySelectorAll('[data-caso]').forEach(a=>a.onclick=e=>{ if(e.metaKey||e.ctrlKey||e.shiftKey) return; e.preventDefault(); location.hash='caso-'+a.dataset.caso; });
   document.querySelectorAll('[data-lb]').forEach(a=>a.onclick=e=>{e.preventDefault(); const i=+a.dataset.lb; const w=WORKS[i]; if(w.reel!=null) openLB(REELS,w.reel); else openLB(IALIST,IALIST.findIndex(x=>x.i===i));});
   bindCursor();
 }
@@ -354,9 +358,9 @@ render();
 
 /* menu */
 const menu=$('#menu');
-const MI=[['Reel','#reel','assets/reels/hero-poster.jpg?v=3',''],['Trabajos','#trabajos','assets/lolla/r01.jpg',WORKS.length],['Lollapalooza','#caso-lollapalooza','assets/lolla/r13.jpg','Caso'],['VUSE','#caso-vuse','assets/vuse/06.jpg','Caso'],['Estudio','#estudio','assets/ia/donatella-poster.jpg',''],['Contacto','#contacto','assets/ia/up-si-vale.jpg','']];
+const MI=[['Reel','#reel','assets/reels/hero-poster-card.webp',''],['Trabajos','#trabajos','assets/lolla/r01-card.webp',WORKS.length],['Lollapalooza','#caso-lollapalooza','assets/lolla/r13-card.webp','Caso'],['VUSE','#caso-vuse','assets/vuse/06-card.webp','Caso'],['Estudio','#estudio','assets/ia/donatella-poster-card.webp',''],['Contacto','#contacto','assets/ia/up-si-vale-card.webp','']];
 $('#menuNav').innerHTML=MI.map((m,i)=>`<a href="${m[1]}" data-i="${i}">${m[0]}${m[3]!==''?`<small>${m[3]}</small>`:''}</a>`).join('');
-$('#menuPv').innerHTML=MI.map((m,i)=>`<img src="${m[2]}" alt="" data-i="${i}" ${i===0?'class="on"':''}>`).join('');
+$('#menuPv').innerHTML=MI.map((m,i)=>`<img src="${m[2]}" alt="${m[0]} · Porra" loading="lazy" data-i="${i}" ${i===0?'class="on"':''}>`).join('');
 document.querySelectorAll('#menuNav a').forEach(a=>{
   a.onmouseenter=()=>document.querySelectorAll('#menuPv img').forEach(im=>im.classList.toggle('on',im.dataset.i===a.dataset.i));
   a.onclick=()=>toggleMenu(false);
