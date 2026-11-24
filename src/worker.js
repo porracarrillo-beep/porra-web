@@ -277,6 +277,10 @@ async function adminApi(request, env, url) {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    // Una sola versión del sitio para Google: http y www redirigen a https://porra.studio
+    if ((url.hostname === 'www.porra.studio' || (url.hostname === 'porra.studio' && url.protocol === 'http:')) && !url.pathname.startsWith('/api/')) {
+      return Response.redirect(`https://porra.studio${url.pathname}${url.search}`, 301);
+    }
     try {
       if (url.pathname === '/api/lead') {
         if (request.method !== 'POST') return json({ error: 'método no permitido' }, 405);

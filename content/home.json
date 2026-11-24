@@ -119,7 +119,14 @@
       "video_completo": "assets/ia/donatella.mp4",
       "descripcion": "Hotel boutique y restaurante en Miami Beach: tres lenguajes visuales y un video de 15 s. Imagen y video con IA bajo dirección de arte.",
       "tipo": "media",
-      "pais": "EE.UU."
+      "pais": "EE.UU.",
+      "ficha": {
+        "Cliente": "Donatella Boutique Hotel & Restaurant",
+        "Ubicación": "Collins Avenue, Miami Beach",
+        "Alcance": "Dirección creativa, dirección de arte, producción de imagen y video con IA",
+        "Estudio": "Porra",
+        "Año": "2026"
+      }
     },
     {
       "titulo": "Miami Restaurants",
@@ -132,7 +139,14 @@
       "tipo": "media",
       "pais": "EE.UU.",
       "posicion": "center",
-      "descripcion": "Contenido semanal para restaurantes de Miami: platos, salones, brunch, delivery, noches y fechas especiales. Dirección creativa, dirección de arte e imagen con IA, con una regla visual distinta para cada marca."
+      "descripcion": "Contenido semanal para restaurantes de Miami: platos, salones, brunch, delivery, noches y fechas especiales. Dirección creativa, dirección de arte e imagen con IA, con una regla visual distinta para cada marca.",
+      "ficha": {
+        "Clientes": "Restaurantes de Miami para los que producimos contenido",
+        "Alcance": "Dirección creativa, dirección de arte, producción de imagen con IA",
+        "Entregables": "Contenido semanal: platos, salones, brunch, delivery, noches y fechas especiales",
+        "Estudio": "Porra",
+        "Año": "2026"
+      }
     },
     {
       "titulo": "La Nación · LN Campo",
@@ -327,7 +341,14 @@
       "tipo": "media",
       "pais": "Argentina",
       "posicion": "center",
-      "descripcion": "Una desarrolladora necesita vender antes de tener obra, y para eso necesita imagen. Branding de proyectos, dirección creativa e imagen con IA para la preventa y comercialización de desarrollos residenciales."
+      "descripcion": "Una desarrolladora necesita vender antes de tener obra, y para eso necesita imagen. Branding de proyectos, dirección creativa e imagen con IA para la preventa y comercialización de desarrollos residenciales.",
+      "ficha": {
+        "Rubro": "Real estate residencial",
+        "Clientes": "Desarrollos residenciales",
+        "Alcance": "Branding de proyectos, dirección creativa e imagen con IA para preventa y comercialización",
+        "Estudio": "Porra",
+        "Año": "2025 / 2026"
+      }
     },
     {
       "titulo": "ENA",
@@ -339,7 +360,14 @@
       "imagen": "assets/cases/ena/ena-cover.jpg",
       "tipo": "media",
       "pais": "Argentina",
-      "descripcion": "Un barrio que todavía no existe necesitaba una marca propia y una vida para mostrar. Branding del proyecto, dirección creativa e imagen con IA para la preventa de un desarrollo residencial."
+      "descripcion": "Un barrio que todavía no existe necesitaba una marca propia y una vida para mostrar. Branding del proyecto, dirección creativa e imagen con IA para la preventa de un desarrollo residencial.",
+      "ficha": {
+        "Proyecto": "ENA",
+        "Rubro": "Real estate residencial",
+        "Alcance": "Branding del proyecto, dirección creativa e imagen con IA para preventa",
+        "Estudio": "Porra",
+        "Año": "2025 / 2026"
+      }
     },
     {
       "titulo": "Conexo Finance",

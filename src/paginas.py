@@ -106,7 +106,7 @@ def info_caso(cid, frag, titles, cards):
     cat = plano(card.get('categoria', '')).replace('Caso · ', '')
     anio = re.search(r'[Aa]ño</dt><dd>[^<]*?(20\d\d)', frag)
     img = card.get('imagen') or (re.search(r'src="(assets/[^"]+\.(?:jpe?g|png))"', frag) or [None, None])[1]
-    return dict(id=cid, titulo=titulo, intro=None if cuerpo else texto, bajada=bajada, cat=cat, pais=card.get('pais', ''), desc=recortar(desc),
+    return dict(id=cid, titulo=titulo, intro=None if cuerpo else texto, ficha=card.get('ficha'), bajada=bajada, cat=cat, pais=card.get('pais', ''), desc=recortar(desc),
                 texto=texto, anio=anio.group(1) if anio else None, imagen=img)
 
 
@@ -127,6 +127,9 @@ a{color:inherit;text-decoration:none}
 .cp-intro h1{margin-top:14px;font-size:clamp(34px,5.2vw,84px);font-weight:600;letter-spacing:-.018em;line-height:.95;text-transform:uppercase}
 .cp-intro h1 span{display:block;margin-top:14px;font-size:clamp(17px,1.6vw,24px);font-weight:500;letter-spacing:-.005em;line-height:1.25;text-transform:none;color:var(--mut)}
 .cp-txt{margin-top:22px;max-width:62ch;font-size:clamp(16px,1.2vw,19px);line-height:1.5;color:#cfcfca}
+.cp-ficha{margin-top:26px;max-width:640px;display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line)}
+.cp-ficha dt,.cp-ficha dd{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.cp-ficha dt{color:var(--mut);text-transform:uppercase;letter-spacing:.1em;font-size:11px;padding-top:13px}
 .cp-body{max-width:1400px;margin:0 auto}
 .cp-body video.vmod{width:100%;display:block;background:#000}
 .cp-next{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;padding:60px var(--pad);border-top:1px solid var(--line)}
@@ -209,6 +212,7 @@ def pagina_caso(c, frag, prev, nxt, site, plates_css):
     <p class="lbl"><a href="/#trabajos">Trabajos</a>{(' · ' + e(meta)) if meta else ''}</p>
     <h1>{e(c['titulo'])}{f'<span>{e(c["bajada"])}</span>' if c['bajada'] else ''}</h1>
     {f'<p class="cp-txt">{e(c["intro"])}</p>' if c.get('intro') else ''}
+    {('<dl class="cp-ficha">' + ''.join(f'<dt>{e(k)}</dt><dd>{e(v)}</dd>' for k, v in c['ficha'].items()) + '</dl>') if c.get('ficha') and not c.get('cuerpo') else ''}
   </div>
   <article class="cp-body">
 {cuerpo}
