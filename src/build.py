@@ -3,7 +3,7 @@
 Uso (desde la carpeta raíz del proyecto):  python3 src/build.py
 Cloudflare Pages lo corre solo en cada actualización del repositorio.
 """
-import json, os, sys
+import json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'src'))
@@ -32,7 +32,7 @@ TITLES = home['titulos_de_casos']
 # Claves en castellano (content/home.json) -> claves que usa el código de la página
 WK = {'titulo': 'title', 'bajada': 'sub', 'categoria': 'cat', 'descripcion': 'desc', 'filtro': 'f', 'proporcion': 'r',
       'imagen': 'img', 'video': 'video', 'video_completo': 'full', 'caso': 'caso', 'posicion': 'pos', 'tipo': 'kind',
-      'color': 'color', 'link': 'href', 'reel': 'reel', 'pais': 'pais', 'ficha': 'ficha'}
+      'color': 'color', 'link': 'href', 'reel': 'reel', 'pais': 'pais', 'ficha': 'ficha', 'meta': 'meta'}
 RK = {'video': 'src', 'titulo': 'title', 'descripcion': 'desc', 'tipo': 'kind'}
 WORKS = [{WK[k]: v for k, v in w.items()} for w in home['tarjetas_home']]
 REELS = [{RK[k]: v for k, v in r.items()} for r in home['reels']]
@@ -59,8 +59,9 @@ CARDS = {t['caso']: t for t in home['tarjetas_home'] if t.get('caso')}
 
 # Fragmento de cada caso (placas), con texto alternativo en las imágenes
 FRAG, INFO = {}, {}
-for c in ORDER:
+for n, c in enumerate(ORDER, 1):
     raw = beh_fragment(c) if c in BEH else fragment(c)
+    raw = re.sub(r'Caso \d+ ·', f'Caso {n:02d} ·', raw, count=1)  # el número sale del orden de la web
     INFO[c] = paginas.info_caso(c, raw, TITLES, CARDS)
     FRAG[c] = paginas.alts(raw, f"{INFO[c]['titulo']} · {INFO[c]['bajada']}".strip(' ·'))
 
@@ -83,7 +84,7 @@ with open(os.path.join(ROOT, 'src', 'plates.css'), encoding='utf-8') as f:
 for k, v in {'%%TEMPLATES%%': templates, '%%WORKS%%': json.dumps(WORKS, ensure_ascii=False),
              '%%REELS%%': json.dumps(REELS, ensure_ascii=False), '%%ORDER%%': json.dumps(ORDER),
              '%%TITLES%%': json.dumps(TITLES, ensure_ascii=False), '%%PLATES_CSS%%': css,
-             '%%SITE_URL%%': SITE, '%%SCHEMA%%': paginas.schema_home(SITE),
+             '%%SITE_URL%%': SITE, '%%COUNT%%': str(len(WORKS)), '%%SCHEMA%%': paginas.schema_home(SITE),
              '%%CASE_LINKS%%': ''.join(f'<li><a href="/trabajos/{c}">{INFO[c]["titulo"]}</a></li>' for c in ORDER)}.items():
     html = html.replace(k, v)
 html = paginas.medidas(paginas.webp(html))

@@ -102,7 +102,7 @@ def info_caso(cid, frag, titles, cards):
         texto = plano(card.get('descripcion', ''))
     if not texto:
         texto = f'{titulo}: {bajada}.' if bajada else titulo
-    desc = texto if len(texto) >= 90 else (texto.rstrip('.') + '. Dirección creativa y producción visual de Porra, estudio en Buenos Aires.')
+    desc = plano(card['meta']) if card.get('meta') else texto if len(texto) >= 90 else (texto.rstrip('.') + '. Dirección creativa y producción visual de Porra, estudio en Buenos Aires.')
     cat = plano(card.get('categoria', '')).replace('Caso · ', '')
     anio = re.search(r'[Aa]ño</dt><dd>[^<]*?(20\d\d)', frag)
     img = card.get('imagen') or (re.search(r'src="(assets/[^"]+\.(?:jpe?g|png))"', frag) or [None, None])[1]

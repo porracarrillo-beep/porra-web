@@ -459,7 +459,7 @@ CASES['roota'] = dict(light=True, acc='#3f7d4f', plates=[
  *jrows([_r('03',1122,1402),_r('07',1792,2400),_r('08',1856,2304),_r('13',992,1280)]),
  full(R+'10.jpg','2400/965','contain',pad=40),
  P('1400/170', band('<b>02</b> · Situaciones hiperrealistas', 'Personas, luz y gestos reales, con el producto fiel a su etiqueta.')),
- *jrows([_r('02',1024,1536),_r('09',1792,2400),_r('12',1856,2304)]),
+ *jrows([_r('02',1024,1536),_r('12',1856,2304)]),
  *jrows([_r('04',2400,1579)]),
  *jrows([_r('05',2400,1340)]),
  P('1400/170', band('<b>03</b> · Video con IA', 'Avatar y piezas en movimiento para redes.')),
