@@ -237,7 +237,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
 
   <section class="work" id="trabajos">
     <div class="whead">
-      <div class="wtit"><h2>Trabajos<sup id="count">%%COUNT%%</sup></h2><p class="wsub">Más de 25 años de experiencia en creatividad y dirección de arte, aplicados a una nueva forma de producir.</p></div>
+      <div class="wtit"><h2>Trabajos<sup id="count">%%COUNT%%</sup></h2><p class="wsub">Casos de marca, producción con IA y reels. Una selección de proyectos, de la idea a la pieza final.</p></div>
       <div class="chips" id="chips"></div>
     </div>
     <div id="rows"></div>
@@ -259,7 +259,7 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
     <div class="lbl" style="margin-bottom:16px">Contacto</div>
     <h2>Hablemos.</h2>
     <form id="leadForm" class="lead-form" novalidate>
-      <p class="intro">Contame qué tenés en mente: una campaña, contenido con IA, una marca nueva. Te respondo en menos de 24 horas.</p>
+      <p class="intro">Contanos qué tenés en mente: una campaña, contenido con IA, una marca nueva. Te respondemos en menos de 24 horas.</p>
       <div class="g">
         <label>Nombre *<input name="nombre" required autocomplete="name"></label>
         <label>Mail *<input name="email" type="email" required autocomplete="email"></label>
@@ -307,7 +307,7 @@ const small=matchMedia('(max-width:900px)').matches;
 
 /* hero video */
 const hv=$('#heroVid');
-hv.src=small?'assets/reels/hero-loop-sm.mp4?v=3':'assets/reels/hero-loop.mp4?v=3';
+hv.src=small?'assets/reels/hero-loop-sm.mp4?v=4':'assets/reels/hero-loop.mp4?v=4';
 hv.addEventListener('timeupdate',()=>{ if(hv.duration) $('#heroBar').style.width=(hv.currentTime/hv.duration*100)+'%'; });
 document.querySelectorAll('[data-reel]').forEach(b=>b.onclick=()=>openLB(REELS,+b.dataset.reel));
 
@@ -424,7 +424,7 @@ if(location.hash.startsWith('#caso-')) route();
     try{const r=await fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)});const j=await r.json();
       if(!r.ok||!j.ok)throw new Error(j.error||'Error');
       f.reset();msg.className='ok';msg.textContent='¡Gracias! Recibí tu consulta y te escribo a la brevedad.';}
-    catch(err){msg.className='err';msg.innerHTML='No se pudo enviar. Escribime a <a href="mailto:hola@porra.studio" style="text-decoration:underline">hola@porra.studio</a>.';}
+    catch(err){msg.className='err';msg.innerHTML='No se pudo enviar. Escribinos a <a href="mailto:hola@porra.studio" style="text-decoration:underline">hola@porra.studio</a>.';}
     btn.disabled=false;});
 })();
 </script>
