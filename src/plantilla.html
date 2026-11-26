@@ -307,7 +307,7 @@ const small=matchMedia('(max-width:900px)').matches;
 
 /* hero video */
 const hv=$('#heroVid');
-hv.src=small?'assets/reels/hero-loop-sm.mp4?v=4':'assets/reels/hero-loop.mp4?v=4';
+hv.src=small?'assets/reels/hero-loop-sm.mp4?v=5':'assets/reels/hero-loop.mp4?v=5';
 hv.addEventListener('timeupdate',()=>{ if(hv.duration) $('#heroBar').style.width=(hv.currentTime/hv.duration*100)+'%'; });
 document.querySelectorAll('[data-reel]').forEach(b=>b.onclick=()=>openLB(REELS,+b.dataset.reel));
 
